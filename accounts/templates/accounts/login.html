@@ -1,0 +1,57 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+
+{% block content %}
+	{% if form.errors %}
+		<p class="error">Sorry, that's not a valid username of password</p>
+	{% endif %}
+
+
+    <div class="col-md-7">
+        <div id="login_form" class="">
+            <div class="" id="form">
+                <form action="{% url 'accounts:auth_view' %}" method="post">
+                    {% csrf_token %}
+                    <div class="card ">
+                        <!--Header-->
+                        <div class="header damzi-green-deep">
+                          <div class="row">
+                            <h3 class="white-text mt-3 mb-11z pb-1 mx-5">Log in</h3>
+                          </div>
+                        </div>
+                        <!--Header-->
+                        <div class="card-body mx-4 mt-4">
+                          <!--Body-->
+                          <!--<div class="md-form">-->
+                              <!-- username -->
+                            <!--<label for="username">User name:</label>
+                            <input type="text" name="username" value="" id="username">
+                          </div>-->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="min-width:100%">
+                                <input class="mdl-textfield__input" type="text" id="username" name="username" value="">
+                                <label class="mdl-textfield__label" for="username">User name:</label>
+                              </div>
+                          <!--<div class="md-form pb-3">-->
+                              <!-- password -->
+                            <!--<label for="password">Password:</label>
+                            <input type="password" name="password" value="" id="password">
+                            <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text font-bold ml-1"> Password?</a></p>
+                          </div>-->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="min-width:100%">
+                                <input class="mdl-textfield__input" type="password" id="password" name="password" value="" >
+                                <label class="mdl-textfield__label" for="password">Password:</label>
+                              </div>
+                          <div class="text-center mb-4">
+                            <!--<button type="button" class="btn btn-danger btn-block z-depth-2">Log in</button>-->
+                              <input type="submit" class="btn damzi-green-deep z-depth-2" value="login" />
+                          </div>
+                            <p class="font-small grey-text d-flex justify-content-center">Don't have an account? <a href="../register" class="dark-grey-text font-bold ml-1"> Sign up</a></p>
+                            <a href="{% url 'accounts:password_reset' %}">Forgot Password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

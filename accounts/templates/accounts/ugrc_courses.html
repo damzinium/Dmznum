@@ -1,0 +1,3 @@
+{% for ugrc in object_list %}
+		<a href="{% url 'accounts:ugrc_detail' ugrc.id %}">{{ugrc.ugrc}}</a>
+{% endfor %}

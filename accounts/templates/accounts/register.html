@@ -1,0 +1,37 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <div class="col-md-7">
+        <div id="register_form" class="">
+            <div class="" id="form">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="card ">
+                        <!--Header-->
+                        <div class="header damzi-green-deep">
+                          <div class="row">
+                            <h3 class="white-text mt-3 mb-11z pb-1 mx-5">Register</h3>
+                          </div>
+                        </div>
+                        <!--Header-->
+                        <!--Body-->
+                        <div class="card-body mx-4 mt-4">
+                            {{ form.as_p }}
+                            <div class="text-center mb-4">
+                                <input type="submit" class="btn damzi-green-deep z-depth-2" value="Register">
+                            </div>
+                            <p class="font-small grey-text d-flex justify-content-center">Already have an account?
+                                <a href="../login" class="dark-grey-text font-bold ml-1" id="signin"> Log In</a>
+                            </p>
+                        </div>
+                        <!--/Body-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

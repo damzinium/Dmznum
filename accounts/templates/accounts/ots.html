@@ -1,0 +1,33 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <div class="col-md-7">
+        <div id="" class="">
+            <div class="" id="form">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="card ">
+                        <!--Header-->
+                        <div class="header green">
+                          <div class="row">
+                            <h3 class="white-text mt-3 mb-11z pb-1 mx-5">One more thing...</h3>
+                          </div>
+                        </div>
+                        <!--Header-->
+                        <!--Body-->
+                        <div class="card-body mx-4 mt-4">
+                            {% include 'kitchen/form-template.html' %}
+                            <div class="text-center mb-4">
+                                <input type="submit" class="btn btn-danger z-depth-2" value="Submit">
+                            </div>
+                        </div>
+                        <!--/Body-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

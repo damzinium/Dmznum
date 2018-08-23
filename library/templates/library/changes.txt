@@ -1,0 +1,159 @@
+CREATING PAGINATION
+=======================
+
+1. Altered library.views
+--------------
+
+ORIGINAL LIBRARY/VIEWS
+
+from django.shortcuts import render_to_response
+from django.views import generic
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Topic, Course, Department, Ugrc, Ugrc_Topic
+
+
+# Create your views here.
+class DepartmentView(generic.ListView):
+    template_name = 'library/department.html'
+
+    def get_queryset(self):
+        return Department.objects.all()
+
+
+class CourseView(generic.DetailView):
+    model = Department
+    template_name = 'library/course.html'
+
+
+class CourseDetailView(generic.DetailView):
+    model = Course
+    template_name = 'library/detail.html'
+
+
+class TopicDetailView(generic.DetailView):
+    model = Topic
+    template_name = 'library/topic_detail.html'
+
+
+def faq(request):
+    return render_to_response('library/faq.html')
+
+
+def about(request):
+    return render_to_response('library/about.html')
+
+
+def contact(request):
+    return render_to_response('library/contact.html')
+
+
+
+
+2. Created list.html. This page should show the topic detail and help paginate.
+so im going to make this list page appear instead of the normal "topic_detail"
+--------------------------------------------------------------
+
+3. I want the detail page to redirect to the list page, not topic_detail. This affects detail and URLs and views
+-------------------------------------------------------------
+
+ORIGINAL DETAIL
+
+{% extends 'library/base2.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                	<center><h3>List of topics</h3></center>
+                	<!--course generator-->
+                        {% for topic in course.topic_set.all %}
+                            <div class="card">
+                                <div class="card-header light-green darken-1 lighten-1 white-text">
+                                    UGRC
+                                </div>
+
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ topic.title }}</h4>
+                                    <!--<p class="card-text">Sample text</p>-->
+                                    <a href="{% url 'library:topic_detail' topic.id %}" class="btn damzinium-green-head">READ</a>
+                                </div>
+                            </div>
+                            <!--/course generator--><br/>
+                        {% endfor %}
+
+                    </div></div></div>
+{% endblock %}
+
+ORIGINAL URLs
+
+from django.urls import path
+from django.contrib.auth.decorators import login_required
+from .import views
+
+app_name = 'library'
+
+urlpatterns = [
+path('department/', login_required(views.DepartmentView.as_view()), name='department'),
+path('department/<int:pk>/', login_required(views.CourseView.as_view()), name='course'),
+path('course/<int:pk>/', login_required(views.CourseDetailView.as_view()), name='detail'),
+path('topic/<int:pk>/', login_required(views.TopicDetailView.as_view()), name='topic_detail'),
+path('faq/', views.faq, name='faq'),
+path('about/', views.about, name='about'),
+path('contact/', views.contact, name='contact'),
+]
+
+ALTERED VIEWS (ALMOST ORIGINAL. BUT MODIFIED FOR THIS EXPERIMENT)
+
+from django.shortcuts import render_to_response, render
+from django.views import generic
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Topic, Course, Department, Ugrc, Ugrc_Topic
+
+
+# Create your views here.
+class DepartmentView(generic.ListView):
+    template_name = 'library/department.html'
+
+    def get_queryset(self):
+        return Department.objects.all()
+
+
+class CourseView(generic.DetailView):
+    model = Department
+    template_name = 'library/course.html'
+
+
+class CourseDetailView(generic.DetailView):
+    model = Course
+    template_name = 'library/detail.html'
+
+
+class TopicDetailView(generic.DetailView):
+    model = Topic
+    template_name = 'library/topic_detail.html'
+
+# attempting to create pagination
+def listing(request):
+    topic_list = Topic.objects.all()
+    paginator = Paginator(topic_list, 1) # show one topic in a page, duh...
+
+    page = request.GET.get('page')
+    theposts = paginator.get_page(page)
+    return render(request, 'list.html', {'theposts': theposts})
+
+def faq(request):
+    return render_to_response('library/faq.html')
+
+
+def about(request):
+    return render_to_response('library/about.html')
+
+
+def contact(request):
+    return render_to_response('library/contact.html')
+
+
+
+
