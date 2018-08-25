@@ -70,11 +70,7 @@ class ProfileForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super(ProfileForm, self).save(commit=False)
-        # user.school_name = self.cleaned_data['school_name']
-        # user.department_name = self.cleaned_data['department_name']
-        # user.phone_number = self.cleaned_data['phone_number']
-        # user.date_of_birth = self.cleaned_data['date_of_birth']
-
+        
         if commit:
             user.save()
 

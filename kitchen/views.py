@@ -7,3 +7,5 @@ class PostCreate(CreateView):
 	model = Topic
 	fields = ['course_name','title', 'content']
 	template_name = 'kitchen/add.html'
+
+# Kitchen app here

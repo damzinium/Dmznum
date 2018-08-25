@@ -17,6 +17,7 @@ class CustomUserAdmin(UserAdmin):
     form = ProfileForm
     inlines = (ProfileInline,)
     list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'phone_number', 'department_name')
+    search_fields = ('username','first_name', 'last_name')
 
     def phone_number(self, instance):
         return instance.profile.phone_number
@@ -32,7 +33,6 @@ class CustomUserAdmin(UserAdmin):
         if not obj:
             return list()
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
-
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)

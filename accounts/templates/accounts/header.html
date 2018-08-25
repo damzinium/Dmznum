@@ -24,6 +24,9 @@
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:about' %}" style="color: #fff !important;">About</a>
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:contact' %}" style="color: #fff !important;">Contact</a>
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:faq' %}" style="color: #fff !important;">FAQ</a>
+              {% if user.is_staff %}
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'kitchen:add' %}" style="color: #fff !important;">Kitchen</a>
+              {% endif %}
             </nav>
           </div>
           <span class="android-mobile-title mdl-layout-title">
