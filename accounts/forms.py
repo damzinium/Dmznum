@@ -5,7 +5,6 @@ from django.core.exceptions import ValidationError
 from accounts.models import Profile, School
 from .helpers import generate_years_for_bday, is_phone_number
 
-
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
@@ -20,7 +19,6 @@ class UserForm(forms.ModelForm):
             'password',
             'confirm_password'
         ]
-
 
 def save(self, commit=True):
     user = super(UserForm, self).save(commit=False)
@@ -37,17 +35,19 @@ def save(self, commit=True):
 
 
 class ProfileForm(forms.ModelForm):
-    school_name = forms.ModelChoiceField(queryset=School.objects.all(), widget=forms.Select(attrs={
-        'class': 'form-control-select',
-    }))
-    phone_number = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control-text',
-    }), help_text='Enter your phone number. eg: 0272727388')
-    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(attrs={
-        'class': 'form-control-select',
-    },
-        years=generate_years_for_bday(),
-    ))
+    # school_name = forms.ModelChoiceField(queryset=School.objects.all(), widget=forms.Select(attrs={
+    #     'class': 'form-control-select',
+    # }))
+
+    # phone_number = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'form-control-text',
+    # }), help_text='Enter your phone number. eg: 0272727388')
+
+    # date_of_birth = forms.DateField(widget=forms.SelectDateWidget(attrs={
+    #     'class': 'form-control-select',
+    # },
+    #     years=generate_years_for_bday(),
+    # ))
 
     def clean_phone_number(self):
         """
@@ -68,9 +68,11 @@ class ProfileForm(forms.ModelForm):
             'date_of_birth'
         ]
 
+        
+
     def save(self, commit=True):
         user = super(ProfileForm, self).save(commit=False)
-        
+
         if commit:
             user.save()
 

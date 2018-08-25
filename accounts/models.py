@@ -12,7 +12,7 @@ class Profile(models.Model):
     school_name = models.ForeignKey(School, on_delete=models.CASCADE)
     department_name = models.ForeignKey(Department, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=13, null=False, blank=False)
-    date_of_birth = models.DateField(null=False, blank=False, help_text='MM/DD/YYYY')
+    date_of_birth = models.DateField(null=True, blank=False, help_text='MM/DD/YYYY')
 
     def __str__(self):
         return self.user.username

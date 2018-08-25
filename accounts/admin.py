@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from accounts.models import Profile
 from accounts.forms import ProfileForm
 
-
 # Register your models here.
 class ProfileInline(admin.StackedInline):
     model = Profile
@@ -18,6 +17,7 @@ class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline,)
     list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'phone_number', 'department_name')
     search_fields = ('username','first_name', 'last_name')
+    
 
     def phone_number(self, instance):
         return instance.profile.phone_number
