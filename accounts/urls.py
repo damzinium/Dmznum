@@ -8,7 +8,8 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('', login_required(views.Profile.as_view()), name='profile'),
-    path('ots/', login_required(views.ots), name='ots'),
+    path('ots/', login_required(views.OtsView.as_view()), name='ots'),
+    # path('ots/', login_required(views.ots), name='ots'),
     path('register/', views.UserFormView.as_view(), name='register'),
 
     #user auth urls
