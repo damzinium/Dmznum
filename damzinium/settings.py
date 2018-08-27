@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
-from damzi.damzi import SECRET_KEY
+from damzi.set import SECRET_KEY
 
 
 PROJECT_DIR=os.path.dirname(__file__)
@@ -24,7 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY(99,100)
+# SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
