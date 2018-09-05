@@ -8,12 +8,18 @@ from django.utils import timezone
 class School(models.Model):
     school_name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ('school_name')
+
     def __str__(self):
         return self.school_name
 
 class Department(models.Model):
     department_name = models.CharField(max_length=100)
     school_name = models.ForeignKey(School, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('department_name',)
 
     def __str__(self):
         return self.department_name
@@ -23,6 +29,9 @@ class Course(models.Model):
     course_name = models.CharField(max_length=100)
     course_code = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ('course_name',)
+
     def __str__(self):
         return self.course_code + ":" + self.course_name
 
@@ -30,6 +39,9 @@ class Topic(models.Model):
     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = RichTextUploadingField('content')
+
+    class Meta:
+        ordering = ('title',)
 
     def get_absolute_url(self):
         return reverse('library:department')
@@ -67,6 +79,9 @@ class Ugrc(models.Model):
     ugrc = models.CharField(max_length=200)
     ugrc_code = models.CharField(max_length=20)
 
+    class Meta:
+        ordering = ('ugrc',)
+
     def __str__(self):
         return self.ugrc_code + ":" + self.ugrc
 
@@ -75,6 +90,9 @@ class Ugrc_Topic(models.Model):
     ugrc = models.ForeignKey(Ugrc, on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     content = RichTextUploadingField()
+
+    class Meta:
+        ordering = ('title',)
 
     def get_absolute_url(self):
         return reverse('ugrc:ugrc')
