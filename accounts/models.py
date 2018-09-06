@@ -1,4 +1,4 @@
-from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -38,12 +38,13 @@ class UserManager(BaseUserManager):
             last_name=last_name,
             password=password,
         )
-        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
         user.save(using=self.db)
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
     username = models.CharField(max_length=60, unique=True)
     first_name = models.CharField(max_length=25)
@@ -55,7 +56,7 @@ class User(AbstractBaseUser):
 
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(verbose_name='account status', default=True)
-    is_admin = models.BooleanField(verbose_name='staff status', default=False)
+    is_staff = models.BooleanField(verbose_name='staff status', default=False)
 
     objects = UserManager()
 
@@ -70,16 +71,6 @@ class User(AbstractBaseUser):
 
     def get_full_name(self):
         return self.first_name.capitalize() + ' ' + self.last_name.capitalize()
-
-    def has_perm(self, perm, obj=None):
-        return True
-
-    def has_module_perms(self, app_label):
-        return True
-
-    @property
-    def is_staff(self):
-        return self.is_admin
 
 
 @receiver(post_save, sender=User)

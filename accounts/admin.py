@@ -17,10 +17,11 @@ class ProfileInline(admin.StackedInline):
 class CustomUserAdmin(admin.ModelAdmin):
     # form = ProfileForm
     # inlines = (ProfileInline,)
-    readonly_fields = ('username', 'email', 'first_name', 'last_name', 'is_verified', 'password', 'last_login')
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_admin', 'is_active')
+    exclude = ('profile',)
+    readonly_fields = ('username', 'email', 'first_name', 'last_name', 'is_verified', 'password', 'last_login', 'date_joined')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active')
     list_editable = ('is_active',)
-    search_fields = ('username', 'first_name', 'last_name')
+    search_fields = ('username', 'first_name', 'last_name', 'email')
 
     # def phone_number(self, instance):
     #     return instance.profile.phone_number
@@ -37,5 +38,4 @@ class CustomUserAdmin(admin.ModelAdmin):
     #         return list()
     #     return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
-admin.site.register(Profile)
 admin.site.register(User, CustomUserAdmin)
