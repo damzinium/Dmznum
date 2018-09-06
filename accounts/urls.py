@@ -7,16 +7,17 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('', login_required(views.Profile.as_view()), name='profile'),
-    path('ots/', login_required(views.OtsView.as_view()), name='ots'),
-    # path('ots/', login_required(views.ots), name='ots'),
-    path('register/', views.UserFormView.as_view(), name='register'),
+    path('', login_required(views.Dashboard.as_view()), name='profile'),
+    # path('ots/', login_required(views.OtsView.as_view()), name='ots'),
+    path('ots/', login_required(views.ots), name='ots'),
+    path('register/', views.UserRegistrationView.as_view(), name='register'),
 
-    #user auth urls
+    # user auth urls
     path('login/', views.ac_login, name='login'),
-    path('auth/', views.auth_view, name='auth_view'),
+    path('logout/', views.ac_logout, name='logout'),
+    # path('auth/', views.auth_view, name='auth_view'),
 
-    #ugrc
+    # ugrc
     path('topic/<int:pk>/', (views.UgrcTopicView.as_view()), name='ugrc_detail'),
     path('content/<int:pk>/', (views.UgContent.as_view()), name='content'),
 

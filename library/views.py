@@ -1,6 +1,10 @@
-from django.shortcuts import render_to_response, get_object_or_404, render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render_to_response, get_object_or_404, render, redirect
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from accounts.models import User
+
 from .models import Topic, Course, Department, Ugrc, Ugrc_Topic, Comment, Reply
 from .forms import CommentForm
 
@@ -30,6 +34,7 @@ class CourseDetailView(generic.DetailView):
 
 def topic_detail(request, pk):
     topic = get_object_or_404(Topic, id=pk)
+    profile_picture = get_object_or_404(User, id=request.user.id).profile.profile_picture
     comment_list = Comment.objects.filter(topic__id=pk, is_approved=True).order_by('-date_uploaded')
 
     if request.method == 'POST':
@@ -40,32 +45,20 @@ def topic_detail(request, pk):
             new_comment.topic = topic
             new_comment.comment = comment_form.cleaned_data['comment']
             new_comment.save()
-            success_msg = 'Thanks for learning smart with damzinium. We appreciate your feedback.'
-            context = {
-                'comment_form': comment_form,
-                'comment_list': comment_list,
-                'topic': topic,
-                'success_msg': success_msg,
-            }
-            return render(request, 'library/topic_detail.html', context)
+            # success_msg = 'Thanks for learning smart with damzinium. We appreciate your feedback.'
+            return redirect('library:topic_detail', pk=pk)
         else:
-            context = {
-                'comment_form': comment_form,
-                'comment_list': comment_list,
-                'topic': topic,
-                'success_msg': '',
-            }
-            return render(request, 'library/topic_detail.html', context)
+            return redirect('library:topic_detail', pk=pk)
     else:
         comment_form = CommentForm
         context = {
             'comment_form': comment_form,
             'comment_list': comment_list,
             'topic': topic,
-            'success_msg': '',
+            # 'success_msg': '',
+            'profile_picture': profile_picture,
         }
         return render(request, 'library/topic_detail.html', context)
-
 
 
 def faq(request):

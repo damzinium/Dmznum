@@ -1,11 +1,12 @@
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 
-from accounts.models import Profile, School
 from .helpers import generate_years_for_bday, is_phone_number
+from .models import Profile, User
 
-class UserForm(forms.ModelForm):
+
+class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
@@ -20,8 +21,15 @@ class UserForm(forms.ModelForm):
             'confirm_password'
         ]
 
+    def clean_first_name(self):
+        return self.cleaned_data['first_name'].upper()
+
+    def clean_last_name(self):
+        return self.cleaned_data['last_name'].upper()
+
+
 def save(self, commit=True):
-    user = super(UserForm, self).save(commit=False)
+    user = super(UserRegistrationForm, self).save(commit=False)
     user.first_name = self.cleaned_data['first_name']
     user.last_name = self.cleaned_data['last_name']
     user.email = self.cleaned_data['email']
@@ -35,24 +43,18 @@ def save(self, commit=True):
 
 
 class ProfileForm(forms.ModelForm):
-    # school_name = forms.ModelChoiceField(queryset=School.objects.all(), widget=forms.Select(attrs={
-    #     'class': 'form-control-select',
-    # }))
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control-text',
+    }), help_text='Enter your phone number. eg: 0272727388')
 
-    # phone_number = forms.CharField(widget=forms.TextInput(attrs={
-    #     'class': 'form-control-text',
-    # }), help_text='Enter your phone number. eg: 0272727388')
-
-    # date_of_birth = forms.DateField(widget=forms.SelectDateWidget(attrs={
-    #     'class': 'form-control-select',
-    # },
-    #     years=generate_years_for_bday(),
-    # ))
+    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(
+        years=generate_years_for_bday(),
+    ))
 
     def clean_phone_number(self):
         """
         custom validation for the phone number
-        :return:
+        :return: the phone number if valid
         """
         phone_number = self.cleaned_data['phone_number']
         if not is_phone_number(phone_number):
@@ -62,13 +64,12 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
+            'profile_picture',
             'school_name',
             'department_name',
             'phone_number',
             'date_of_birth'
-        ]
-
-        
+        ]       
 
     def save(self, commit=True):
         user = super(ProfileForm, self).save(commit=False)
@@ -77,3 +78,26 @@ class ProfileForm(forms.ModelForm):
             user.save()
 
         return user
+
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(max_length=255, label="Email or Username")
+    password = forms.CharField(max_length=255, widget=forms.PasswordInput())
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        _ = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+
+        user = authenticate(username=_, password=password)
+        if user is None:
+            try:
+                username = User.objects.get(email=_).username
+                user = authenticate(username=username, password=password)
+            except User.DoesNotExist:
+                user = None
+                raise ValidationError('Incorrect username or email or password.')
+        if user is not None:
+            self.user = user
+            return self

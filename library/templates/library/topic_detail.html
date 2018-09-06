@@ -120,42 +120,90 @@
 
 
 
-                                            <!-- message to be shown on commenting -->
-                                            <!-- place as a pop up somewhere suitable -->
-                                            {% if success_msg %}
-                                                {{ success_msg }}
-                                            {% endif %}
-
-                                            <div>
-                                                {% if comment_list %}
-                                                    {% for comment in comment_list %}
-                                                        <div>
-                                                            {{ comment.commenter }}
-                                                            {{ comment.comment }}
-                                                            {{ comment.date_uploaded.date }}
-                                                            {{ comment.date_uploaded.time }}
-                                                        </div>
-                                                        {% if comment.reply_set %}
-                                                            {% for reply in comment.reply_set.all %}
-                                                                {{ reply.replier }}
-                                                                {{ reply.reply }}
-                                                                {{ reply.date_uploaded.date }}
-                                                                {{ reply.date_uploaded.time }}
-                                                            {% endfor %}
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                {% endif %}
-                                            </div>
-                                            <form action="{% url 'library:topic_detail' pk=topic.pk %}" method="post">
+                                            <!-- styling in style.css -->
+                                            <form action="" method="post" id="comment-form">
                                                 {% csrf_token %}
+                                                <img src="{{ profile_picture.url }}" class="profile-picture-small"/>
                                                 {% for field in comment_form %}
-                                                    {{ field.label_tag }}
                                                     {{ field }}
                                                 {% endfor %}
-                                                <button type="submit">Comment</button>
+                                                <button type="submit" id="submit-comment" class="btn btn-primary">Comment</button>
                                             </form>
+                                            <hr/>
+                                            <div>
+                                                {% if comment_list %}
+                                                    <ul id="comment-list">
+                                                        {% for comment in comment_list %}
+                                                            <li>
+                                                                <table>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td rowspan="2">
+                                                                                <img src="{{ comment.commenter.profile.profile_picture.url }}" class="profile-picture-small"/>
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ comment.commenter }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ comment.date_uploaded.date }}
+                                                                                {{ comment.date_uploaded.time }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="2">
+                                                                                {{ comment.comment }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                {% if comment.reply_set %}
+                                                                    <ul id="reply-list">
+                                                                        {% for reply in comment.reply_set.all %}
+                                                                            <li>
+                                                                                <table>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td rowspan="2">
+                                                                                                {% if reply.replier.profile.profile_picture %}
+                                                                                                    <img src="{{ reply.replier.profile.profile_picture.url }}" class="profile-picture-small"/>
+                                                                                                {% else %}
+                                                                                                    <img src="{% static 'account/images/default.jpg' %}" class="profile-picture-small"/>
+                                                                                                {% endif %}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{ reply.replier }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                {{ reply.date_uploaded.date }}
+                                                                                                {{ reply.date_uploaded.time }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td colspan="2">
+                                                                                                {{ reply.reply }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </li>
+                                                                        {% endfor %}
+                                                                    </ul>
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% else %}
+                                                    <div class="text-center text-muted">
+                                                        <i>Be the first to comment.</i>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <hr/>
                                         </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 wpac_init = window.wpac_init || [];
 wpac_init.push({widget: 'Comment', id: 9735});
 (function() {
@@ -168,7 +216,7 @@ wpac_init.push({widget: 'Comment', id: 9735});
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
 })();
 </script>
-<a href="https://widgetpack.com" class="wpac-cr">Comments System WIDGET PACK</a>
+<a href="https://widgetpack.com" class="wpac-cr">Comments System WIDGET PACK</a> -->
                                     </div>
                                 </div>
 

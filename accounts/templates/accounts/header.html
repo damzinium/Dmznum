@@ -36,7 +36,7 @@
             <i class="material-icons" style="color: #fff !important;">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-              <a href="{% url 'damzi:index' %}"><li class="mdl-menu__item">Sign out</li></a>
+              <a href="{% url 'accounts:logout' %}"><li class="mdl-menu__item">Sign out</li></a>
           </ul>
         </div>
       </div>
@@ -54,7 +54,7 @@
               <span class="visuallyhidden">Accounts</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                <a href="{% url 'damzi:index' %}"> <li class="mdl-menu__item">Sign out</li></a>
+                <a href="{% url 'accounts:logout' %}"> <li class="mdl-menu__item">Sign out</li></a>
             </ul>
           </div>
         </header>

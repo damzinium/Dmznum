@@ -1,26 +1,96 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
-from library.models import School, Department
 
-
-# Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    school_name = models.ForeignKey(School, on_delete=models.CASCADE)
-    department_name = models.ForeignKey(Department, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=13, null=False, blank=False)
-    date_of_birth = models.DateField(null=True, blank=False, help_text='MM/DD/YYYY')
+    from library.models import School, Department
+
+    profile_picture = models.ImageField(null=True, blank=True)
+    school_name = models.ForeignKey(School, null=True, on_delete=models.CASCADE)
+    department_name = models.ForeignKey(Department, null=True, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=10, null=True)
+    date_of_birth = models.DateField(null=True)
 
     def __str__(self):
         return self.user.username
 
 
+class UserManager(BaseUserManager):
+    def create_user(self, email, username, first_name, last_name, password=None):
+        user = self.model(
+            email=self.normalize_email(email),
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+        )
+        user.set_password(password)
+        user.save(using=self.db)
+        return user
+
+    def create_superuser(self, email, username, first_name, last_name, password):
+        user = self.create_user(
+            email=email,
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self.db)
+        return user
+
+
+class User(AbstractBaseUser):
+    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    username = models.CharField(max_length=60, unique=True)
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+
+    profile = models.OneToOneField(Profile, null=True, on_delete=models.CASCADE)
+
+    date_joined = models.DateTimeField(default=timezone.now)
+
+    is_verified = models.BooleanField(default=False)
+    is_active = models.BooleanField(verbose_name='account status', default=True)
+    is_admin = models.BooleanField(verbose_name='staff status', default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
+
+    def __str__(self):
+        return self.username
+
+    def get_short_name(self):
+        return self.first_name.capitalize()
+
+    def get_full_name(self):
+        return self.first_name.capitalize() + ' ' + self.last_name.capitalize()
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+
+
 @receiver(post_save, sender=User)
-def create_or_update_user_profile(sender, instance, created, **kwargs):
-    user = instance
+def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        user.save()
-        profile = Profile(user=user)
+        profile = Profile()
+        profile.save()
+        instance.profile = profile
+        instance.save()
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

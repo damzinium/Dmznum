@@ -1,15 +1,15 @@
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-# Create your models here.
+
 class School(models.Model):
     school_name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.school_name
+
 
 class Department(models.Model):
     department_name = models.CharField(max_length=100)
@@ -18,6 +18,7 @@ class Department(models.Model):
     def __str__(self):
         return self.department_name
 
+
 class Course(models.Model):
     department_name = models.ForeignKey(Department, on_delete=models.CASCADE)
     course_name = models.CharField(max_length=100)
@@ -25,6 +26,7 @@ class Course(models.Model):
 
     def __str__(self):
         return self.course_code + ":" + self.course_name
+
 
 class Topic(models.Model):
     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -39,6 +41,8 @@ class Topic(models.Model):
 
 
 class Comment(models.Model):
+    from accounts.models import User
+
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, editable=False)
     commenter = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
@@ -53,6 +57,8 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
+    from accounts.models import User
+
     comment = models.ForeignKey(
         Comment,
         on_delete=models.CASCADE,
