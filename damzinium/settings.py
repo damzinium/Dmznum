@@ -128,9 +128,6 @@ USE_TZ = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = False
-# SESSION_COOKIE_SECURE = False
-# CSRF_COOKIE_SECURE = False
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -149,6 +146,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+DEFAULT_FROM_EMAIL = 'Damzinium <support@damzinium.com>'
 EMAIL_HOST = os.environ["EMAIL_HOST"]
 SENDGRID_API = os.environ["SENDGRID_API"]
 EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
