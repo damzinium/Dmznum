@@ -9,7 +9,7 @@ class School(models.Model):
     school_name = models.CharField(max_length=100)
 
     class Meta:
-        ordering = ('school_name')
+        ordering = ('school_name',)
 
     def __str__(self):
         return self.school_name

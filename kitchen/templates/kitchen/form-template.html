@@ -1,9 +1,49 @@
-{% for field in form %}
-    <div class="form-group">
+<div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <span class="text-danger small">{{ field.errors }}</span>
         </div>
-        <label class="control-label col-sm-2">{{ field.label_tag }}</label>
-        <div class="col-sm-10 textarea">{{ field }}</div>
-    </div>
-{% endfor %}
+
+        <div class="form-row">
+        	<div class="col">
+	        	<div class="">
+				    {{ form.school_name.errors }}
+				    <label class=""> {{ form.school_name.label_tag }} </label>
+				    {{ form.school_name }}
+				</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+			<div class="col">
+	        	<div class="">
+				    {{ form.department_name.errors }}
+				    <label> {{ form.department_name.label_tag }} </label>
+				    {{ form.department_name }}
+				</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+			<div class="col">
+	        	<div class="">
+				    {{ form.phone_number.errors }}
+				    <input class="form-control" type="number" id="phone_number" name="phone_number" placeholder="Your active line">
+                    <label for="{{ form.phone_number.phone_number }}"></label>
+		    	</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+			<div class="col">
+	        	<div class="">
+				    {{ form.date_of_birth.errors }}
+				    <label> {{ form.date_of_birth.label_tag }} </label>
+				    {{ form.date_of_birth }}
+				</div>
+			</div>
+		</div>
+        <!-- <div class="col-sm-10 textarea">{{ field }}
+        	
+
+        </div> -->
+</div>
