@@ -115,7 +115,7 @@ def ots(request):
             user.profile.school_name = form.cleaned_data['school_name']
             user.profile.department_name = form.cleaned_data['department_name']
             user.profile.phone_number = form.cleaned_data['phone_number']
-            user.profile.date_of_birth = form.cleaned_data['date_of_birth']
+            # user.profile.date_of_birth = form.cleaned_data['date_of_birth']
             user.save()
             return redirect('accounts:profile')
         else:

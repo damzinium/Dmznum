@@ -47,9 +47,9 @@ class ProfileForm(forms.ModelForm):
         'class': 'form-control-text',
     }), help_text='Enter your phone number. eg: 0272727388')
 
-    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(
-        years=generate_years_for_bday(),
-    ))
+    # date_of_birth = forms.DateField(widget=forms.SelectDateWidget(
+    #     years=generate_years_for_bday(),
+    # ))
 
     def clean_phone_number(self):
         """
@@ -68,7 +68,7 @@ class ProfileForm(forms.ModelForm):
             'school_name',
             'department_name',
             'phone_number',
-            'date_of_birth'
+            # 'date_of_birth'
         ]       
 
     def save(self, commit=True):
