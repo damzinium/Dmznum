@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "random_key_for_damzinium_dev"
-SECRET_KEY = os.environ['SEC_PASS']
-# SECRET_KEY = SECRET_KEY
+# SECRET_KEY = os.environ["SEC_PASS"]
+SECRET_KEY = "SECRET_KEY"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -151,7 +151,6 @@ AUTH_PROFILE_MODULE = 'accounts.Profile'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 
 DEFAULT_FROM_EMAIL = 'noreply@damzinium.com'
