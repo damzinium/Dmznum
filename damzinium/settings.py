@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "random_key_for_damzinium_dev"
-SECRET_KEY = os.environ['SEC_PASS']
-# SECRET_KEY = SECRET_KEY
+# SECRET_KEY = os.environ["SEC_PASS"]
+SECRET_KEY = "SECRET_KEY"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -153,12 +153,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-EMAIL_HOST = os.environ["EMAIL_HOST"]
-SENDGRID_API = os.environ["SENDGRID_API"]
-EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_HOST = os.environ["EMAIL_HOST"]
+# SENDGRID_API = os.environ["SENDGRID_API"]
+# EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+# EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
 
 #Ck-EDITOR
