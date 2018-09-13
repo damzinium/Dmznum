@@ -1,13 +1,7 @@
 {% extends 'accounts/base.html' %}
 {% load static %}
 
-
 {% block content %}
-	<!-- {% if form.errors %}
-		<p class="error">Sorry, that's not a valid username of password</p>
-	{% endif %} -->
-
-
     <div class="col-md-7">
         <div id="login_form" class="">
             <div class="" id="form">
@@ -29,14 +23,12 @@
 
                           <div class="d-flex justify-content-around">
                             <div>
-                                <!-- Remember me -->
                                 <div class="form-check">
                                   <input type="checkbox" class="form-check-input" id="materialLoginFormRemember">
                                   <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
                                 </div>
                             </div>
                             <div>
-                              <!-- Forgot password -->
                               <a href="{% url 'accounts:password_reset' %}">Forgot password?</a>
                             </div>
                           </div>
@@ -44,7 +36,6 @@
                           <div class="text-center mb-4">
                             <input type="submit" class="btn btn-outline-info waves-effect" value="login" />
                           </div>
-                          <!-- Register -->
                           <p>Not a member?
                               <a href="../register">Register</a>
                           </p>
