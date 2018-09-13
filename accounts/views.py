@@ -77,7 +77,7 @@ def ac_login(request):
         if form.is_valid():
             user = form.user
             login(request, user)
-            return HttpResponseRedirect('/library/department')
+            return redirect('accounts:profile')
         else:
             return render(request, 'accounts/login.html', {'form': form})
     else:

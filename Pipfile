@@ -12,6 +12,7 @@ django-heroku = "*"
 whitenoise = "*"
 requests = "*"
 sendgrid-django = "*"
+django-watson = "*"
 
 [dev-packages]
 "nose2" = "*"

@@ -2,6 +2,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from watson import search as watson
 
 
 class School(models.Model):
@@ -20,7 +21,7 @@ class Department(models.Model):
 
     class Meta:
         ordering = ('department_name',)
-
+       
     def __str__(self):
         return self.department_name
 
@@ -32,7 +33,7 @@ class Course(models.Model):
 
     class Meta:
         ordering = ('course_name',)
-
+        
     def __str__(self):
         return self.course_code + ":" + self.course_name
 
@@ -44,9 +45,9 @@ class Topic(models.Model):
 
     class Meta:
         ordering = ('title',)
-
+        
     def get_absolute_url(self):
-        return reverse('library:department')
+        return reverse('accounts:profile')
 
     def __str__(self):
         return self.title
@@ -69,6 +70,7 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
+    
     from accounts.models import User
 
     comment = models.ForeignKey(

@@ -19,7 +19,7 @@
                     <ul class="list-group z-depth-0">
                                 {% for topic in course.topic_set.all %}
                             <li class="list-group-item justify-content-between grey-text">
-                                        <a href="{% url 'library:topic_detail' topic.id %}">{{ topic.topic_title }}</a>
+                                <a href="{% url 'library:topic_detail' topic.id %}">{{ topic.topic_title }}</a>
                             </li>
                                 {% endfor %}
                             <!--<li class="list-group-item justify-content-between grey-text">
