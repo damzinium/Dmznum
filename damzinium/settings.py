@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'watson',
     'whitenoise.runserver_nostatic',
     'ckeditor',
     'ckeditor_uploader',
@@ -152,13 +153,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
-# EMAIL_HOST = os.environ["EMAIL_HOST"]
-# SENDGRID_API = os.environ["SENDGRID_API"]
-# EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-# EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'noreply@damzinium.com'
+EMAIL_HOST = os.environ["EMAIL_HOST"]
+SENDGRID_API = os.environ["SENDGRID_API"]
+EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
 #Ck-EDITOR
