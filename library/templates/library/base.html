@@ -74,15 +74,6 @@
 
         <!--/header row-->
 
-        <!-- Scrollable Tabs -->
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect damzinium-green-head">
-            <a href="#scroll-tab-none" class="mdl-layout__tab is-active mdl-navigation__link">Select your department</a>
-            {% for department in object_list %}
-                <a href="#scroll-tab-{{ department.id }}" class="mdl-layout__tab mdl-navigation__link">{{ department.department_name }}</a>
-            {% endfor %}
-        </div>
-        <!-- /Scrollable Tabs -->
-
       </header>
 
       <!-- SIDEBAR -->
@@ -137,5 +128,12 @@
 
     <!-- Material Design Lite -->
     <script src="{% static 'library/mdl/material.min.js' %}"></script>
+
+  <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'library/js/jquery-3.2.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'library/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'library/js/bootstrap.min.js' %}"></script>
   </body>
 </html>

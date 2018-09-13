@@ -36,75 +36,41 @@
     <link rel="stylesheet" type="text/css" href="">
     <style type="text/css">
         /* YOUR CUSTOM STYLES */
-body {
-    background: #ddd;
-    color:#000;
+html, body {
     overflow-x: hidden;
-}
+
+
+            background: #833ab4; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #f9d423, #52c234, #ffafbd); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #f9d423, #52c234, #ffafbd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            text-align: center;
+            min-height: 60px;
+
+        }
+        .mdl-layout__header {
+            vertical-align: middle;
+        }
+        .android-logo-image{
+            min-width: 20%;
+        margin-top: 1%;
     </style>
 </head>
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-      <div class="android-header mdl-layout__header mdl-layout__header--waterfall gradient-nav">
-        <div class="mdl-layout__header-row">
-          <span class="android-title mdl-layout-title">
-            <!--navbar logo-->
+      <div class="mdl-layout__header">
             <img class="android-logo-image" src="{% static 'account/images/logoandtext.png' %}" style="height:100%;">
-          </span>
-          <!-- Add spacer, to align navigation to the right in desktop -->
-          <div class="android-header-spacer mdl-layout-spacer"></div>
-          <span class="android-mobile-title mdl-layout-title">
-            <img class="android-logo-image" src="{% static 'account/images/logoandtext.png' %}" style="height:100%;">
-          </span>
-        </div>
       </div>
 
 
     <!--Main Layout-->
     <div class="mdl-layout__content">
         <div class="container mt-5 mb-5">
-                        <div class="row justify-content-center">
-                            {% block content %}{% endblock %}
-                        </div>
-                    </div>
-
-
-        <!--Footer-->
-        <footer class="page-footer center-on-small-only damzinium-dark-foot">
-
-            <!--Footer Links-->
-            <div class="container">
-                <div class="row my-4">
-
-                    <!--First column-->
-                    <div class="col-md-8 col-lg-8">
-                        <h6 class="title mb-4 font-bold">Damzinium.com At A Glance</h6>
-                        <p>We stand for smart and easy learning.</p>
-                        <p>We give you quality and concise explanations of your course material.</p>
-                        <p>You can trust us, we've got your back.</p>
-                    </div>
-                    <!--/.First column-->
-
-
-                    <hr class="clearfix w-100 d-md-none">
-
-
-                </div>
+            <div class="row justify-content-center">
+                {% block content %}{% endblock %}
             </div>
-            <!--/.Footer Links-->
-
-            <!--Copyright-->
-            <div class="footer-copyright">
-                <div class="container-fluid">
-                    2018. <a href="https://www.damzinium.com"> Damzinium.com </a> Learn Smart!
-
-                </div>
-            </div>
-            <!--/.Copyright-->
-
-        </footer>
-        <!--/.Footer-->
+        </div>
     </div>
 
     </div>
