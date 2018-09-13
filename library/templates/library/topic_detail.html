@@ -2,44 +2,40 @@
 {% load static %}
 
 {% block modal %}
-      <!-- Modal -->
-    <div class="modal fade" id="studymenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <!--Content-->
-            <div class="modal-content">
-                <!--Header-->
-                <div class="modal-header">
-                    <h4 class="modal-title w-100 red-text" id="myModalLabel">Related Topics</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!--Body-->
-                <div class="modal-body">
-                    <ul class="list-group z-depth-0">
-                                {% for topic in course.topic_set.all %}
-                            <li class="list-group-item justify-content-between grey-text">
-                                        <a href="{% url 'library:topic_detail' topic.id %}">{{ topic.topic_title }}</a>
-                            </li>
-                                {% endfor %}
-                            <!--<li class="list-group-item justify-content-between grey-text">
-                                <a href="#">{ { topic.title }}</a>
-                            </li>-->
-                    </ul>
-                </div>
-                <!--Footer-->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="studymenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title w-100 red-text" id="myModalLabel">Related Topics</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <!--/.Content-->
-        </div>
+            <!--Body-->
+            <div class="modal-body">
+                <ul class="list-group z-depth-0">
+                {% for topic in course.topic_set.all %}
+                    <li class="list-group-item justify-content-between grey-text">
+                        <a href="{% url 'library:topic_detail' topic.id %}">{{ topic.topic_title }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div><!--Footer-->
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div><!--/.Content-->
     </div>
-    <!-- Modal -->
+</div><!-- Modal -->
+    
 {% endblock %}
 
-                        {% block content %}
-                            <div class="container">
+{% block content %}
+<div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-md navbar-dark success-color no-content mt-4 mb-4">
