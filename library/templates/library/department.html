@@ -2,68 +2,68 @@
 {% load static %}
 
 {% block content %}
-    <main class="mdl-layout__content">
-        <!--Department None-->
-        <section class="mdl-layout__tab-panel is-active" id="scroll-tab-none" style="min-height: 50vh;">
-          <div class="page-content">
-            <div class="container">
-              <header> <br>
-                <div class="white mdl-shadow--2dp container flex-center"><h4 class="mb-4 green-text">Please select your department</h4></div>
-              </header>
-                <div class="mdl-grid">
-                    <p>Kindly select a department from the list above to continue...</p>
-                </div>
-            </div>
-          </div>
-        </section>
-        <!--/Department None-->
 
-        <!--Department Dynamic Generation-->
+<!--Department Dynamic Generation-->
         {% for department in object_list %}
-            <section class="mdl-layout__tab-panel" id="scroll-tab-{{ department.id }}" style="min-height: 50vh;">
-                <div class="page-content">
-                    <div class="container">
-                        <header> <br>
-                            <div class="white mdl-shadow--2dp flex-center"><h4 class="mb-4 green-text">{{ department.department_name }}</h4></div>
-                        </header>
-                        <div class="mdl-grid">
-                            {% for course in department.course_set.all %}
+            <!-- Grid row -->
+            <div class="row d-flex justify-content-center">
 
-                                <!--Card-->
-                            <div class="card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+                <!-- Grid column -->
+                <div class="col-md-10 col-xl-10 py-3">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
 
-                                <!--Card image-->
-                                <div class="view hm-white-slight">
-                                    <img src="{% static 'library/images/placeholder.jpg' %}" class="img-fluid" alt="">
-                                    <a>
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
+                      <!-- Accordion card -->
+                      <div class="card">
 
-                                <!--Button-->
-                                <a href="{% url 'library:detail' course.id %}" class="btn-floating btn-action"><i class="fa fa-chevron-right"></i></a>
-
-                                <!--Card content-->
-                                <div class="card-body">
-                                    <!--Title-->
-                                    <h4 class="card-title">{{ course.course_code }}</h4>
-                                    <hr>
-                                    <!--Text-->
-                                    <p class="card-text">{{ course.course_name }}</p>
-                                </div>
-                                <!--/.Card content-->
-
-
-                            </div>
-                            <!--/.Card-->
-                            {% endfor %}
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="heading{{ department.id }}">
+                          <a data-toggle="collapse" data-parent="#accordionEx" href="#collapse{{ department.id }}" aria-expanded="true" aria-controls="collapse{{ department.id }}">
+                            <h5 class="mb-0">
+                              {{ department.department_name }} <i class="fa fa-angle-down rotate-icon"></i>
+                            </h5>
+                          </a>
                         </div>
+
+                        <!-- Card body -->
+                        <div id="collapse{{ department.id }}" class="collapse show" role="tabpanel" aria-labelledby="heading{{ department.id }}" data-parent="#accordionEx">
+                          <div class="card-body">
+                            <div class="mdl-grid">
+                                    {% for course in department.course_set.all %}
+
+                                        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+                                          <div class="mdl-card__media">
+                                              <img src="{% static 'library/images/placeholder.jpg' %}" width="100%"
+                                            >
+                                          </div>
+                                          <div class="mdl-card__title">
+                                            {{ course.course_code }}
+                                          </div>
+                                          <div class="mdl-card__supporting-text">
+                                            {{ course.course_name }}
+                                          </div>
+                                          <div class="mdl-card__actions mdl-card--border">
+                                            <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                              Study
+                                            </a>
+                                          </div>
+                                        </div>
+
+                                    <!--/.Card-->
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!-- Accordion card -->
+
+
                     </div>
+                    <!-- Accordion wrapper -->
                 </div>
-            </section>
         {% endfor %}
         <!--/Department Dynamic Generation-->
 
-      </main>
 {% endblock %}

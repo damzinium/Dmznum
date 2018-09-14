@@ -10,20 +10,12 @@
           <!-- Add spacer, to align navigation to the right in desktop -->
           <div class="android-header-spacer mdl-layout-spacer"></div>
           <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-            <!-- <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
               <i class="material-icons" style="margin-top: 10px; color: #fff !important;">search</i>
             </label>
             <div class="mdl-textfield__expandable-holder">
               <input class="mdl-textfield__input" type="text" id="search-field">
-            </div> -->
-            <!-- search -->
-            <div>
-              <form action="{% url 'library:new' %}">
-                <input name="q" value="{{request.GET.q}}">
-                <input type="submit" name="search" value="Search">
-              </form>
             </div>
-
           </div>
           <!-- Navigation -->
           <div class="android-navigation-container" style="text-decoration-color: #fff !important;">
