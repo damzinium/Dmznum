@@ -31,35 +31,27 @@
                             <div class="mdl-grid">
                                     {% for course in department.course_set.all %}
 
-                                        <!--Card-->
-                                    <div class="card mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">
-
-                                        <!--Card image-->
-                                        <div class="view hm-white-slight">
-                                            <img src="{% static 'library/images/placeholder.jpg' %}" class="img-fluid" alt="">
-                                            <a>
-                                                <div class="mask"></div>
+                                        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+                                          <div class="mdl-card__media">
+                                              <img src="{% static 'library/images/placeholder.jpg' %}" width="100%"
+                                            >
+                                          </div>
+                                          <div class="mdl-card__title">
+                                            {{ course.course_code }}
+                                          </div>
+                                          <div class="mdl-card__supporting-text">
+                                            {{ course.course_name }}
+                                          </div>
+                                          <div class="mdl-card__actions mdl-card--border">
+                                            <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                              Study
                                             </a>
+                                          </div>
                                         </div>
-                                        <!--/.Card image-->
 
-                                        <!--Button-->
-                                        <a href="{% url 'library:detail' course.id %}" class="btn-floating btn-action"><i class="fa fa-chevron-right"></i></a>
-
-                                        <!--Card content-->
-                                        <div class="card-body">
-                                            <!--Title-->
-                                            <h4 class="card-title">{{ course.course_code }}</h4>
-                                            <hr>
-                                            <!--Text-->
-                                            <p class="card-text">{{ course.course_name }}</p>
-                                        </div>
-                                        <!--/.Card content-->
-
-
-                                    </div>
                                     <!--/.Card-->
                                     {% endfor %}
+                                    </div>
                                 </div>
                           </div>
                         </div>
@@ -71,7 +63,6 @@
                     </div>
                     <!-- Accordion wrapper -->
                 </div>
-            </div>
         {% endfor %}
         <!--/Department Dynamic Generation-->
 
