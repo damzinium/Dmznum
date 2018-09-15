@@ -1,0 +1,27 @@
+{% extends 'library/base2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                	<center><h3>List of topics</h3></center>
+                	<!--course generator-->
+                        {% for topic in course.topic_set.all %}
+                            <div class="card">
+                                <div class="card-header light-green darken-1 lighten-1 white-text">
+                                    {{ topic.course_name }}
+                                </div>
+
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ topic.title }}</h4>
+                                    <!--<p class="card-text">Sample text</p>-->
+                                    <a href="{% url 'library:topic_detail' topic.id %}" class="btn damzinium-green-head">READ</a>
+                                </div>
+                            </div>
+                            <br/>
+                        {% endfor %}
+
+                    </div></div></div>
+{% endblock %}

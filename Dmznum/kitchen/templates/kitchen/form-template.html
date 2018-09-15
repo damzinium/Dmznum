@@ -1,0 +1,58 @@
+<div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ field.errors }}</span>
+        </div>
+
+        <div class="form-row">
+        	<div class="col">
+	        	<div class="">
+				    {{ form.profile_picture.errors }}
+				    <label class=""> {{ form.profile_picture.label_tag }} </label>
+				    {{ form.profile_picture }}
+				</div>
+			</div>
+		</div>
+<br>	
+        <div class="form-row">
+        	<div class="col">
+	        	<div class="">
+				    {{ form.institution.errors }}
+				    <label class=""> {{ form.institution.label_tag }} </label>
+				    {{ form.institution }}
+				</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+			<div class="col">
+	        	<div class="">
+				    {{ form.department_name.errors }}
+				    <label> {{ form.department_name.label_tag }} </label>
+				    {{ form.department_name }}
+				</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+        	<div class="col">
+	        	<div class="">
+				    {{ form.level.errors }}
+				    <label class=""> {{ form.level.label_tag }} </label>
+				    {{ form.level }}
+				</div>
+			</div>
+		</div>
+<br>			
+
+		<div class="form-row">
+			<div class="col">
+	        	<div class="">
+				    {{ form.phone_number.errors }}
+				    <input class="form-control" type="tel" id="phone_number" name="phone_number" placeholder="Your active line">
+                    <label for="{{ form.phone_number.phone_number }}"></label>
+		    	</div>
+			</div>
+		</div>
+<br>
+        </div> 
+</div>

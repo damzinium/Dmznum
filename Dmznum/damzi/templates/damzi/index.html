@@ -1,0 +1,28 @@
+<!--loads the path to our static files -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to Damzinium</title>
+  <link rel="icon" href="{% static 'damzi/img/favicon.ico' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no">
+  <link href="{% static 'damzi/css/compiled.min.css' %}" rel="stylesheet">
+
+</head>
+<body style="background-color: #f7f8fa !important">
+      <div class="container text-center">
+        <img src="{% static 'damzi/img/delicious.png' %}" class="img-fluid mx-auto d-block" alt="Responsive image">
+      </div>
+
+
+
+
+<!-- Bootstrap core JavaScript -->
+    <script src="{% static 'damzi/js/jquery.min.js' %}"></script>
+    <script src="{% static 'damzi/js/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!--NAVBAR-->
+      <div class="android-header mdl-layout__header mdl-layout__header--waterfall  gradient-nav" style="color: #fff !important;">
+        <div class="mdl-layout__header-row">
+          <span class="android-title mdl-layout-title">
+            <!--navbar logo-->
+            <img class="android-logo-image" src="{% static 'account/images/logoandtext.png' %}" style="height:100%;">
+          </span>
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="android-header-spacer mdl-layout-spacer"></div>
+          <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+            <!-- <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+              <i class="material-icons" style="margin-top: 10px; color: #fff !important;">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search-field">
+            </div> -->
+
+            <!-- watson search here -->
+            <!-- search -->
+            <!-- <div>
+              <form action="{% url 'library:new' %}">
+                <input name="q" value="{{request.GET.q}}">
+                <input type="submit" name="search" value="Search">
+              </form>
+            </div> -->
+            
+
+          </div>
+          <!-- Navigation -->
+          <div class="android-navigation-container" style="text-decoration-color: #fff !important;">
+            <nav class="android-navigation mdl-navigation" style="color: #fff !important;">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:department' %}" style="color: #fff !important;">Courses</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:about' %}" style="color: #fff !important;">About</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:contact' %}" style="color: #fff !important;">Contact</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:faq' %}" style="color: #fff !important;">FAQ</a>
+              {% if user.is_staff %}
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'kitchen:add' %}" style="color: #fff !important;">Kitchen</a>
+              {% endif %}
+            </nav>
+          </div>
+          <span class="android-mobile-title mdl-layout-title">
+            <img class="android-logo-image" src="{% static 'account/images/logoandtext.png' %}" style="height:100%;">
+          </span>
+          <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+            <i class="material-icons" style="color: #fff !important;">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+              <a href="{% url 'damzi:index' %}"><li class="mdl-menu__item">Sign out</li></a>
+          </ul>
+        </div>
+      </div>
+        <!--END NAVBAR-->
+
+        <!-- SIDEBAR -->
+      <div class="demo-drawer mdl-layout__drawer damzi-blue-deep mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="{% static 'account/images/default.jpg' %}" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>{{ full_name }}</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                <a href="{% url 'accounts:logout' %}"> <li class="mdl-menu__item">Sign out</li></a>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation damzi-blue-deep-2">
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-100" href="{% url 'accounts:profile' %}"><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-100" href="{% url 'library:department' %}"><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">library_books</i>Courses</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-100" href="{% url 'library:about' %}"><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">info</i>About</a>
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-100" href="{% url 'library:contact' %}"><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">phone</i>Contact Us</a>
+
+          <div class="mdl-layout-spacer"></div>
+
+          <a class="mdl-navigation__link mdl-color-text--blue-grey-100" href="{% url 'library:faq' %}"><i class="mdl-color-text--blue-grey-100 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span>FAQ</a>
+        </nav>
+      </div>
+      <!-- END SIDEBAR -->
