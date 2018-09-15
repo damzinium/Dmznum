@@ -21,9 +21,9 @@
     <!-- Material Design Bootstrap All CSS -->
     <link href="{% static 'library/css/compiled.min.css' %}" rel="stylesheet">
     <!-- Material Design Lite -->
-    <link rel="stylesheet" href="{% static 'library/mdl/material.min.css' %}">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="{% static 'library/Swiper-4.0.7/dist/css/swiper.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
     <!-- Material Design Custom CSS -->
     <link rel="stylesheet" href="{% static 'library/css/styles.css' %}">
     <!-- Damzinium Custom CSS -->
@@ -37,6 +37,45 @@
             .light-font .breadcrumb-item.active {
                 color: #cfd8dc;
             }
+
+        /*the supporting text(course desciprtion) of all cards in the swiper*/
+        .swiper-slide > .mdl-card > .mdl-card__supporting-text{
+            font-size: 0.8em;
+            padding: 4px;
+            width: 100%;
+            text-align: left;
+        }
+        /*------------swipers---------------*/
+/*swiper one*/
+.swiper-container {
+    width: 100%;
+    height: 300px;
+    margin: 20px auto;
+}
+.swiper-slide {
+    text-align: center;
+    width: 60%;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide:nth-child(2n) {
+    width: 40%;
+}
+.swiper-slide:nth-child(3n) {
+    width: 20%;
+}
     </style>
   </head>
   <body>
@@ -74,26 +113,51 @@
 
   <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script type="text/javascript" src="{% static 'library/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Material Design Lite -->
-    <script src="{% static 'library/mdl/material.min.js' %}"></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{% static 'library/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{% static 'library/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{% static 'library/js/mdb.min.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
   <!-- Swiper JS -->
-    <script src="{% static 'library/Swiper-4.0.7/dist/js/swiper.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
     <!-- Initialize Swiper -->
       <script>
-        var swiper = new Swiper('.swiper-container', {
+      var swiper = new Swiper('.swiper-container', {
           navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-            });
-      </script>
+        slidesPerView: 3.5,
+        spaceBetween: 30,
+        freeMode: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 40
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            640: {
+                slidesPerView: 1.5,
+                spaceBetween: 20
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            }
+        }
+      });
+    </script>
 
   </body>
 </html>
