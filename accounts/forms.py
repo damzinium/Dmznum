@@ -65,8 +65,9 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = [
             'profile_picture',
-            'school_name',
+            'institution',
             'department_name',
+            'level',
             'phone_number',
             # 'date_of_birth'
         ]       

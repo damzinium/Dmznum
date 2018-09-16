@@ -112,8 +112,9 @@ def ots(request):
         if form.is_valid():
             user = get_object_or_404(User, id=request.user.id)
             user.profile.profile_picture = form.cleaned_data['profile_picture']
-            user.profile.school_name = form.cleaned_data['school_name']
+            user.profile.institution = form.cleaned_data['institution']
             user.profile.department_name = form.cleaned_data['department_name']
+            user.profile.level = form.cleaned_data['level']
             user.profile.phone_number = form.cleaned_data['phone_number']
             # user.profile.date_of_birth = form.cleaned_data['date_of_birth']
             user.save()
