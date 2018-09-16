@@ -1,0 +1,550 @@
+<!--loads the path to our static files -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to Damzinium</title>
+  <link rel="icon" href="{% static 'damzi/img/favicon.ico' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="{% static 'damzi/css/particlestyle.css' %}">
+
+    <!-- Material Design Bootstrap All CSS -->
+    <link href="{% static 'damzi/css/compiled.min.css' %}" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{% static 'damzi/Swiper-4.0.7/dist/css/swiper.min.css' %}">
+
+  <!-- Custom fonts for this template -->
+  <link rel="stylesheet" href="{% static 'damzi/vendor/simple-line-icons/css/simple-line-icons.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="{% static 'damzi/device-mockups/device-mockups.min.css' %}">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'damzi/css/new-age.css' %}" rel="stylesheet">
+
+    <style>
+        .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: transparent;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+        .swiper-slide-t:nth-child(2n) {
+        width: 40%;
+    }
+    .swiper-slide-t:nth-child(3n) {
+        width: 20%;
+    }
+    </style>
+
+</head>
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+          <img class="android-logo-image" src="{% static 'damzi/img/logoandtextglow.png' %}" style="height:40px;"></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#features">Features</a>
+          </li><li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#testimonies">Testimonies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#social">Social</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- particles.js container -->
+  <div id="particles-js">
+    <header class="masthead">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-lg-7 my-auto">
+            <div class="header-content mx-auto">
+              <h1 class="mb-5">The Golden Age of studies. Finally at your fingertips.</h1>
+                <div class="badges">
+                  <a href="accounts/login" class="btn btn-outline btn-xl badge-link">Login</a>
+                  <a href="accounts/register" class="btn btn-outline btn-xl badge-link">Register for Free!</a>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-5 my-auto">
+              <div class="device-container">
+                <div class="device-mockup imac">
+                  <div class="device">
+                    <div class="screen">
+                      <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                      <img src="{% static 'damzi/img/imacmockup.png' %}" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <section class="download bg-primary text-center" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <h2 class="section-heading">What exactly is Damzinium?</h2>
+            <p>Damzinium is synonymous with <i>simplified learning.</i></p>
+            <p>We take your lecture material and break them down in language so easy that even a pre-schooler could make an A.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features" style="background-color: white;">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h2>Great features.</h2>
+          <p class="text-muted">Specially designed with you in mind</p>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 my-auto">
+            <div class="device-container">
+              <div class="device-mockup galaxy_s3 portrait">
+                <div class="device">
+                  <div class="screen">
+                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                    <img src="{% static 'damzi/img/s3mockup.png' %}" class="img-fluid" alt="">
+                  </div>
+                  <div class="button">
+                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 my-auto">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-screen-smartphone text-primary"></i>
+                    <h3>Device Friendly</h3>
+                    <p class="text-muted">Damzinium is optimized to fit comfortably on all your devices and afford you the greatest ease of use.</p>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-user text-primary"></i>
+                    <h3>User Approved</h3>
+                    <p class="text-muted">With thousands of users (and counting), Damzinium is most certainly your preferred destination for all the material you need, when you need it.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-present text-primary"></i>
+                    <h3>Free to Use</h3>
+                    <p class="text-muted">We never bill anyone for using our platform. It's always been totally free!</p>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="feature-item">
+                    <i class="icon-clock text-primary"></i>
+                    <h3>Time Saver</h3>
+                    <p class="text-muted">There's nothing more refreshing than being confident that you've covered the material needed for an exam. Damzinium makes it faster.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  <section class="section text-center" id="testimonies" style="background-color: #969cff;">
+      <div class="container">
+          <!--Section heading-->
+    <h3 class="section-heading h3 pt-4" style="color: white;">We're not kidding. Check out these awesome testimonies!</h3>
+          <h6>Swipe left/right</h6>
+    <!--Section description-->
+          <div class="mx-auto">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/abenaoduro.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Abena Mmera Oduro</h4>
+                                <h6 class="card-text">Content provider(CP) at Damzinium</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> I love what I do because, one great man once said, "the best way to learn is to teach." And Damzinium has offered me the opportunity to read carefully and effectively in order to teach others.
+                                    One significant thing that connect me psychologically to Damzinium is the smart way we are made to provide content and learn. Though I am still growing my experience, my life has been transformed tremendously.</p>
+                                <p>Damzinium is actually one of the best study platforms I have ever encountered. I heard of damzinium in Level 100 and honestly as a confused level 100 student I didn't know how to go about some topics and who to turn to for help. Damzinium provided me with all the help I needed especially in my UGRCs. I just believe if more explanations are given on the site, we wont need to attend lectures anymore.</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/asubontengrichard.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Asubonteng Richard</h4>
+                                <h6 class="card-text">CP, L.200, B.Sc. Administration</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Damzinium is one of the best things that has happened to me in my life. It has taught me commitment, teamwork, dedication and time management.</p> <p>As a CP(content provider) I was given a bulky task that I never imagined achieving but with commitment and effective teamwork, we finished with distinction.</p>
+  <p>I will say Damzinium is contributing immensely into my academic life due to how smart I learn by providing content</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                  <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/atidakpowinner.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Atidakpo Winner Awo</h4>
+                                <h6 class="card-text">CP, L.200, Political Science/ French</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> I believe in giving back to society. So after being helped significantly by Damzinium in Academic Writing 1 (UGRC 101), I quickly grabbed the opportunity to helping other students learning smarter and easier.</p>
+                                <p>Damzinium is a place I feel at home and loved.</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                    <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/danielleagyeiwa.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Danielle Agyeiwa</h4>
+                                <h6 class="card-text">CP, L.200, Economics and Math</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> My passion for Damzinium was ignited after I was helped by Economics content on the site. It helped me in my revision and preparation for both the IA and Exams.</p>
+<p>Joining Damzinium has been a blessing to my social and academic life because, it has helped put me on my toes and challenge me to do more. Providing content in itself has made my learning easier as well.</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                    <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/davidkodua.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">David Kofi Kodua</h4>
+                                <h6 class="card-text">CP, L.100, Archaeology</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> First and foremost, Damzinium has been beneficial to me in numerous ways and my heart bleeds with joy knowing that we have been at the forefront of helping other students, especially those who get to be admitted late. I have a number of such students blessing us for our devotion to the student body.</p>
+                                <p>Trust me, if it's not Damzinium, forget it.</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                    <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/frederickdarko.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Frederick Agyei Darko</h4>
+                                <h6 class="card-text">L.200, B.Sc. Administration</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Damzinium is actually one of the best study platforms I have ever encountered. I heard of damzinium in Level 100 and honestly as a confused level 100 student I didn't know how to go about some topics and who to turn to for help.</p>
+                                <p>Damzinium provided me with all the help I needed especially in my UGRCs.</p>
+                                <p>I just believe if more explanations are given on the site, we wont need to attend lectures anymore.</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                    <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/raymondoware.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Raymond Oware</h4>
+                                <h6 class="card-text">L.200, Economics and Maths</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Anytime I am to count my blessings, I count Damzinium twice</p>
+                                <p>I must say, Damzinium has first given me the platform to help people(students) and myself. By engaging/undertaking intensive research and reading in other to be able to provide content, I have discovered certain things I wouldn't have discover on a normal day. I there call Damzinium the hub of knowledge.</p>
+<p>Working in Damzinium as s content provider (CP) has been involving but rewarding.</p>
+
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                    <div class="swiper-slide">
+                      <div class="mdl-card mdl-shadow--4dp" style="max-width:90%;">
+                        <!--Card-->
+                        <div class="card testimonial-card">
+
+                            <!--Background color-->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="{% static 'damzi/img/testimonies/robertanyarko.jpg' %}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title">Roberta Nyarko</h4>
+                                <h6 class="card-text">L.200, Information Studies and Education</h6>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Personally, I always wanted to associate myself with an organization or group that seeks to promote academic excellence among students. And Damzinium happens to be the best among the rest.</p>
+                                <p>Not only that, but in the course of simplifying complex ideas I am able to develop a sense of confidence and ultimately broaden my horizon.</p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+                      </div>
+
+                  </div>
+                </div>
+                <!-- Add Arrows -->
+    <div class="swiper-button-next hidden-md-down"></div>
+    <div class="swiper-button-prev hidden-md-down"></div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact bg-primary" id="social">
+      <div class="container">
+        <h2>We'd
+          <i class="fa fa-heart"></i>
+          to connect with you 24/7! Follow us on our pages.</h2>
+        <ul class="list-inline list-social">
+          <li class="list-inline-item social-twitter">
+            <a href="https://twitter.com/damzinium_inc">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item social-facebook">
+            <a href="https://web.facebook.com/Damzinium-INC-285192118553538/">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item social-google-plus">
+            <a href="https://plus.google.com/u/0/103145716500637224815">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+            <li class="list-inline-item social-instagram">
+            <a href="https://www.instagram.com/damzinium_inc/">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-content">
+        <div class="container">
+          <h2>Start learning now!</h2>
+          <div class="badges">
+            <a href="accounts/login" class="btn btn-outline btn-xl badge-link">Login</a>
+            <a href="accounts/register" class="btn btn-outline btn-xl badge-link">Register for Free!</a>
+          </div>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>&copy; Damzinium 2018. All Rights Reserved.</p>
+        <!-- <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="#">Privacy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">FAQ</a>
+          </li>
+        </ul> -->
+      </div>
+    </footer>
+
+
+
+
+
+
+<!-- Bootstrap core JavaScript -->
+    <script src="{% static 'damzi/js/jquery.min.js' %}"></script>
+    <script src="{% static 'damzi/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'damzi/js/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'damzi/js/new-age.min.js' %}"></script>
+
+
+<!-- scripts -->
+<script src="{% static 'damzi/js/particles.js' %}"></script>
+<script src="{% static 'damzi/js/app.js' %}"></script>
+<!--<script src="{ % static 'damzi/js/logo.js' %}"></script>-->
+
+    <!-- Swiper JS -->
+    <script src="{% static 'damzi/Swiper-4.0.7/dist/js/swiper.min.js' %}"></script>
+    <!-- Initialize Swiper -->
+      <script>
+        var swiper = new Swiper('.swiper-container', {
+          navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+            });
+      </script>
+
+
+
+</body>
+</html>
