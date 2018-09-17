@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('damzi.urls')),
     path('accounts/', include('accounts.urls')),
-    path('search/', include('watson.urls', namespace='watson')),
     path('library/', include('library.urls')),
     path('kitchen/', include('kitchen.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),

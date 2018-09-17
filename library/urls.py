@@ -12,5 +12,4 @@ path('topic/<int:pk>/', login_required(views.topic_detail), name='topic_detail')
 path('faq/', views.faq, name='faq'),
 path('about/', views.about, name='about'),
 path('contact/', views.contact, name='contact'),
-path('search/', views.SearchView.as_view(), name='new'),
 ]

@@ -4,10 +4,9 @@ from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from accounts.models import User
-from watson.views import SearchMixin
 from .models import Topic, Course, Department, Ugrc, Ugrc_Topic, Comment, Reply
 from .forms import CommentForm
-from watson.views import SearchMixin
+
 
 
 # Create your views here.
@@ -26,11 +25,6 @@ class CourseView(generic.DetailView):
 class CourseDetailView(generic.DetailView):
     model = Course
     template_name = 'library/detail.html'
-
-class SearchView(SearchMixin, generic.ListView):
-
-    """View that performs a search and returns the search results."""
-    template_name = "library/search.html"
 
 
 # class TopicDetailView(generic.DetailView):

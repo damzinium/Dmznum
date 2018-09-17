@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'watson',
+    'reset_migrations',
     'whitenoise.runserver_nostatic',
     'ckeditor',
     'ckeditor_uploader',

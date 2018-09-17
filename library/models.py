@@ -2,10 +2,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-from watson import search as watson
 
 class Institution(models.Model):
-    institution = models.CharField(max_length=100)
+    institution = models.CharField(max_length=100, default="Legon")
 
     class Meta:
         ordering = ('institution',)
