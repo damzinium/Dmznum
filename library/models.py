@@ -108,7 +108,7 @@ class Ugrc_Topic(models.Model):
         ordering = ('title',)
 
     def get_absolute_url(self):
-        return reverse('ugrc:ugrc')
+        return reverse('accounts:profile')
 
     def __str__(self):
         return self.title
