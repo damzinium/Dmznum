@@ -10,10 +10,6 @@ class Institution(models.Model):
     class Meta:
         ordering = ('institution',)
 
-
-class Institution(models.Model):
-    institution = models.CharField(max_length=100)
-
     def __str__(self):
         return self.institution
 
