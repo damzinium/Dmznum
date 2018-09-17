@@ -4,6 +4,11 @@ from django.urls import reverse
 from django.utils import timezone
 from watson import search as watson
 
+class Institution(models.Model):
+    institution = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ('institution',)
 
 class School(models.Model):
     school_name = models.CharField(max_length=100)

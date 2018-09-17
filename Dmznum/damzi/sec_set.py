@@ -1,9 +1,0 @@
-def sec_settings(DEBUG):
-	if DEBUG is False:
-		SECURE_SSL_REDIRECT = True
-		SESSION_COOKIE_SECURE = True
-		CSRF_COOKIE_SECURE = True
-	else:
-		SECURE_SSL_REDIRECT = False
-		SESSION_COOKIE_SECURE = False
-		CSRF_COOKIE_SECURE = False

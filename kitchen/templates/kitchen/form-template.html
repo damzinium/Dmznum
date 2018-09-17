@@ -2,13 +2,22 @@
         <div class="col-sm-offset-2 col-sm-10">
             <span class="text-danger small">{{ field.errors }}</span>
         </div>
-
         <div class="form-row">
         	<div class="col">
 	        	<div class="">
-				    {{ form.school_name.errors }}
-				    <label class=""> {{ form.school_name.label_tag }} </label>
-				    {{ form.school_name }}
+				    {{ form.profile_picture.errors }}
+				    <label class=""> {{ form.profile_picture.label_tag }} </label>
+				    {{ form.profile_picture }}
+				</div>
+			</div>
+		</div>
+<br>
+        <div class="form-row">
+        	<div class="col">
+	        	<div class="">
+				    {{ form.institution.errors }}
+				    <label class=""> {{ form.institution.label_tag }} </label>
+				    {{ form.institution }}
 				</div>
 			</div>
 		</div>
@@ -19,6 +28,16 @@
 				    {{ form.department_name.errors }}
 				    <label> {{ form.department_name.label_tag }} </label>
 				    {{ form.department_name }}
+				</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+        	<div class="col">
+	        	<div class="">
+				    {{ form.level.errors }}
+				    <label class=""> {{ form.level.label_tag }} </label>
+				    {{ form.level }}
 				</div>
 			</div>
 		</div>

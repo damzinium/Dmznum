@@ -4,13 +4,20 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 
+LEVEL_CHOICES = (
+    ("100","100"),
+    ("200","200"),
+    ("300","300"),
+    ("400","400")
+    )
 
 class Profile(models.Model):
-    from library.models import School, Department
+    from library.models import Institution, Department
 
     profile_picture = models.ImageField(null=True, blank=True)
-    school_name = models.ForeignKey(School, null=True, on_delete=models.CASCADE)
+    institution = models.ForeignKey(Institution, null=True, on_delete=models.CASCADE)
     department_name = models.ForeignKey(Department, null=True, on_delete=models.CASCADE)
+    level = models.IntegerField(choices=LEVEL_CHOICES)
     phone_number = models.CharField(max_length=10, null=True)
     date_of_birth = models.DateField(null=True)
 
