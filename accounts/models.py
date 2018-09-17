@@ -12,13 +12,29 @@ LEVEL_CHOICES = (
     ("400","400")
     )
 
+LEVEL_CHOICES = (
+    ("100","100"),
+    ("200","200"),
+    ("300","300"),
+    ("400","400")
+    )
+
 class Profile(models.Model):
+<<<<<<< HEAD
     from library.models import Institution, Department
+=======
+    from library.models import Department, Institution
+
+>>>>>>> development
 
     profile_picture = models.ImageField(null=True, blank=True)
     institution = models.ForeignKey(Institution, null=True, on_delete=models.CASCADE)
     department_name = models.ForeignKey(Department, null=True, on_delete=models.CASCADE)
+<<<<<<< HEAD
     level = models.IntegerField(choices=LEVEL_CHOICES)
+=======
+    level = models.CharField(max_length=4, null=True, choices=LEVEL_CHOICES, default="100")
+>>>>>>> development
     phone_number = models.CharField(max_length=10, null=True)
     date_of_birth = models.DateField(null=True)
 

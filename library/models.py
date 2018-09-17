@@ -10,7 +10,16 @@ class Institution(models.Model):
     class Meta:
         ordering = ('institution',)
 
+
+class Institution(models.Model):
+    institution = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.institution
+
+
 class School(models.Model):
+    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     school_name = models.CharField(max_length=100)
 
     class Meta:
@@ -21,9 +30,9 @@ class School(models.Model):
 
 
 class Department(models.Model):
-    department_name = models.CharField(max_length=100)
     school_name = models.ForeignKey(School, on_delete=models.CASCADE)
-
+    department_name = models.CharField(max_length=100)
+    
     class Meta:
         ordering = ('department_name',)
        
@@ -89,8 +98,11 @@ class Reply(models.Model):
 
 
 class Ugrc(models.Model):
+    # from accounts.models import Profile
+
     ugrc = models.CharField(max_length=200)
     ugrc_code = models.CharField(max_length=20)
+    # level = models.ForeignKey(Profile, on_delete=models.CASCADE, to_field="level")
 
     class Meta:
         ordering = ('ugrc',)

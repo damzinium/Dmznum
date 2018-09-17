@@ -3,8 +3,19 @@
             <span class="text-danger small">{{ field.errors }}</span>
         </div>
         <div class="form-row">
+			<div class="col">
+	        	<div class="">
+				    {{ form.profile_picture.errors }}
+				    <label> {{ form.profile_picture.label_tag }} </label>
+				    {{ form.profile_picture }}
+				</div>
+			</div>
+		</div>
+<br>
+        <div class="form-row">
         	<div class="col">
 	        	<div class="">
+<<<<<<< HEAD
 				    {{ form.profile_picture.errors }}
 				    <label class=""> {{ form.profile_picture.label_tag }} </label>
 				    {{ form.profile_picture }}
@@ -15,6 +26,8 @@
         <div class="form-row">
         	<div class="col">
 	        	<div class="">
+=======
+>>>>>>> development
 				    {{ form.institution.errors }}
 				    <label class=""> {{ form.institution.label_tag }} </label>
 				    {{ form.institution }}
@@ -45,8 +58,18 @@
 		<div class="form-row">
 			<div class="col">
 	        	<div class="">
+				    {{ form.level.errors }}
+				    <label> {{ form.level.label_tag }} </label>
+				    {{ form.level }}
+				</div>
+			</div>
+		</div>
+<br>
+		<div class="form-row">
+			<div class="col">
+	        	<div class="">
 				    {{ form.phone_number.errors }}
-				    <input class="form-control" type="number" id="phone_number" name="phone_number" placeholder="Your active line">
+				    <input class="form-control" type="tel" id="phone_number" name="phone_number" placeholder="Your active line">
                     <label for="{{ form.phone_number.phone_number }}"></label>
 		    	</div>
 			</div>
