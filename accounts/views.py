@@ -52,25 +52,6 @@ class UserRegistrationView(View):
         return render(request, self.template_name, context)
 
 
-# def ac_login(request):
-#     c = {}
-#     c.update(csrf(request))
-#     return render_to_response('accounts/login.html', c)
-
-
-# def auth_view(request):
-#     username = request.POST.get('username', '')
-#     password = request.POST.get('password', '')
-#     user = auth.authenticate(username=username, password=password)
-
-#     if user is not None:
-#         auth.login(request, user)
-#         # return HttpResponseRedirect('/library/department')
-#         return HttpResponseRedirect('/accounts/')
-#     else:
-#         return HttpResponseRedirect('/accounts/login')
-
-
 def ac_login(request):
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
@@ -87,20 +68,6 @@ def ac_login(request):
 
 def ac_logout(request):
     logout(request)
-
-
-# class OtsView(CreateView):
-#     model = Profile
-#     fields = ['school_name', 'department_name', 'phone_number', 'date_of_birth']
-#     template_name = 'accounts/ots.html'
-#     success_url = '/accounts/'
-
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super(OtsView, self).form_valid(form)
-
-#     # def get_absolute_url(self):
-#     #     return reverse('accounts:profile')
 
 
 def ots(request):
@@ -149,3 +116,6 @@ class UgrcTopicView(generic.DetailView):
 class UgContent(generic.DetailView):
     model = Ugrc_Topic
     template_name = 'accounts/ugrc_content.html'
+
+def error(request):
+    return render_to_response('accounts/error_page.html')

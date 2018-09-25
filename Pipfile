@@ -9,10 +9,10 @@ pillow = "*"
 django-ckeditor = "*"
 gunicorn = "*"
 django-heroku = "*"
-whitenoise = "*"
 requests = "*"
 sendgrid-django = "*"
 django-reset-migrations = "*"
+whitenoise = "*"
 
 [dev-packages]
 "nose2" = "*"
