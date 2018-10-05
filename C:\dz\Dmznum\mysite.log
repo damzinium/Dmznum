@@ -1,0 +1,46 @@
+[05/Oct/2018 19:09:33] DEBUG [django.db.backends:111] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[05/Oct/2018 19:09:33] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[05/Oct/2018 19:10:58] DEBUG [django.db.backends:111] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[05/Oct/2018 19:10:58] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[05/Oct/2018 19:11:10] INFO [django.server:124] code 400, message Bad request syntax ("\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03_î\x9fTª\x1d\x02e\x07%¯à¥ñn0\x93CáñMu\x1b\xa0¥Ñ(\xadµWÎ3 ¹§F\x9aDacÈÏô£\x83(\x19\x87·J\x8dn_¬!<Ü\x81Rz'Ü3\x014\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À")
+[05/Oct/2018 19:11:10] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[05/Oct/2018 19:11:10] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ÃåÔ')
+[05/Oct/2018 19:11:10] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET / HTTP/1.1" 200 24970
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/css/particlestyle.css HTTP/1.1" 200 2585
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/vendor/simple-line-icons/css/simple-line-icons.css HTTP/1.1" 200 12958
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/Swiper-4.0.7/dist/css/swiper.min.css HTTP/1.1" 200 19334
+[05/Oct/2018 19:11:21] WARNING [django.server:124] "GET /static/damzi/css/compiled.min.css HTTP/1.1" 404 1803
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/device-mockups/device-mockups.min.css HTTP/1.1" 200 1747
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/css/new-age.css HTTP/1.1" 200 8006
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/logoandtextglow.png HTTP/1.1" 200 29218
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/s3mockup.png HTTP/1.1" 200 114137
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/testimonies/abenaoduro.jpg HTTP/1.1" 200 77415
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/testimonies/asubontengrichard.jpg HTTP/1.1" 200 67382
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/imacmockup.png HTTP/1.1" 200 134708
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/testimonies/danielleagyeiwa.jpg HTTP/1.1" 200 142573
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/jquery.min.js HTTP/1.1" 200 86927
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/bootstrap.bundle.min.js HTTP/1.1" 200 67742
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/jquery.easing.min.js HTTP/1.1" 200 2532
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/new-age.min.js HTTP/1.1" 200 667
+[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/particles.js HTTP/1.1" 200 43009
+[05/Oct/2018 19:11:22] INFO [django.server:124] "GET /static/damzi/js/app.js HTTP/1.1" 200 2818
+[05/Oct/2018 19:11:22] INFO [django.server:124] "GET /static/damzi/Swiper-4.0.7/dist/js/swiper.min.js HTTP/1.1" 200 111714
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/robertanyarko.jpg HTTP/1.1" 200 32343
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/davidkodua.jpg HTTP/1.1" 200 85681
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/atidakpowinner.jpg HTTP/1.1" 200 76657
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/raymondoware.jpg HTTP/1.1" 200 169570
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/frederickdarko.jpg HTTP/1.1" 200 123873
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/device-mockups/imac/imac.png HTTP/1.1" 200 116174
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/device-mockups/galaxy_s3/s3_port_black.png HTTP/1.1" 200 213266
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/balmebehind.jpeg HTTP/1.1" 200 37053
+[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/vendor/simple-line-icons/fonts/Simple-Line-Icons.woff2?v=2.4.0 HTTP/1.1" 200 30064
+[05/Oct/2018 19:11:25] INFO [django.server:124] "GET /static/damzi/img/favicon.ico HTTP/1.1" 200 5430
