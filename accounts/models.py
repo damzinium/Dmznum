@@ -20,7 +20,6 @@ class Profile(models.Model):
     department_name = models.ForeignKey(Department, null=True, on_delete=models.CASCADE)
     level = models.CharField(max_length=4, null=True, choices=LEVEL_CHOICES, default="100")
     phone_number = models.CharField(max_length=10, null=True)
-    date_of_birth = models.DateField(null=True)
 
     def __str__(self):
         return self.user.username

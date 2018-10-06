@@ -27,7 +27,7 @@ SECRET_KEY = os.environ["SEC_PASS"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -192,7 +192,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'C:\\dz\\Dmznum\\mysite.log',
+            'filename': 'mysite.log',
             'formatter': 'verbose'
         },
     },
