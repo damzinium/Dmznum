@@ -1,46 +1,589 @@
-[05/Oct/2018 19:09:33] DEBUG [django.db.backends:111] (0.001) 
+[06/Oct/2018 11:02:40] DEBUG [django.db.backends:111] (0.020) 
             SELECT name, type FROM sqlite_master
             WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
             ORDER BY name; args=None
-[05/Oct/2018 19:09:33] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
-[05/Oct/2018 19:10:58] DEBUG [django.db.backends:111] (0.001) 
-            SELECT name, type FROM sqlite_master
-            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
-            ORDER BY name; args=None
-[05/Oct/2018 19:10:58] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
-[05/Oct/2018 19:11:10] INFO [django.server:124] code 400, message Bad request syntax ("\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03_î\x9fTª\x1d\x02e\x07%¯à¥ñn0\x93CáñMu\x1b\xa0¥Ñ(\xadµWÎ3 ¹§F\x9aDacÈÏô£\x83(\x19\x87·J\x8dn_¬!<Ü\x81Rz'Ü3\x014\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À")
-[05/Oct/2018 19:11:10] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+[06/Oct/2018 11:02:40] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[06/Oct/2018 11:03:04] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03S:«W\x98H\x1bÀ¥\x9f7\x16BQ\x87\x9b]Ð\x03kl¶u¢z¥\xadÿ\x15±äw \xadç\x92é\x81Éä¤Iè\x1f5wÈOêG\x17\x1a\x85ñ§\x1c¾8Ý\x8a\x89\x9eO3ª\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[06/Oct/2018 11:03:04] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
 
-[05/Oct/2018 19:11:10] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ÃåÔ')
-[05/Oct/2018 19:11:10] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+[06/Oct/2018 11:03:04] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03WA)J^Y¯K\x1dxtOªp#£ñ0\x9c\x9dÉhtÐèëõ\x19ý)Øû ±ò\x1beÃ\x1cË\x163«\x1fn\x18\x88«N?o\x0b¨qÙM\x1d\x05ðåþû$ü÷\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[06/Oct/2018 11:03:04] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
 
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET / HTTP/1.1" 200 24970
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/css/particlestyle.css HTTP/1.1" 200 2585
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/vendor/simple-line-icons/css/simple-line-icons.css HTTP/1.1" 200 12958
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/Swiper-4.0.7/dist/css/swiper.min.css HTTP/1.1" 200 19334
-[05/Oct/2018 19:11:21] WARNING [django.server:124] "GET /static/damzi/css/compiled.min.css HTTP/1.1" 404 1803
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/device-mockups/device-mockups.min.css HTTP/1.1" 200 1747
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/css/new-age.css HTTP/1.1" 200 8006
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/logoandtextglow.png HTTP/1.1" 200 29218
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/s3mockup.png HTTP/1.1" 200 114137
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/testimonies/abenaoduro.jpg HTTP/1.1" 200 77415
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/testimonies/asubontengrichard.jpg HTTP/1.1" 200 67382
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/imacmockup.png HTTP/1.1" 200 134708
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/img/testimonies/danielleagyeiwa.jpg HTTP/1.1" 200 142573
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/jquery.min.js HTTP/1.1" 200 86927
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/bootstrap.bundle.min.js HTTP/1.1" 200 67742
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/jquery.easing.min.js HTTP/1.1" 200 2532
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/new-age.min.js HTTP/1.1" 200 667
-[05/Oct/2018 19:11:21] INFO [django.server:124] "GET /static/damzi/js/particles.js HTTP/1.1" 200 43009
-[05/Oct/2018 19:11:22] INFO [django.server:124] "GET /static/damzi/js/app.js HTTP/1.1" 200 2818
-[05/Oct/2018 19:11:22] INFO [django.server:124] "GET /static/damzi/Swiper-4.0.7/dist/js/swiper.min.js HTTP/1.1" 200 111714
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/robertanyarko.jpg HTTP/1.1" 200 32343
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/davidkodua.jpg HTTP/1.1" 200 85681
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/atidakpowinner.jpg HTTP/1.1" 200 76657
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/raymondoware.jpg HTTP/1.1" 200 169570
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/testimonies/frederickdarko.jpg HTTP/1.1" 200 123873
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/device-mockups/imac/imac.png HTTP/1.1" 200 116174
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/device-mockups/galaxy_s3/s3_port_black.png HTTP/1.1" 200 213266
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/img/balmebehind.jpeg HTTP/1.1" 200 37053
-[05/Oct/2018 19:11:24] INFO [django.server:124] "GET /static/damzi/vendor/simple-line-icons/fonts/Simple-Line-Icons.woff2?v=2.4.0 HTTP/1.1" 200 30064
-[05/Oct/2018 19:11:25] INFO [django.server:124] "GET /static/damzi/img/favicon.ico HTTP/1.1" 200 5430
+[06/Oct/2018 11:03:04] INFO [django.server:124] "GET / HTTP/1.1" 200 24970
+[06/Oct/2018 11:03:07] INFO [django.server:124] "GET / HTTP/1.1" 200 24970
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/css/particlestyle.css HTTP/1.1" 304 0
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/vendor/simple-line-icons/css/simple-line-icons.css HTTP/1.1" 304 0
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/device-mockups/device-mockups.min.css HTTP/1.1" 304 0
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/css/new-age.css HTTP/1.1" 304 0
+[06/Oct/2018 11:03:08] WARNING [django.server:124] "GET /static/damzi/css/compiled.min.css HTTP/1.1" 404 1803
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/js/jquery.easing.min.js HTTP/1.1" 200 2532
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/js/bootstrap.bundle.min.js HTTP/1.1" 200 67742
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/js/jquery.min.js HTTP/1.1" 200 86927
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/js/new-age.min.js HTTP/1.1" 200 667
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/Swiper-4.0.7/dist/css/swiper.min.css HTTP/1.1" 200 19334
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/js/app.js HTTP/1.1" 200 2818
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/js/particles.js HTTP/1.1" 200 43009
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/Swiper-4.0.7/dist/js/swiper.min.js HTTP/1.1" 200 111714
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/imacmockup.png HTTP/1.1" 200 134708
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/logoandtextglow.png HTTP/1.1" 200 29218
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/asubontengrichard.jpg HTTP/1.1" 200 67382
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/abenaoduro.jpg HTTP/1.1" 200 77415
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/s3mockup.png HTTP/1.1" 200 114137
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/frederickdarko.jpg HTTP/1.1" 200 123873
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/atidakpowinner.jpg HTTP/1.1" 200 76657
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/davidkodua.jpg HTTP/1.1" 200 85681
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/robertanyarko.jpg HTTP/1.1" 200 32343
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/danielleagyeiwa.jpg HTTP/1.1" 200 142573
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/testimonies/raymondoware.jpg HTTP/1.1" 200 169570
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/img/balmebehind.jpeg HTTP/1.1" 304 0
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/device-mockups/imac/imac.png HTTP/1.1" 200 116174
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/device-mockups/galaxy_s3/s3_port_black.png HTTP/1.1" 200 213266
+[06/Oct/2018 11:03:08] INFO [django.server:124] "GET /static/damzi/vendor/simple-line-icons/fonts/Simple-Line-Icons.woff2?v=2.4.0 HTTP/1.1" 200 30064
+[06/Oct/2018 11:31:18] INFO [django.server:124] "GET /accounts/login/ HTTP/1.1" 200 4000
+[06/Oct/2018 11:31:18] INFO [django.server:124] "GET /static/account/css/styles.css HTTP/1.1" 304 0
+[06/Oct/2018 11:31:18] INFO [django.server:124] "GET /static/account/images/logoandtext.png HTTP/1.1" 304 0
+[06/Oct/2018 11:31:18] WARNING [django.server:124] "GET /static/damzi/images/favicon.ico HTTP/1.1" 404 1797
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'first_name' in template 'accounts/register.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/forms/boundfield.py", line 66, in __getitem__
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'BoundField' object has no attribute 'first_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'first_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [first_name] in <django.forms.boundfield.BoundField object at 0x7fcdc443ab00>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'last_name' in template 'accounts/register.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/forms/boundfield.py", line 66, in __getitem__
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'BoundField' object has no attribute 'last_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'last_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [last_name] in <django.forms.boundfield.BoundField object at 0x7fcdc443a940>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'username' in template 'accounts/register.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/forms/boundfield.py", line 66, in __getitem__
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'BoundField' object has no attribute 'username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [username] in <django.forms.boundfield.BoundField object at 0x7fcdc443abe0>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'email' in template 'accounts/register.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/forms/boundfield.py", line 66, in __getitem__
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'BoundField' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [email] in <django.forms.boundfield.BoundField object at 0x7fcdc443ac50>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'password' in template 'accounts/register.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/forms/boundfield.py", line 66, in __getitem__
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'BoundField' object has no attribute 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [password] in <django.forms.boundfield.BoundField object at 0x7fcdc443ac88>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'confirm_password' in template 'accounts/register.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/forms/boundfield.py", line 66, in __getitem__
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'BoundField' object has no attribute 'confirm_password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'confirm_password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [confirm_password] in <django.forms.boundfield.BoundField object at 0x7fcdc443acc0>
+[06/Oct/2018 11:31:21] INFO [django.server:124] "GET /accounts/register/ HTTP/1.1" 200 7009
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>
+[06/Oct/2018 11:31:21] WARNING [django.request:228] Not Found: /favicon.ico
+[06/Oct/2018 11:31:21] WARNING [django.server:124] "GET /favicon.ico HTTP/1.1" 404 2825
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>
+[06/Oct/2018 11:31:21] DEBUG [django.template:872] Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/core/handlers/base.py", line 111, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/urls/resolvers.py", line 520, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<URLResolver <URLPattern list> (admin:admin) 'admin/'>], [<URLResolver <module 'damzi.urls' from '/home/jojo/.tom/Dmznum/damzi/urls.py'> (damzi:damzi) ''>, <URLPattern '' [name='index']>], [<URLResolver <module 'accounts.urls' from '/home/jojo/.tom/Dmznum/accounts/urls.py'> (accounts:accounts) 'accounts/'>], [<URLResolver <module 'library.urls' from '/home/jojo/.tom/Dmznum/library/urls.py'> (library:library) 'library/'>], [<URLResolver <module 'kitchen.urls' from '/home/jojo/.tom/Dmznum/kitchen/urls.py'> (kitchen:kitchen) 'kitchen/'>], [<URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>], [<URLPattern '^media\/(?P<path>.*)$'>], [<URLPattern '^static\/(?P<path>.*)$'>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 837, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'ckeditor_uploader.urls' from '/home/jojo/venvs/dam_env/lib/python3.6/site-packages/ckeditor_uploader/urls.py'> (None:None) 'ckeditor/'>
+[06/Oct/2018 11:31:21] WARNING [django.request:228] Not Found: /favicon.ico
+[06/Oct/2018 11:31:21] WARNING [django.server:124] "GET /favicon.ico HTTP/1.1" 404 2825
+[06/Oct/2018 11:31:23] INFO [django.server:124] "GET /accounts/login/ HTTP/1.1" 200 4000
