@@ -7373,3 +7373,76 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [full_name] in 
 [08/Oct/2018 08:06:49] INFO [django.server:124] "GET /static/kitchen/js/ckeditor/config.js?t=HBDD HTTP/1.1" 200 332
 [08/Oct/2018 08:06:49] INFO [django.server:124] "GET /static/kitchen/js/ckeditor/skins/moono-lisa/editor_gecko.css?t=HBDD HTTP/1.1" 200 8192
 [08/Oct/2018 08:06:49] INFO [django.server:124] "GET /static/kitchen/js/ckeditor/lang/en.js?t=HBDD HTTP/1.1" 200 18456
+[08/Oct/2018 08:33:08] DEBUG [django.db.backends:111] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Oct/2018 08:33:08] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[08/Oct/2018 08:33:13] INFO [django.server:124] "GET / HTTP/1.1" 302 0
+[08/Oct/2018 08:33:13] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03m]\x8f\x07B\x18x²ÝÔê,\x11gû\x91G¿\x15\x19Ô\x1e+\x0c±ÍédÅí¿\x9a Ç$³ºü\x14\x8c>\x1bïÙ\x05\x16}x\tP\x0f$=\x11/Zf\x17äÍ1öã¢<\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[08/Oct/2018 08:33:13] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[08/Oct/2018 08:33:13] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x02\x02\x9d\x1eá¦ðÌ\t?Ô\x9e¢.ú¢Å@ÊÒbeÍ{º)$¶Ï\x87\x87Ô \\^û\x19ú\xa0\x90\\e¤x\x16¸æà\x82G\x87Q#\x85ê·2ì\x159ï¾EÌ\xa0\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[08/Oct/2018 08:33:13] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[08/Oct/2018 08:33:25] DEBUG [django.db.backends:111] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2018-10-08 08:33:25.679251' AND "django_session"."session_key" = 'slcmc18w9cpuyaqisaj109p3vrzj5vzh'); args=('2018-10-08 08:33:25.679251', 'slcmc18w9cpuyaqisaj109p3vrzj5vzh')
+[08/Oct/2018 08:33:25] DEBUG [django.db.backends:111] (0.001) SELECT "accounts_user"."id", "accounts_user"."password", "accounts_user"."last_login", "accounts_user"."is_superuser", "accounts_user"."email", "accounts_user"."username", "accounts_user"."first_name", "accounts_user"."last_name", "accounts_user"."profile_id", "accounts_user"."date_joined", "accounts_user"."is_verified", "accounts_user"."is_active", "accounts_user"."is_staff" FROM "accounts_user" WHERE "accounts_user"."id" = 3; args=(3,)
+[08/Oct/2018 08:33:25] DEBUG [django.db.backends:111] (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE "django_session"."session_key" = 'slcmc18w9cpuyaqisaj109p3vrzj5vzh'; args=('slcmc18w9cpuyaqisaj109p3vrzj5vzh',)
+[08/Oct/2018 08:33:25] DEBUG [django.db.backends:111] (0.000) BEGIN; args=None
+[08/Oct/2018 08:33:25] DEBUG [django.db.backends:111] (0.001) DELETE FROM "django_session" WHERE "django_session"."session_key" IN ('slcmc18w9cpuyaqisaj109p3vrzj5vzh'); args=('slcmc18w9cpuyaqisaj109p3vrzj5vzh',)
+[08/Oct/2018 08:33:25] INFO [django.server:124] "GET / HTTP/1.1" 302 0
+[08/Oct/2018 08:33:26] INFO [django.server:124] "GET /accounts/login/ HTTP/1.1" 200 4008
+[08/Oct/2018 08:33:26] INFO [django.server:124] "GET /static/account/css/styles.css HTTP/1.1" 200 499
+[08/Oct/2018 08:33:34] DEBUG [django.db.backends:111] (0.001) SELECT "accounts_user"."id", "accounts_user"."password", "accounts_user"."last_login", "accounts_user"."is_superuser", "accounts_user"."email", "accounts_user"."username", "accounts_user"."first_name", "accounts_user"."last_name", "accounts_user"."profile_id", "accounts_user"."date_joined", "accounts_user"."is_verified", "accounts_user"."is_active", "accounts_user"."is_staff" FROM "accounts_user" WHERE "accounts_user"."username" = 'new'; args=('new',)
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'f0qcb2qoy3cfgc81vg1sbhoyf2knypw6'  LIMIT 1; args=('f0qcb2qoy3cfgc81vg1sbhoyf2knypw6',)
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) BEGIN; args=None
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.001) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") SELECT 'f0qcb2qoy3cfgc81vg1sbhoyf2knypw6', 'OTNmNjM0MTUzMzc1YTJlYzg0MzE3NmE0YTNlOGI4NDQ1MDMzMjE3Yzp7fQ==', '2018-10-22 08:33:35.255283'; args=('f0qcb2qoy3cfgc81vg1sbhoyf2knypw6', 'OTNmNjM0MTUzMzc1YTJlYzg0MzE3NmE0YTNlOGI4NDQ1MDMzMjE3Yzp7fQ==', '2018-10-22 08:33:35.255283')
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) BEGIN; args=None
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.001) UPDATE "accounts_user" SET "last_login" = '2018-10-08 08:33:35.433554' WHERE "accounts_user"."id" = 1; args=('2018-10-08 08:33:35.433554', 1)
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) SELECT "accounts_profile"."id", "accounts_profile"."profile_picture", "accounts_profile"."institution_id", "accounts_profile"."department_name_id", "accounts_profile"."level", "accounts_profile"."phone_number" FROM "accounts_profile" WHERE "accounts_profile"."id" = 1; args=(1,)
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) BEGIN; args=None
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.001) UPDATE "accounts_profile" SET "profile_picture" = '', "institution_id" = NULL, "department_name_id" = NULL, "level" = '100', "phone_number" = NULL WHERE "accounts_profile"."id" = 1; args=('', '100', 1)
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) BEGIN; args=None
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) UPDATE "django_session" SET "session_data" = 'NTgxYTFiY2Y1YjBkNGI0NWM1Nzc3OTI2NmZlY2U5OWJmODgzNGNmYzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmZjBhMGJiNDEyOWZkNTIxNDA0OWZkMGU4ZjY2MDFiYTA4MDQ4OTU2In0=', "expire_date" = '2018-10-22 08:33:35.610930' WHERE "django_session"."session_key" = 'f0qcb2qoy3cfgc81vg1sbhoyf2knypw6'; args=('NTgxYTFiY2Y1YjBkNGI0NWM1Nzc3OTI2NmZlY2U5OWJmODgzNGNmYzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmZjBhMGJiNDEyOWZkNTIxNDA0OWZkMGU4ZjY2MDFiYTA4MDQ4OTU2In0=', '2018-10-22 08:33:35.610930', 'f0qcb2qoy3cfgc81vg1sbhoyf2knypw6')
+[08/Oct/2018 08:33:35] INFO [django.server:124] "POST /accounts/login/ HTTP/1.1" 302 0
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2018-10-08 08:33:35.746736' AND "django_session"."session_key" = 'f0qcb2qoy3cfgc81vg1sbhoyf2knypw6'); args=('2018-10-08 08:33:35.746736', 'f0qcb2qoy3cfgc81vg1sbhoyf2knypw6')
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) SELECT "accounts_user"."id", "accounts_user"."password", "accounts_user"."last_login", "accounts_user"."is_superuser", "accounts_user"."email", "accounts_user"."username", "accounts_user"."first_name", "accounts_user"."last_name", "accounts_user"."profile_id", "accounts_user"."date_joined", "accounts_user"."is_verified", "accounts_user"."is_active", "accounts_user"."is_staff" FROM "accounts_user" WHERE "accounts_user"."id" = 1; args=(1,)
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) SELECT "library_ugrc"."id", "library_ugrc"."ugrc", "library_ugrc"."ugrc_code" FROM "library_ugrc" ORDER BY "library_ugrc"."ugrc" ASC  LIMIT 21; args=()
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) SELECT "library_ugrc"."id", "library_ugrc"."ugrc", "library_ugrc"."ugrc_code" FROM "library_ugrc" ORDER BY "library_ugrc"."ugrc" ASC  LIMIT 21; args=()
+[08/Oct/2018 08:33:35] DEBUG [django.template:872] Exception while resolving variable 'full_name' in template 'accounts/profile.html'.
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'full_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'full_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'full_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jojo/venvs/dam_env/lib/python3.6/site-packages/django/template/base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [full_name] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f4e6e2969d8>>, 'request': <WSGIRequest: GET '/accounts/'>, 'user': <SimpleLazyObject: <User: new>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f4e6e0335c0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f4e6e29eac8>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'paginator': None, 'page_obj': None, 'is_paginated': False, 'object_list': <QuerySet []>, 'ugrc_list': <QuerySet []>, 'view': <accounts.views.Dashboard object at 0x7f4e6e29e400>}, {}]
+[08/Oct/2018 08:33:35] DEBUG [django.db.backends:111] (0.000) SELECT "library_ugrc"."id", "library_ugrc"."ugrc", "library_ugrc"."ugrc_code" FROM "library_ugrc" ORDER BY "library_ugrc"."ugrc" ASC; args=()
+[08/Oct/2018 08:33:35] INFO [django.server:124] "GET /accounts/ HTTP/1.1" 200 17162
+[08/Oct/2018 08:33:37] INFO [django.server:124] "GET /static/account/images/damzupgraded.png HTTP/1.1" 200 23517
+[08/Oct/2018 08:33:37] INFO [django.server:124] "GET /static/library/font/roboto/Roboto-Regular.woff2 HTTP/1.1" 200 49236
+[08/Oct/2018 08:40:11] DEBUG [django.db.backends:111] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[08/Oct/2018 08:40:11] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
