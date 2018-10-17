@@ -51,6 +51,9 @@ class Topic(models.Model):
     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = RichTextUploadingField('content')
+
+    class Meta:
+        ordering = ('-course_name',)
         
     def get_absolute_url(self):
         return reverse('accounts:profile')
@@ -107,6 +110,9 @@ class Ugrc_Topic(models.Model):
     ugrc = models.ForeignKey(Ugrc, on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     content = RichTextUploadingField()
+
+    class Meta:
+        ordering = ('-ugrc',)
 
     def get_absolute_url(self):
         return reverse('accounts:profile')
