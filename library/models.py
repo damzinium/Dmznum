@@ -108,9 +108,6 @@ class Ugrc_Topic(models.Model):
     title = models.CharField(max_length=300)
     content = RichTextUploadingField()
 
-    class Meta:
-        ordering = ('title',)
-
     def get_absolute_url(self):
         return reverse('accounts:profile')
 
