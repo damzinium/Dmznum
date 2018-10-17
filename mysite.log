@@ -7446,3 +7446,22 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [full_name] in 
             WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
             ORDER BY name; args=None
 [08/Oct/2018 08:40:11] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[17/Oct/2018 11:31:51] DEBUG [django.db.backends:111] (0.019) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[17/Oct/2018 11:31:51] DEBUG [django.db.backends:111] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[17/Oct/2018 11:31:57] INFO [django.server:124] "GET / HTTP/1.1" 301 0
+[17/Oct/2018 11:31:57] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x0e«\x8eÌqMz\x89zºB\x82UÃ.\x8fÊ[û\x18%á\x13\x9b\x10¶Zó\x0bÎµ\x04 h\x13¡mÞ+¥.¨b¤&{>lûÅ \x1b3X9Lç÷\xad\x07ú\x05Ó\x88\x8c\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[17/Oct/2018 11:31:57] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[17/Oct/2018 11:31:57] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ï\x16 \x95EÃ¹,\x1fnèÿª7\xad\x06\x7fä2é¤ÅÆVºö`Í\x9a\x9fµÎ I_\x7f\x14Y\x1cÕ\x01 \x8evu\x1fV\x03\t\x88l\x9e\x87+ð¶\x0cÆ¼\x1cé\x83"×¥\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[17/Oct/2018 11:31:57] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[17/Oct/2018 11:32:06] INFO [django.server:124] "GET / HTTP/1.1" 301 0
+[17/Oct/2018 11:32:06] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03Òy²µL©x/m\x00äß\x8f!Z:\x021-\x83Þ\x03¢ãGÒ®\x9f2^ÒÖ ,¥W\x0cX\x01y¨\x15\x15ùØg\x88â\x1c\x1eO|ÿÝà\x82e¬~,Ëý[-\x03\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[17/Oct/2018 11:32:06] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+
+[17/Oct/2018 11:32:06] INFO [django.server:124] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03M8ì\x11\x1f\x99wa(\x15>²\x9a|\x83\x08\x02\x0cå%H)O\x12h¬7±«\x95´Í §ßËÜû\x94\x0bl\x94©ç\x993¯2:<H-R\x9aÃ\x12$\x8c8o Ë`\x14á\x00$\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+[17/Oct/2018 11:32:06] ERROR [django.server:107] You're accessing the development server over HTTPS, but it only supports HTTP.
+

@@ -51,9 +51,6 @@ class Topic(models.Model):
     course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = RichTextUploadingField('content')
-
-    class Meta:
-        ordering = ('title',)
         
     def get_absolute_url(self):
         return reverse('accounts:profile')
