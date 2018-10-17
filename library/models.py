@@ -112,7 +112,7 @@ class Ugrc_Topic(models.Model):
     content = RichTextUploadingField()
 
     class Meta:
-        ordering = ('-ugrc',)
+        ordering = ('ugrc',)
 
     def get_absolute_url(self):
         return reverse('accounts:profile')
