@@ -27,7 +27,9 @@ class UserRegistrationView(View):
     # process and register users
     def post(self, request):
         form = self.form_class(request.POST)
-        context = {'form': form}
+        context = {
+            'form': form,
+        }
 
         if form.is_valid():
             user = form.save(commit=False)
@@ -53,11 +55,15 @@ class UserRegistrationView(View):
 
 
 def ac_login(request):
+    to_url = request.GET.get('next')
+
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
             user = form.user
             login(request, user)
+            if to_url:
+                return redirect(to_url)
             return redirect('accounts:profile')
         else:
             return render(request, 'accounts/login.html', {'form': form})
