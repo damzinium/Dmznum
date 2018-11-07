@@ -102,4 +102,3 @@ class UserLoginForm(forms.Form):
         if user is not None:
             self.user = user
             return self
-

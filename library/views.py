@@ -40,10 +40,11 @@ def topic_detail(request, pk):
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            new_comment = Comment()
+            new_comment = comment_form.save(commit=False)
+            # new_comment = Comment()
             new_comment.commenter = request.user
             new_comment.topic = topic
-            new_comment.comment = comment_form.cleaned_data['comment']
+            # new_comment.comment = comment_form.cleaned_data['comment']
             new_comment.save()
             # success_msg = 'Thanks for learning smart with damzinium. We appreciate your feedback.'
             return redirect('library:topic_detail', pk=pk)

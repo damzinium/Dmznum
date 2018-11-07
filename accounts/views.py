@@ -36,7 +36,6 @@ class UserRegistrationView(View):
 
             # clean data
             username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
