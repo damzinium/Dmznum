@@ -40,7 +40,7 @@ class UserRegistrationView(View):
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
-    
+
             # login after sign up
             user = authenticate(username=username, password=password)
 
@@ -74,6 +74,7 @@ def ac_login(request):
 
 def ac_logout(request):
     logout(request)
+    return redirect('accounts:login')
 
 
 def ots(request):
@@ -122,6 +123,7 @@ class UgrcTopicView(generic.DetailView):
 class UgContent(generic.DetailView):
     model = Ugrc_Topic
     template_name = 'accounts/ugrc_content.html'
+
 
 def error(request):
     return render_to_response('accounts/error_page.html')

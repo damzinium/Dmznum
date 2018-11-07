@@ -22,10 +22,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-SECRET_KEY = os.environ["SEC_PASS"]
+# SECRET_KEY = os.environ["SEC_PASS"]
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+if DEBUG:
+    SECRET_KEY = 'TheQuickBrownFoxJumpsOverTheLazyDog'
+else:
+    SECRET_KEY = os.environ["SEC_PASS"]
 
 ALLOWED_HOSTS = []
 
@@ -126,10 +132,10 @@ USE_TZ = True
 
 
 
-
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+if not DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
 
 
 
@@ -138,7 +144,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestFilesStorage'
 
 
 LOGIN_REDIRECT_URL = '/accounts/'
@@ -149,14 +156,14 @@ AUTH_PROFILE_MODULE = 'accounts.Profile'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-DEFAULT_FROM_EMAIL = 'noreply@damzinium.com'
-EMAIL_HOST = os.environ["EMAIL_HOST"]
-SENDGRID_API = os.environ["SENDGRID_API"]
-EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+if not DEBUG:
+    DEFAULT_FROM_EMAIL = 'noreply@damzinium.com'
+    EMAIL_HOST = os.environ["EMAIL_HOST"]
+    SENDGRID_API = os.environ["SENDGRID_API"]
+    EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+    EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
 
 
 #Ck-EDITOR
