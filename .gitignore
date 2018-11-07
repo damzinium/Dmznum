@@ -15,4 +15,4 @@ Pipfile
 mysite.log
 *.log
 *.log
-*/settings.py
+damzinium/settings.py
