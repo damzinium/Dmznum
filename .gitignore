@@ -4,6 +4,4 @@
 *.iml
 .idea/*
 *.lock
-mysite.log
-*.log
-*.log
+
