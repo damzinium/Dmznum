@@ -155,9 +155,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td>
-                                                                                {{ comment.date_uploaded.date }}
-                                                                                {{ comment.date_uploaded.time }}
-                                                                            </td>
+                                                                                {{ comment.date_uploaded|timesince }} ago                                                                          </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td colspan="2">
@@ -186,9 +184,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td>
-                                                                                                {{ reply.date_uploaded.date }}
-                                                                                                {{ reply.date_uploaded.time }}
-                                                                                            </td>
+                                                                                                {{ reply.date_uploaded|timesince }} ago                                                                                            </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td colspan="2">

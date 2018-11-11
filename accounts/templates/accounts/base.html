@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="{% static 'account/css/styles.css' %}">
 
     <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" type="text/css" href="">
+    <!-- Styles for Utilities -->
+    <link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}">
+    <!-- Styles for Utilities -->
+
     <style type="text/css">
         /* YOUR CUSTOM STYLES */
         html, body {
@@ -31,9 +34,41 @@
             text-align: center;
             min-height: 60px;
         }
+        /* New features */
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            background: white;
+            /*middle of page*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .loader-text {
+            font-size: 30px;
+        }
+
+        .loader-img {
+            width: 80px;
+        }
+        /* New features */
     </style>
 </head>
 <body>
+    <!-- New features -->
+    <div class="loader">
+        <img class="loader-img" src="{% static 'damzi/img/loading.gif' %}" alt="loading"/>
+        <div class="loader-text">
+            Damzinium
+        </div>
+    </div>
+    <!-- New features -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div class="mdl-layout__header">
         <img src="{% static 'account/images/logoandtext.png' %}">
@@ -49,5 +84,23 @@
     </div>
 
     </div>
+    <!-- New features -->
+    <div class="network-status alert-info">
+        <div>
+            <img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>
+            No internet connection
+        </div>
+    </div>
+    <!-- New features -->
+    <script type="text/javascript">
+        // show page loading overlay
+        window.addEventListener("load", function () {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("hidden");
+        });
+    </script>
+    <!-- Scripts for Utilities -->
+    <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
+    <!-- Scripts for Utilities -->
 </body>
 </html>

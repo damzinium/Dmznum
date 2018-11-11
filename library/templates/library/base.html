@@ -28,6 +28,11 @@
     <link rel="stylesheet" href="{% static 'library/css/styles.css' %}">
     <!-- Damzinium Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'library/css/default.css' %}">
+
+    <!-- Styles for Utilities -->
+    <link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}">
+    <!-- Styles for Utilities -->
+
     <!--Page specific CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'library/css/courses.css' %}">
     <style type="text/css">
@@ -46,40 +51,71 @@
             text-align: left;
         }
         /*------------swipers---------------*/
-/*swiper one*/
-.swiper-container {
-    width: 100%;
-    height: 300px;
-    margin: 20px auto;
-}
-.swiper-slide {
-    text-align: center;
-    width: 60%;
+        /*swiper one*/
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin: 20px auto;
+        }
+        .swiper-slide {
+            text-align: center;
+            width: 60%;
 
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-}
-.swiper-slide:nth-child(2n) {
-    width: 40%;
-}
-.swiper-slide:nth-child(3n) {
-    width: 20%;
-}
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-slide:nth-child(2n) {
+            width: 40%;
+        }
+        .swiper-slide:nth-child(3n) {
+            width: 20%;
+        }
+
+        /* New features */
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            background: white;
+            /*middle of page*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .loader-text {
+            font-size: 30px;
+        }
+
+        .loader-img {
+            width: 80px;
+        }
     </style>
   </head>
   <body>
-
+    <!-- New features -->
+    <div class="loader">
+        <img class="loader-img" src="{% static 'damzi/img/loading.gif' %}" alt="loading"/>
+        <div class="loader-text">
+            Damzinium
+        </div>
+    </div>
+    <!-- New features -->
 
 
   {% block modal %}
@@ -107,7 +143,14 @@
     <!--/ Simple header with scrollable tabs. -->
 
 
-
+    <!-- New features -->
+    <div class="network-status alert-info">
+        <div>
+            <img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>
+            No internet connection
+        </div>
+    </div>
+    <!-- New features -->
 
 
 
@@ -158,6 +201,15 @@
         }
       });
     </script>
-
+    <script type="text/javascript">
+        // show page loading overlay
+        window.addEventListener("load", function () {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("hidden");
+        });
+    </script>
+    <!-- Scripts for Utilities -->
+    <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
+    <!-- Scripts for Utilities -->
   </body>
 </html>
