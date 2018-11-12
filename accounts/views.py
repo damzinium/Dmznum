@@ -54,6 +54,10 @@ class UserRegistrationView(View):
 
 
 def ac_login(request):
+    # redirect user to the dashboard if they are already logged in
+    if request.user.is_authenticated:
+        return redirect('accounts:profile')
+
     to_url = request.GET.get('next')
 
     if request.method == 'POST':

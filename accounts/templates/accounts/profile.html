@@ -17,7 +17,7 @@
     <!--WORK HERE-->
     <div class="col-md-10">
         <div class="container mt-5">
-            <h4 class="text-center">Welcome {{ user.username }}, to the best learning experience you've ever had!</h4>
+            <h4 class="text-center">Welcome {{ user.get_short_name|capfirst }}, to the best learning experience you've ever had!</h4>
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
               <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color-text--white" style="background-image: url({% static 'account/images/damzupgraded.png' %});">
               </header>
