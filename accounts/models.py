@@ -5,20 +5,24 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 LEVEL_CHOICES = (
-    ("100","100"),
-    ("200","200"),
-    ("300","300"),
-    ("400","400")
-    )
+    ("100", "100"),
+    ("200", "200"),
+    ("300", "300"),
+    ("400", "400")
+)
+
 
 class Profile(models.Model):
 
     from library.models import Institution, Department
 
     profile_picture = models.ImageField(null=True, blank=True)
-    institution = models.ForeignKey(Institution, null=True, on_delete=models.CASCADE)
-    department_name = models.ForeignKey(Department, null=True, on_delete=models.CASCADE)
-    level = models.CharField(max_length=4, null=True, choices=LEVEL_CHOICES, default="100")
+    institution = models.ForeignKey(
+        Institution, null=True, on_delete=models.CASCADE)
+    department_name = models.ForeignKey(
+        Department, null=True, on_delete=models.CASCADE)
+    level = models.CharField(max_length=4, null=True,
+                             choices=LEVEL_CHOICES, default="100")
     phone_number = models.CharField(max_length=10, null=True)
 
     def __str__(self):
@@ -52,17 +56,20 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    email = models.EmailField(
+        verbose_name='email address', max_length=255, unique=True)
     username = models.CharField(max_length=60, unique=True)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
 
-    profile = models.OneToOneField(Profile, null=True, on_delete=models.CASCADE)
+    profile = models.OneToOneField(
+        Profile, null=True, on_delete=models.CASCADE)
 
     date_joined = models.DateTimeField(default=timezone.now)
 
     is_verified = models.BooleanField(default=False)
-    is_active = models.BooleanField(verbose_name='account status', default=True)
+    is_active = models.BooleanField(
+        verbose_name='account status', default=True)
     is_staff = models.BooleanField(verbose_name='staff status', default=False)
 
     objects = UserManager()

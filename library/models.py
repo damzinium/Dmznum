@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
+from django.contrib.sitemaps import Sitemap
+
 class Institution(models.Model):
     institution = models.CharField(max_length=100, default="Legon")
 
@@ -119,3 +121,11 @@ class Ugrc_Topic(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UGRCSitemap(Sitemap):
+    changefreq = "never"
+    priority = 0.5
+
+    def items(self):
+        return Ugrc.objects.all()
