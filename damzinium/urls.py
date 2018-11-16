@@ -20,11 +20,13 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 
-from library.models import UGRCSitemap
+from damzi.sitemap import AccountsStaticSitemap
 
+# sitemaps
 sitemaps = {
-        'UGRCSitemap': UGRCSitemap,
+        'AccountsStaticSitemap': AccountsStaticSitemap,
 }
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('damzi.urls')),
