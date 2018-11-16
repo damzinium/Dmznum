@@ -22,6 +22,9 @@ from django.contrib.sitemaps.views import sitemap
 
 from library.models import UGRCSitemap
 
+sitemaps = {
+        'UGRCSitemap': UGRCSitemap,
+}
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('damzi.urls')),
@@ -31,8 +34,8 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
     # sitemap url
-    path('sitemap.xml/', sitemap, {'sitemaps': UGRCSitemap}, name='django.contrib.sitemaps.views.sitemap'),
-    
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 
 # if settings.DEBUG:
