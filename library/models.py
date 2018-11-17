@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
+
 class Institution(models.Model):
     institution = models.CharField(max_length=100, default="Legon")
 
@@ -104,6 +105,9 @@ class Ugrc(models.Model):
 
     def __str__(self):
         return self.ugrc_code + ":" + self.ugrc
+
+    def get_absolute_url(self):
+        return reverse('accounts:ugrc_detail', args=[str(self.id)])
 
 
 class Ugrc_Topic(models.Model):
