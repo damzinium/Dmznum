@@ -34,9 +34,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE += [
-	'whitenoise.middleware.WhiteNoiseMiddleware',
-]
 ROOT_URLCONF = 'damzinium.urls'
 
 TEMPLATES = [
@@ -71,13 +68,6 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = '/accounts/login'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ckeditor configuration
 CKEDITOR_UPLOAD_PATH = 'uploads'
