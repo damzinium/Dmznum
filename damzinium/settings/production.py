@@ -6,7 +6,7 @@ SECRET_KEY = os.environ.get('SEC_PASS')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.damzinium.com', ]
+ALLOWED_HOSTS = ['*']
 
 MIDDLEWARE += [
 	'whitenoise.middleware.WhiteNoiseMiddleware',
