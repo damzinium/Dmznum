@@ -1,0 +1,49 @@
+.loader.hidden {
+    animation: customFadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+.network-status {
+    position: fixed;
+    left: 0;
+    bottom: -200px;
+    width: 100%;
+    /*background: #ecef1a;*/
+    padding: 10px;
+    font-size: 30px;
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*animation: slideIn 1s;
+    animation-fill-mode: forwards;*/
+}
+
+.network-status.hidden {
+    animation: customSlideDown 1s;
+    animation-fill-mode: forwards;
+}
+
+.network-status.visible {
+    animation: customSlideUp 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes customFadeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes customSlideUp {
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes customSlideDown {
+    100% {
+        bottom: -200px;
+    }
+}

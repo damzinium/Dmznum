@@ -8,20 +8,13 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-MIDDLEWARE += [
-	'whitenoise.middleware.WhiteNoiseMiddleware',
-]
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIR = [
-#     os.path.join(BASE_DIR, 'static'),
+# MIDDLEWARE += [
+# 	'whitenoise.middleware.WhiteNoiseMiddleware',
 # ]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
