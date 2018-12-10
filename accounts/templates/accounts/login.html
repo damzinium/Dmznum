@@ -11,16 +11,11 @@
                       <p class="h3">Sign in</p>
 
                         <div class="card-body mx-4">
+                          {% for field in form %}
                             <div class="" style="min-width:100%">
-                                <input class="form-control" type="text" id="username" name="username" placeholder="Your username or email">
-                                <label for="username"></label>
+                              {{ field }}
                             </div>
-
-                            <div class="" style="min-width:100%">
-                                <input class="form-control" type="password" id="password" name="password" placeholder="Your password" >
-                                <label for="password"></label>
-                            </div>
-
+                          {% endfor %}
                           <div class="d-flex justify-content-around">
                             <div>
                                 <div class="form-check">
@@ -34,7 +29,7 @@
                           </div>
 
                           <div class="text-center mb-4">
-                            <input type="submit" class="btn btn-outline-success waves-effect" value="login" />
+                            <button type="submit" class="btn btn-outline-success waves-effect" id="login-btn" disabled>Login</button>
                           </div>
                           <p>Not a member?
                               <a href="{% url 'accounts:register' %}">Register</a>
@@ -45,4 +40,19 @@
             </div>
         </div>
     </div>
+    <script>
+      // event handler for disabling login btn when some fields are empty
+      function loginBtnStateHandler() {
+        const usernameOrEmailField = document.querySelector('#id_username_or_email');
+        const passwordField = document.querySelector('#id_password');
+        let loginBtn = document.querySelector('#login-btn');
+        if(usernameOrEmailField.value != '' && passwordField.value != '') {
+          loginBtn.removeAttribute('disabled');
+        }
+        else {
+          loginBtn.setAttribute('disabled', 'disabled');
+        }
+      }
+
+    </script>
 {% endblock %}

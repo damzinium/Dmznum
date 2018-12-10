@@ -1,9 +1,9 @@
 import os
 
 # general settings
-PROJECT_DIR=os.path.dirname(__file__)
+PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # apps in project
 INSTALLED_APPS = [

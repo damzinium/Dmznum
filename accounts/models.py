@@ -19,7 +19,7 @@ class Profile(models.Model):
     profile_picture = models.ImageField(null=True, blank=True)
     institution = models.ForeignKey(
         Institution, null=True, on_delete=models.CASCADE)
-    department_name = models.ForeignKey(
+    department = models.ForeignKey(
         Department, null=True, on_delete=models.CASCADE)
     level = models.CharField(max_length=4, null=True,
                              choices=LEVEL_CHOICES, default="100")
@@ -56,8 +56,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(
-        verbose_name='email address', max_length=255, unique=True)
+    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
     username = models.CharField(max_length=60, unique=True)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)

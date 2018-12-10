@@ -1,6 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect, render_to_response, HttpResponseRedirect, get_object_or_404
 from django.template.context_processors import csrf
 from django.urls import reverse
@@ -9,13 +10,14 @@ from django.views.generic import View, CreateView
 
 from library.models import Ugrc, Ugrc_Topic
 
-from .forms import UserRegistrationForm, ProfileForm, UserLoginForm
+from . import forms
+from .helpers import get_user, get_user_profile
 from .models import Profile, User
 
 
 # sign up here
 class UserRegistrationView(View):
-    form_class = UserRegistrationForm
+    form_class = forms.UserRegistrationForm
     template_name = 'accounts/register.html'
 
     # display blank form
@@ -61,7 +63,7 @@ def ac_login(request):
     to_url = request.GET.get('next')
 
     if request.method == 'POST':
-        form = UserLoginForm(data=request.POST)
+        form = forms.UserLoginForm(data=request.POST)
         if form.is_valid():
             user = form.user
             login(request, user)
@@ -71,7 +73,7 @@ def ac_login(request):
         else:
             return render(request, 'accounts/login.html', {'form': form})
     else:
-        form = UserLoginForm
+        form = forms.UserLoginForm
         return render(request, 'accounts/login.html', {'form': form})
 
 
@@ -84,13 +86,13 @@ def ots(request):
     # POST request
     if request.method == 'POST':
         # load the form with the posted data
-        form = ProfileForm(data=request.POST, files=request.FILES)
+        form = forms.ProfileForm(data=request.POST, files=request.FILES)
         # check for validity
         if form.is_valid():
             user = get_object_or_404(User, id=request.user.id)
             user.profile.profile_picture = form.cleaned_data['profile_picture']
             user.profile.institution = form.cleaned_data['institution']
-            user.profile.department_name = form.cleaned_data['department_name']
+            user.profile.department = form.cleaned_data['department']
             user.profile.level = form.cleaned_data['level']
             user.profile.phone_number = form.cleaned_data['phone_number']
             # user.profile.date_of_birth = form.cleaned_data['date_of_birth']
@@ -101,7 +103,7 @@ def ots(request):
             return render(request, 'accounts/ots.html', {'form': form})
     # other requests
     else:
-        form = ProfileForm
+        form = forms.ProfileForm
         return render(request, 'accounts/ots.html', {'form': form})
 
 
@@ -130,3 +132,146 @@ class UgContent(generic.DetailView):
 
 def error(request):
     return render_to_response('accounts/error_page.html')
+
+
+@login_required
+def settings(request):
+    return render(request, 'accounts/settings.html')
+
+
+@login_required
+def account_settings(request):
+    return render(request, 'accounts/account_settings.html')
+
+
+@login_required
+def update_names(request):
+    form_class = forms.NamesUpdateForm
+    template_name = 'accounts/update_names.html'
+    user = get_user(request)
+
+    if not user:
+        return redirect('accounts:logout')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
+            return redirect('accounts:account_settings')
+        else:
+            return render(request, template_name, {'form': form})
+    else:
+        form = form_class(instance=user)
+        return render(request, template_name, {'form': form})
+
+
+@login_required
+def update_email(request):
+    form_class = forms.EmailUpdateForm
+    template_name = 'accounts/update_email.html'
+    user = get_user(request)
+
+    if not user:
+        return redirect('accounts:logout')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            user.email = form.cleaned_data['email']
+            user.save()
+            return redirect('accounts:account_settings')
+        else:
+            return render(request, template_name, {'form': form})
+    else:
+        form = form_class(instance=user)
+        return render(request, template_name, {'form': form})
+
+
+@login_required
+def update_institution(request):
+    form_class = forms.InstitutionUpdateForm
+    template_name = 'accounts/update_institution.html'
+    profile = get_user_profile(request)
+
+    if not profile:
+        return redirect('accounts:logout')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            profile.institution = form.cleaned_data['institution']
+            profile.save()
+            return redirect('accounts:account_settings')
+        else:
+            return render(request, template_name, {'form': form})
+    else:
+        form = form_class(instance=profile)
+        return render(request, template_name, {'form': form})
+
+
+@login_required
+def update_department(request):
+    form_class = forms.DepartmentUpdateForm
+    template_name = 'accounts/update_department.html'
+    profile = get_user_profile(request)
+
+    if not profile:
+        return redirect('accounts:logout')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            profile.department = form.cleaned_data['department']
+            profile.save()
+            return redirect('accounts:account_settings')
+        else:
+            return render(request, template_name, {'form': form})
+    else:
+        form = form_class(instance=profile)
+        return render(request, template_name, {'form': form})
+
+
+@login_required
+def update_phone_number(request):
+    form_class = forms.PhoneNumberUpdateForm
+    template_name = 'accounts/update_phone_number.html'
+    profile = get_user_profile(request)
+
+    if not profile:
+        return redirect('accounts:logout')
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            profile.phone_number = form.cleaned_data['phone_number']
+            profile.save()
+            return redirect('accounts:account_settings')
+        else:
+            return render(request, template_name, {'form': form})
+    else:
+        form = form_class(instance=profile)
+        return render(request, template_name, {'form': form})
+
+
+@login_required
+def update_profile_picture(request):
+    form_class = forms.ProfilePictureUpdateForm
+    template_name = 'accounts/update_profile_picture.html'
+    profile = get_user_profile(request)
+
+    if not profile:
+        return redirect('accounts:logout')
+
+    if request.method == 'POST':
+        form = form_class(files=request.FILES)
+        if form.is_valid():
+            profile.profile_picture = form.cleaned_data.get('profile_picture', None)
+            profile.save()
+            return redirect('accounts:account_settings')
+        else:
+            return render(request, template_name, {'form': form})
+    else:
+        form = form_class(instance=profile)
+        return render(request, template_name, {'form': form})

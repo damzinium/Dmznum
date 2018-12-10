@@ -1,4 +1,6 @@
 from datetime import datetime
+from django.http import HttpRequest
+from accounts.models import User, Profile
 
 
 def generate_years_for_bday():
@@ -37,3 +39,15 @@ def is_phone_number(phone_number):
     if phone_number[0] != '0':
         return False
     return True
+
+
+def get_user(request):
+    if isinstance(request, HttpRequest) and isinstance(request.user, User):
+        return request.user
+    return None
+
+
+def get_user_profile(request):
+    if isinstance(request, HttpRequest) and isinstance(request.user.profile, Profile):
+        return request.user.profile
+    return None

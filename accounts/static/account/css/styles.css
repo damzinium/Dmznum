@@ -1,23 +1,66 @@
+.damzi-button-group button {
+  border-radius: 0;
+  min-width: 5rem;
+  padding: 5px 10px;
+  margin: 10px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fs-2 {
+  font-size: 2.0rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.justify-content {
+  justify-content: center;
+}
+
+#settings .options {
+  margin: 10px auto;
+  box-shadow: 0 0 5px #808080;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+#settings .options:hover {
+  box-shadow: 0 0 10px #808080;
+}
+#back-btn {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.8rem;
+  box-sizing: border-box
+}
+#back-btn:focus, #back-btn:active {
+  outline: none;
+  box-shadow: none;
+}
+#back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.my-4 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .errorlist {
-    list-style: none;
-    padding: 5px;
-    margin: 0;
+  color: #dc3545;
 }
-.field-errors-group {
-    border: 1px solid red;
-}
-select {
-    width: 100%;
-}
-/* Please someone has to make this better */
-@media screen and (min-width: 578px) {
-    #id_date_of_birth_day, #id_date_of_birth_month, #id_date_of_birth_year {
-        width: 100%;
-    }
-}
-@media screen and (min-width: 768px) {
-    #id_date_of_birth_day, #id_date_of_birth_month, #id_date_of_birth_year {
-        width: calc(100% / 3);
-    }
-}
-/* */

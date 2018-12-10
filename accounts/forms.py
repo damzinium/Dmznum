@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 
-from .helpers import generate_years_for_bday, is_phone_number
+from library.models import Department
+from .helpers import is_phone_number
 from .models import Profile, User
 
 
@@ -28,20 +29,6 @@ class UserRegistrationForm(forms.ModelForm):
         return self.cleaned_data['last_name'].upper()
 
 
-def save(self, commit=True):
-    user = super(UserRegistrationForm, self).save(commit=False)
-    user.first_name = self.cleaned_data['first_name']
-    user.last_name = self.cleaned_data['last_name']
-    user.email = self.cleaned_data['email']
-
-    user.set_password(self.cleaned_data['password'])
-
-    if commit:
-        user.save()
-
-    return user
-
-
 class ProfileForm(forms.ModelForm):
     phone_number = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control-text',
@@ -52,10 +39,6 @@ class ProfileForm(forms.ModelForm):
     # ))
 
     def clean_phone_number(self):
-        """
-        custom validation for the phone number
-        :return: the phone number if valid
-        """
         phone_number = self.cleaned_data['phone_number']
         if not is_phone_number(phone_number):
             raise ValidationError('Please enter a valid number. eg: 0242425222.')
@@ -66,11 +49,11 @@ class ProfileForm(forms.ModelForm):
         fields = [
             'profile_picture',
             'institution',
-            'department_name',
+            'department',
             'level',
             'phone_number',
             # 'date_of_birth'
-        ]       
+        ]
 
     def save(self, commit=True):
         user = super(ProfileForm, self).save(commit=False)
@@ -82,19 +65,34 @@ class ProfileForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField(max_length=255, label="Email or Username")
-    password = forms.CharField(max_length=255, widget=forms.PasswordInput())
+    username_or_email = forms.CharField(max_length=255, widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Email or Username',
+            'class': 'form-control',
+            'autocomplete': 'off',
+            'onkeyup': 'loginBtnStateHandler()',
+            'onchange': 'loginBtnStateHandler()'
+        })
+    )
+    password = forms.CharField(max_length=255, widget=forms.PasswordInput(
+        attrs={
+            'placeholder': 'Password',
+            'class': 'form-control',
+            'onkeyup': 'loginBtnStateHandler()',
+            'onchange': 'loginBtnStateHandler()'
+        }
+    ))
 
     def clean(self):
         cleaned_data = super().clean()
 
-        _ = cleaned_data.get('username')
+        username_or_email = cleaned_data.get('username_or_email')
         password = cleaned_data.get('password')
 
-        user = authenticate(username=_, password=password)
+        user = authenticate(username=username_or_email, password=password)
         if user is None:
             try:
-                username = User.objects.get(email=_).username
+                username = User.objects.get(email=username_or_email).username
                 user = authenticate(username=username, password=password)
             except User.DoesNotExist:
                 user = None
@@ -102,3 +100,88 @@ class UserLoginForm(forms.Form):
         if user is not None:
             self.user = user
             return self
+
+
+class NamesUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'autocomplete': 'off',
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'autocomplete': 'off',
+            })
+        }
+
+
+class EmailUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email', )
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'autocomplete': 'off',
+            })
+        }
+
+
+class InstitutionUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('institution', )
+        widgets = {
+            'institution': forms.Select(attrs={
+                'class': 'form-control',
+            })
+        }
+
+
+class DepartmentUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('department', )
+        widgets = {
+            'department': forms.Select(attrs={
+                'class': 'form-control',
+            })
+        }
+
+
+class LevelUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('level', )
+
+
+class PhoneNumberUpdateForm(forms.ModelForm):
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data['phone_number']
+        if not is_phone_number(phone_number):
+            raise ValidationError('Please enter a valid number. eg: 0242425222.')
+        return phone_number
+
+    class Meta:
+        model = Profile
+        fields = ('phone_number', )
+        widgets = {
+            'phone_number': forms.TextInput(attrs={
+                'class': 'form-control',
+                'autocomplete': 'off',
+            })
+        }
+
+
+class ProfilePictureUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('profile_picture', )
+        widget = {
+            'profile_picture': forms.ClearableFileInput(attrs={
+                'class': 'form-control',
+            })
+        }

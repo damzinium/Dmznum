@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+<head>
+  <title>Damzinium | {% block title %}{% endblock %}</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="icon" href="{% static 'damzi/img/favicon.ico' %}">
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <link href="{% static 'account/css/styles.css' %}" rel="stylesheet"/>
+  <link type="text/css" href="{% static 'damzi/css/utils.css' %}" rel="stylesheet">
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
+
+  <style type="text/css">
+    /* New features */
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    .loader {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 99;
+      width: 100%;
+      height: 100%;
+      background: white;
+      /*middle of page*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .loader-text {
+      font-size: 30px;
+    }
+
+    .loader-img {
+      width: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <img class="loader-img" src="{% static 'damzi/img/loading.gif' %}" alt="loading"/>
+    <div class="loader-text">
+      Damzinium
+    </div>
+  </div>
+  <header class="navbar navbar-dark bg-dark">
+    <div class="navbar-brand text-center">
+      <a href="{% block back_href %}{% url 'accounts:profile' %}{% endblock %}" class="btn" id="back-btn"><</a>
+      <span class="">Damzinium</span>
+    </div>
+  </header>
+  <main class="mt-2">
+    <label class="fs-2 text-center d-block">{% block page_title %}{% endblock %}</label>
+    <hr class="my-4"/>
+    {% block main %}{% endblock %}
+  </main>
+  <footer>
+
+  </footer>
+  <div class="network-status alert-info">
+      <div>
+          <img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>
+          No internet connection
+      </div>
+  </div>
+  <!-- New features -->
+  <script type="text/javascript">
+      // show page loading overlay
+      window.addEventListener("load", function () {
+          const loader = document.querySelector(".loader");
+          loader.classList.add("hidden");
+      });
+  </script>
+</body>
+</html>

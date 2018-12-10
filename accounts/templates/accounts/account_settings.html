@@ -1,0 +1,19 @@
+{% extends 'accounts/settings_base.html' %}
+
+{% block title %}Account Settings{% endblock %}
+
+{% block back_href %}{% url 'accounts:settings' %}{% endblock %}
+
+{% block page_title %}Account Settings{% endblock %}
+
+{% block main %}
+  <div class="container-fluid">
+    <div class="row flex align-items justify-content" id="settings">
+      <a href="{% url 'accounts:update_profile_picture' %}" class="col-md-5 options bg-light">Change my profile photo</a>
+      <a href="{% url 'accounts:update_names' %}" class="col-md-5 options bg-light">Change my name(s)</a>
+      <a href="{% url 'accounts:update_email' %}" class="col-md-5 options bg-light">Change my email address</a>
+      <a href="{% url 'accounts:update_institution' %}" class="col-md-5 options bg-light">Change my institution</a>
+      <a href="{% url 'accounts:update_department' %}" class="col-md-5 options bg-light">Change my department</a>
+      <a href="{% url 'accounts:update_phone_number' %}" class="col-md-5 options bg-light">Change my phone number</a>
+    </div>
+{% endblock %}
