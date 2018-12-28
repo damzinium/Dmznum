@@ -1,4 +1,4 @@
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseServerError
@@ -8,10 +8,10 @@ from django.urls import reverse
 from django.views import generic
 from django.views.generic import View, CreateView
 
-from library.models import Ugrc, Ugrc_Topic
+from library.models import Course, CourseSelection, Ugrc, Ugrc_Topic
 
 from . import forms
-from .helpers import get_user, get_user_profile
+from .utils import get_user, get_profile
 from .models import Profile, User
 
 
@@ -108,11 +108,17 @@ def ots(request):
 
 
 # ugrc
-class Dashboard(generic.ListView):
-    template_name = 'accounts/profile.html'
+# class Dashboard(generic.ListView):
+#     template_name = 'accounts/profile.html'
+#
+#     def get_queryset(self):
+#         return Ugrc.objects.all()
 
-    def get_queryset(self):
-        return Ugrc.objects.all()
+
+def home(request):
+    course_selections = CourseSelection.objects.filter(user=get_user(request))
+    selected_courses = {course_selection.course for course_selection in course_selections}
+    return render(request, 'accounts/profile.html', {'selected_courses': selected_courses, })
 
 
 @login_required
@@ -154,13 +160,13 @@ def update_names(request):
         return redirect('accounts:logout')
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = form_class(data=request.POST, instance=user)
         if form.is_valid():
-            user.first_name = form.cleaned_data['first_name']
-            user.last_name = form.cleaned_data['last_name']
-            user.save()
+            form.save()
+            messages.success(request, 'Your names were successfully updated.')
             return redirect('accounts:account_settings')
         else:
+            messages.error(request, 'Some entries were incorrect. Please try again.')
             return render(request, template_name, {'form': form})
     else:
         form = form_class(instance=user)
@@ -177,12 +183,13 @@ def update_email(request):
         return redirect('accounts:logout')
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = form_class(data=request.POST, instance=user)
         if form.is_valid():
-            user.email = form.cleaned_data['email']
-            user.save()
+            form.save()
+            messages.success(request, 'Your email was successfully updated.')
             return redirect('accounts:account_settings')
         else:
+            messages.error(request, 'Some entries were incorrect. Please try again.')
             return render(request, template_name, {'form': form})
     else:
         form = form_class(instance=user)
@@ -193,18 +200,19 @@ def update_email(request):
 def update_institution(request):
     form_class = forms.InstitutionUpdateForm
     template_name = 'accounts/update_institution.html'
-    profile = get_user_profile(request)
+    profile = get_profile(request)
 
     if not profile:
         return redirect('accounts:logout')
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = form_class(data=request.POST, instance=profile)
         if form.is_valid():
-            profile.institution = form.cleaned_data['institution']
-            profile.save()
+            form.save()
+            messages.success(request, 'Your institution was successfully updated.')
             return redirect('accounts:account_settings')
         else:
+            messages.error(request, 'Some entries were incorrect. Please try again.')
             return render(request, template_name, {'form': form})
     else:
         form = form_class(instance=profile)
@@ -215,18 +223,19 @@ def update_institution(request):
 def update_department(request):
     form_class = forms.DepartmentUpdateForm
     template_name = 'accounts/update_department.html'
-    profile = get_user_profile(request)
+    profile = get_profile(request)
 
     if not profile:
         return redirect('accounts:logout')
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = form_class(data=request.POST, instance=profile)
         if form.is_valid():
-            profile.department = form.cleaned_data['department']
-            profile.save()
+            form.save()
+            messages.success(request, 'Your department was successfully updated.')
             return redirect('accounts:account_settings')
         else:
+            messages.error(request, 'Some entries were incorrect. Please try again.')
             return render(request, template_name, {'form': form})
     else:
         form = form_class(instance=profile)
@@ -237,18 +246,19 @@ def update_department(request):
 def update_phone_number(request):
     form_class = forms.PhoneNumberUpdateForm
     template_name = 'accounts/update_phone_number.html'
-    profile = get_user_profile(request)
+    profile = get_profile(request)
 
     if not profile:
         return redirect('accounts:logout')
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = form_class(data=request.POST, instance=profile)
         if form.is_valid():
-            profile.phone_number = form.cleaned_data['phone_number']
-            profile.save()
+            form.save()
+            messages.success(request, 'Your phone number was successfully updated.')
             return redirect('accounts:account_settings')
         else:
+            messages.error(request, 'Some entries were incorrect. Please try again.')
             return render(request, template_name, {'form': form})
     else:
         form = form_class(instance=profile)
@@ -259,18 +269,19 @@ def update_phone_number(request):
 def update_profile_picture(request):
     form_class = forms.ProfilePictureUpdateForm
     template_name = 'accounts/update_profile_picture.html'
-    profile = get_user_profile(request)
+    profile = get_profile(request)
 
     if not profile:
         return redirect('accounts:logout')
 
     if request.method == 'POST':
-        form = form_class(files=request.FILES)
+        form = form_class(files=request.FILES, instance=profile)
         if form.is_valid():
-            profile.profile_picture = form.cleaned_data.get('profile_picture', None)
-            profile.save()
+            form.save()
+            messages.success(request, 'Your profile picture was successfully updated.')
             return redirect('accounts:account_settings')
         else:
+            messages.error(request, 'Some entries were incorrect. Please try again.')
             return render(request, template_name, {'form': form})
     else:
         form = form_class(instance=profile)

@@ -6,4 +6,5 @@ app_name = 'damzi'
 
 urlpatterns = [
 	path('', views.index, name='index'),
+	path('messages/get/', views.get_messages, name='get_messages'),
 ]

@@ -70,20 +70,19 @@
         }
         /* New features */
     </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <!-- New features -->
     <div class="loader">
-        <img class="loader-img" src="{% static 'damzi/img/loading.gif' %}" alt="loading"/>
-        <div class="loader-text">
-            Damzinium
-        </div>
+        <img class="loader-img" src="{% static 'images/loading.gif' %}" alt="loading"/>
     </div>
     <!-- New features -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div class="mdl-layout__header">
         <img src="{% static 'account/images/logoandtext.png' %}">
     </div>
+    <ul id="messages" class="list-group"></ul>
 
     <!--Main Layout-->
     <div class="mdl-layout__content">
@@ -104,11 +103,17 @@
     </div>
     <!-- New features -->
     <script type="text/javascript">
-        // show page loading overlay
-        window.addEventListener("load", function () {
-            const loader = document.querySelector(".loader");
-            loader.classList.add("hidden");
+      // hide page loader
+      window.addEventListener("load", function () {
+        var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
+          .insertBefore('#messages').fadeOut("fast", function () {
+            getAndRenderMessages();
+          });
+        const loader = $('.loader');
+        loader.fadeOut("slow", function () {
+          loader.remove();
         });
+      });
     </script>
     <!-- Scripts for Utilities -->
     <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 
 from library.models import Department
-from .helpers import is_phone_number
+from .utils import is_phone_number
 from .models import Profile, User
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Institution, School, Course, Topic, Department, Ugrc, Ugrc_Topic, Comment, Reply
+from .models import Institution, School, Course, Topic, Department, Ugrc, Ugrc_Topic, Comment, Reply, CourseSelection
 
 # Register your models here.
 admin.site.register(School)
@@ -9,6 +9,7 @@ admin.site.register(Topic)
 admin.site.register(Department)
 admin.site.register(Ugrc)
 admin.site.register(Ugrc_Topic)
+admin.site.register(CourseSelection)
 
 @admin.register(Reply)
 class ReplyAdmin(admin.ModelAdmin):

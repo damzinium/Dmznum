@@ -1,6 +1,8 @@
 {% extends 'library/base.html' %}
 {% load static %}
 
+{% block title %}{{ course.code }}{% endblock %}
+
 {% block content %}
 <div class="container">
                 <div class="row">
@@ -11,7 +13,7 @@
                         {% for topic in course.topic_set.all %}
                             <div class="card">
                                 <div class="card-header light-green darken-1 lighten-1 white-text">
-                                    {{ topic.course_name }}
+                                    {{ topic.course }}
                                 </div>
 
                                 <div class="card-body">

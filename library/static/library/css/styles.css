@@ -25,3 +25,48 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+.light-font .breadcrumb-item + .breadcrumb-item::before {
+        color: #fff;
+    }
+    .light-font .breadcrumb-item.active {
+        color: #cfd8dc;
+    }
+
+/*the supporting text(course desciprtion) of all cards in the swiper*/
+.swiper-slide > .mdl-card > .mdl-card__supporting-text{
+    font-size: 0.8em;
+    padding: 4px;
+    width: 100%;
+    text-align: left;
+}
+/*------------swipers---------------*/
+/*swiper one*/
+.swiper-container {
+    width: 100%;
+    height: 300px;
+    margin: 20px auto;
+}
+.swiper-slide {
+    text-align: center;
+    width: 60%;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide:nth-child(2n) {
+    width: 40%;
+}
+.swiper-slide:nth-child(3n) {
+    width: 20%;
+}

@@ -86,15 +86,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name.capitalize() + ' ' + self.last_name.capitalize()
 
 
-@receiver(post_save, sender=User)
+@receiver(models.signals.post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        profile = Profile()
-        profile.save()
-        instance.profile = profile
+        instance.profile = Profile.objects.create()
         instance.save()
 
 
-@receiver(post_save, sender=User)
+@receiver(models.signals.post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()

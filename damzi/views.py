@@ -1,6 +1,5 @@
-from django.shortcuts import render_to_response, redirect
-
-# Create your views here.
+from django.http import HttpResponseBadRequest
+from django.shortcuts import redirect, render
 
 
 def index(request):
@@ -8,3 +7,10 @@ def index(request):
 		return redirect('accounts:profile')
 	else:
 		return redirect('accounts:login')
+
+
+def get_messages(request):
+	if request.is_ajax():
+		return render(request, 'damzi/messages.html')
+	else:
+		return HttpResponseBadRequest('request was badly formed')

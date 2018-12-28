@@ -47,7 +47,7 @@ def get_user(request):
     return None
 
 
-def get_user_profile(request):
+def get_profile(request):
     if isinstance(request, HttpRequest) and isinstance(request.user.profile, Profile):
         return request.user.profile
     return None

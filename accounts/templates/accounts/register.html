@@ -1,7 +1,7 @@
 {% extends 'accounts/base.html' %}
 {% load static %}
 
-
+{% block title %}Register{% endblock %}
 
 {% block content %}
 
@@ -26,14 +26,14 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col">
                                 <div class="md-form" style="min-width:100%">
                                     <div class="">
                                         {{ form.last_name.errors }}
                                         <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Your last name">
                                         <label for="{{ form.last_name.last_name }}" class=""></label>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                         <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                                             For additional account security
                                         </small>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
@@ -64,24 +64,24 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="col">
                                 <div class="md-form" style="min-width:100%">
                                     <div class="">
                                         {{ form.password.errors }}
                                         <input class="form-control" type="password" id="password" name="password" placeholder="Your password">
-                                        <label for="{{ form.password.password }}" class=""></label> 
-                                    </div>    
+                                        <label for="{{ form.password.password }}" class=""></label>
+                                    </div>
                                 </div>
-                            </div>    
+                            </div>
                             <div class="col">
                                 <div class="md-form" style="min-width:100%">
                                     <div class="">
                                         {{ form.confirm_password.errors }}
                                         <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password">
                                         <label for="{{ form.confirm_password.confirm_password }}" class=""></label>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -102,4 +102,3 @@
     </div>
 </div>
 {% endblock %}
-

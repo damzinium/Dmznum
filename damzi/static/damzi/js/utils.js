@@ -10,3 +10,14 @@ window.addEventListener("offline", function () {
     networkStatus.classList.remove("hidden");
     networkStatus.classList.add("visible");
 });
+
+$(document).ajaxStart(function () {
+  $('.ajax-loader').fadeIn();
+}).ajaxStop(function () {
+  $('.ajax-loader').fadeOut();
+});
+
+// get and display messages in request obj
+function getAndRenderMessages() {
+  $('#messages').load('/messages/get/');
+}

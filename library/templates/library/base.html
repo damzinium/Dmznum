@@ -18,7 +18,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>{% block title %}Studyroom{% endblock %}</title>
+    <title>{% block title %}{% endblock %} | Damzinium</title>
   <link rel="icon" href="{% static 'library/images/favicon.ico' %}">
 
     <!-- Page styles -->
@@ -47,53 +47,6 @@
     <!--Page specific CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'library/css/courses.css' %}">
     <style type="text/css">
-        .light-font .breadcrumb-item + .breadcrumb-item::before {
-                color: #fff;
-            }
-            .light-font .breadcrumb-item.active {
-                color: #cfd8dc;
-            }
-
-        /*the supporting text(course desciprtion) of all cards in the swiper*/
-        .swiper-slide > .mdl-card > .mdl-card__supporting-text{
-            font-size: 0.8em;
-            padding: 4px;
-            width: 100%;
-            text-align: left;
-        }
-        /*------------swipers---------------*/
-        /*swiper one*/
-        .swiper-container {
-            width: 100%;
-            height: 300px;
-            margin: 20px auto;
-        }
-        .swiper-slide {
-            text-align: center;
-            width: 60%;
-
-            /* Center slide text vertically */
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-        }
-        .swiper-slide:nth-child(2n) {
-            width: 40%;
-        }
-        .swiper-slide:nth-child(3n) {
-            width: 20%;
-        }
-
-        /* New features */
         .loader {
             position: fixed;
             left: 0;
@@ -117,14 +70,13 @@
             width: 80px;
         }
     </style>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- New features -->
     <div class="loader">
-        <img class="loader-img" src="{% static 'damzi/img/loading.gif' %}" alt="loading"/>
-        <div class="loader-text">
-            Damzinium
-        </div>
+        <img class="loader-img" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
     </div>
     <!-- New features -->
 
@@ -136,7 +88,7 @@
 
       {% include 'accounts/header.html' %}
 
-
+      <ul id="messages" class="list-group"></ul>
         <main class="mdl-layout__content">
 
             <!--WORK HERE-->
@@ -153,21 +105,17 @@
     </div>
     <!--/ Simple header with scrollable tabs. -->
 
-
-    <!-- New features -->
-    <div class="network-status alert-info">
+    <div class="network-status alert-warning">
         <div>
             <img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>
             No internet connection
         </div>
     </div>
-    <!-- New features -->
 
 
 
   <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Material Design Lite -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -213,14 +161,24 @@
       });
     </script>
     <script type="text/javascript">
-        // show page loading overlay
-        window.addEventListener("load", function () {
-            const loader = document.querySelector(".loader");
-            loader.classList.add("hidden");
+      // hide page loader
+      window.addEventListener("load", function () {
+        var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
+          .insertBefore('#messages').fadeOut("fast", function () {
+            getAndRenderMessages();
+          });
+        const loader = $('.loader');
+        loader.fadeOut("slow", function () {
+          loader.remove();
         });
+      });
     </script>
+
     <!-- Scripts for Utilities -->
     <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
     <!-- Scripts for Utilities -->
+    <script>
+
+    </script>
   </body>
 </html>

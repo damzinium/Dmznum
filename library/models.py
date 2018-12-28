@@ -1,61 +1,67 @@
+from os import environ
+
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
+from django.dispatch import receiver
 from django.urls import reverse
 from django.utils import timezone
 
 
 class Institution(models.Model):
-    institution = models.CharField(max_length=100, default="Legon")
+    name = models.CharField(max_length=100, default="Legon")
 
     class Meta:
-        ordering = ('institution',)
+        ordering = ('name',)
 
     def __str__(self):
-        return self.institution
+        return self.name
 
 
 class School(models.Model):
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
-    school_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
     class Meta:
-        ordering = ('school_name',)
+        ordering = ('name',)
 
     def __str__(self):
-        return self.school_name
+        return self.name
 
 
 class Department(models.Model):
-    school_name = models.ForeignKey(School, on_delete=models.CASCADE)
-    department_name = models.CharField(max_length=100)
-    
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
     class Meta:
-        ordering = ('department_name',)
-       
+        ordering = ('name',)
+
     def __str__(self):
-        return self.department_name
+        return self.name
 
 
 class Course(models.Model):
-    department_name = models.ForeignKey(Department, on_delete=models.CASCADE)
-    course_name = models.CharField(max_length=100)
-    course_code = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=100)
+    is_required = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('course_name',)
-        
+        ordering = ('name',)
+
     def __str__(self):
-        return self.course_code + ":" + self.course_name
+        return self.code + ":" + self.name
 
 
 class Topic(models.Model):
-    course_name = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    active_content = RichTextUploadingField(editable=False, null=True)
     content = RichTextUploadingField('content')
+    push_updates = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('-course_name',)
-        
+        ordering = ('-title',)
+
     def get_absolute_url(self):
         return reverse('accounts:profile')
 
@@ -80,7 +86,7 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
-    
+
     from accounts.models import User
 
     comment = models.ForeignKey(
@@ -123,3 +129,20 @@ class Ugrc_Topic(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CourseSelection(models.Model):
+    from accounts.models import User
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    semester = models.IntegerField(choices=((1, 2, ), ), default=environ.get('SEMESTER', 1))
+    selection_date = models.DateTimeField(auto_now_add=True)
+
+
+@receiver(models.signals.post_save, sender=Topic)
+def push_updates(sender, instance, **kwargs):
+    if instance.push_updates:
+        instance.active_content = instance.content
+        instance.push_updates = False
+        instance.save()

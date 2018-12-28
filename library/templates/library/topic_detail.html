@@ -82,7 +82,7 @@
                                         {{ topic.title }}
                                     </div>
                                     <div class="card-body">
-                                        <div class="card-text">{{ topic.content|safe }}</div>
+                                        <div class="card-text">{{ topic.active_content|safe }}</div>
                                     </div>
                                 </div>
                                 <!--/topic content-->
@@ -131,7 +131,7 @@
                                                 {% for field in comment_form %}
                                                     {{ field }}
                                                 {% endfor %}
-                                                <button type="submit" id="submit-comment" class="btn btn-primary">Comment</button>
+                                                <button type="submit" id="submit-comment" class="btn btn-secondary">Comment</button>
                                             </form>
                                             <hr/>
                                             <div>
