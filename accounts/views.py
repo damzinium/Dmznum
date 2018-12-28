@@ -92,7 +92,7 @@ def ots(request):
             user = get_object_or_404(User, id=request.user.id)
             user.profile.profile_picture = form.cleaned_data['profile_picture']
             user.profile.institution = form.cleaned_data['institution']
-            user.profile.department = form.cleaned_data['department']
+            # user.profile.department = form.cleaned_data['department']
             user.profile.level = form.cleaned_data['level']
             user.profile.phone_number = form.cleaned_data['phone_number']
             # user.profile.date_of_birth = form.cleaned_data['date_of_birth']
@@ -105,6 +105,7 @@ def ots(request):
     else:
         form = forms.ProfileForm
         return render(request, 'accounts/ots.html', {'form': form})
+
 
 
 # ugrc

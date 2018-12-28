@@ -49,7 +49,7 @@ class CourseDetailView(generic.DetailView):
 #     model = Topic
 #     template_name = 'library/topic_detail.html'
 
-
+@login_required
 def topic_detail(request, pk):
     topic = get_object_or_404(Topic, id=pk)
     profile_picture = get_object_or_404(User, id=request.user.id).profile.profile_picture

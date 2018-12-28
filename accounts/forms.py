@@ -49,7 +49,7 @@ class ProfileForm(forms.ModelForm):
         fields = [
             'profile_picture',
             'institution',
-            'department',
+            # 'department',
             'level',
             'phone_number',
             # 'date_of_birth'
