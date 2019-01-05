@@ -9,7 +9,7 @@
     <div class="row flex align-items justify-content" id="settings">
       <a href="{% url 'accounts:account_settings' %}" class="col-md-5 options bg-light">Account</a>
       <a href="" class="col-md-5 options bg-light">Courses</a>
-      <a href="" class="col-md-5 options bg-light">Security</a>
+      <a href="{% url 'accounts:security_settings' %}" class="col-md-5 options bg-light">Security</a>
       <a href="" class="col-md-5 options bg-light">Delete Account</a>
     </div>
 {% endblock %}

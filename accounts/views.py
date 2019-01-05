@@ -1,6 +1,8 @@
 from django.contrib import auth, messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect, render_to_response, HttpResponseRedirect, get_object_or_404
 from django.template.context_processors import csrf
@@ -287,3 +289,23 @@ def update_profile_picture(request):
     else:
         form = form_class(instance=profile)
         return render(request, template_name, {'form': form})
+
+
+@login_required
+def security_settings(request):
+    return render(request, 'accounts/security_settings.html')
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return redirect('accounts:change_password')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+        })

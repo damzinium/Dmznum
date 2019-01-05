@@ -1,0 +1,15 @@
+{% extends 'accounts/settings_base.html' %}
+
+{% block title %}Account Settings{% endblock %}
+
+{% block back_href %}{% url 'accounts:settings' %}{% endblock %}
+
+{% block page_title %}Account Settings{% endblock %}
+
+{% block main %}
+  <div class="container-fluid">
+    <div class="row flex align-items justify-content" id="settings">
+      <a href="{% url 'accounts:change_password' %}" class="col-md-5 options bg-light">Change my Password</a>
+      
+    </div>
+{% endblock %}

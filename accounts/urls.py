@@ -31,10 +31,12 @@ urlpatterns = [
 
     path('settings/', views.settings, name='settings'),
     path('settings/account/', views.account_settings, name='account_settings'),
+    path('settings/security/', views.security_settings, name='security_settings'),
     path('settings/account/profile_picture/update/', views.update_profile_picture, name='update_profile_picture'),
     path('settings/account/names/update/', views.update_names, name='update_names'),
     path('settings/account/phone/update', views.update_phone_number, name='update_phone_number'),
     path('settings/account/email/update/', views.update_email, name='update_email'),
     path('settings/account/institution/update/', views.update_institution, name='update_institution'),
     path('settings/account/department/update/', views.update_department, name='update_department'),
+    path('settings/security/password/change/', views.change_password, name='change_password'),
 ]
