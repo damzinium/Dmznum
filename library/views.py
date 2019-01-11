@@ -29,7 +29,7 @@ def view_courses(request):
     course_selections = CourseSelection.objects.filter(user=get_user(request))
     selected_courses = {course_selection.course for course_selection in course_selections}
 
-    paginator = Paginator(department_list, 3)
+    paginator = Paginator(department_list, 8)
 
     page = request.GET.get('page')
     departments = paginator.get_page(page)
@@ -57,7 +57,7 @@ def course_contents(request, pk):
     department_courses = get_object_or_404(Course, id=pk)
     course_list = department_courses.topic_set.all()
 
-    paginator = Paginator(course_list, 3)
+    paginator = Paginator(course_list, 10)
 
     page = request.GET.get('page')
     topics = paginator.get_page(page)
