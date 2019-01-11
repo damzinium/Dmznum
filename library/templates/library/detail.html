@@ -5,25 +5,46 @@
 
 {% block content %}
 <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
 
-                	<center><h3>List of topics</h3></center>
-                	<!--course generator-->
-                        {% for topic in course.topic_set.all %}
-                            <div class="card">
-                                <div class="card-header light-green darken-1 lighten-1 white-text">
-                                    {{ topic.course }}
-                                </div>
+            <center><h3>List of topics</h3></center>
+            <!--course generator-->
+            {% for topic in topics %}
+                <div class="card">
+                    <div class="card-header light-green darken-1 lighten-1 white-text">
+                        {{ topic.course }}
+                    </div>
 
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ topic.title }}</h4>
-                                    <!--<p class="card-text">Sample text</p>-->
-                                    <a href="{% url 'library:topic_detail' topic.id %}" class="btn damzinium-green-head">READ</a>
-                                </div>
-                            </div>
-                            <!--/course generator--><br/>
-                        {% endfor %}
+                    <div class="card-body">
+                        <h4 class="card-title">{{ topic.title }}</h4>
+                        <!--<p class="card-text">Sample text</p>-->
+                        <a href="{% url 'library:topic_detail' topic.id %}" class="btn damzinium-green-head">READ</a>
+                    </div>
+                </div>
+            <!--/course generator--><br/>
+            {% endfor %}
 
-                    </div></div></div>
+            <!-- Pagination -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if topics.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ topics.previous_page_number }}">previous</a>
+              {% endif %}
+            </span>
+
+            <span class="current">
+              Page {{ topics.number }} of {{ topics.paginator.num_pages }}
+            </span>
+
+            {% if topics.has_next %}
+              <a href="?page={{ topics.next_page_number }}">next</a>
+              <a href="?page={{ topics.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+          </div>
+        <!-- pagination -->
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -13,20 +13,27 @@ from .models import Topic, Course, Department, Ugrc, Ugrc_Topic, Comment, Reply,
 from .forms import CommentForm
 
 
+@login_required
+def department_list(request):
+    departments = Department.objects.all()
+    context = {
+        'departments': departments
+    }
+    return render(request, 'library/department.html', context)
 
-# Create your views here.
-class DepartmentView(generic.ListView):
-    template_name = 'library/department.html'
 
-    def get_queryset(self):
-        return Department.objects.all()
-
-
+@login_required
 def view_courses(request):
     required_courses = Course.objects.filter(is_required=True)
-    departments = Department.objects.all()
+    department_list = Department.objects.all()
     course_selections = CourseSelection.objects.filter(user=get_user(request))
     selected_courses = {course_selection.course for course_selection in course_selections}
+
+    paginator = Paginator(department_list, 3)
+
+    page = request.GET.get('page')
+    departments = paginator.get_page(page)
+
     context = {
         'required_courses': required_courses,
         'departments': departments,
@@ -35,19 +42,32 @@ def view_courses(request):
     return render(request, 'library/department.html', context)
 
 
-class CourseView(generic.DetailView):
-    model = Department
-    template_name = 'library/course.html'
+@login_required
+def department_courses(request, pk):
+    department = get_object_or_404(Department,id=pk)
+    context = {
+        'courses': department.course_set.all()
+    }
+    return render(request, 'library/course.html', context)
 
 
-class CourseDetailView(generic.DetailView):
-    model = Course
-    template_name = 'library/detail.html'
+
+@login_required
+def course_contents(request, pk):
+    department_courses = get_object_or_404(Course, id=pk)
+    course_list = department_courses.topic_set.all()
+
+    paginator = Paginator(course_list, 3)
+
+    page = request.GET.get('page')
+    topics = paginator.get_page(page)
+
+    context = {
+        'topics': topics
+    }
+    return render(request, 'library/detail.html', context)
 
 
-# class TopicDetailView(generic.DetailView):
-#     model = Topic
-#     template_name = 'library/topic_detail.html'
 
 @login_required
 def topic_detail(request, pk):
