@@ -1,116 +1,81 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Damzinium | {% block title %}{% endblock %}</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="icon" href="{% static 'damzi/img/favicon.ico' %}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--EMOJI font-->
-  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-  <!--Material Design Font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <!-- Material Design Bootstrap All CSS -->
-  <link href="{% static 'library/css/compiled.min.css' %}" rel="stylesheet">
-  <!-- Material Design Lite -->
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
-  <!-- Material Design Custom CSS -->
-  <link rel="stylesheet" href="{% static 'library/css/styles.css' %}">
-  <!-- Damzinium Custom CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'library/css/default.css' %}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85689451-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- Styles for Utilities -->
-  <link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}">
-  <!-- Styles for Utilities -->
-  <link href="{% static 'account/css/styles.css' %}" rel="stylesheet" type="text/css"/>
-
-
-  <style type="text/css">
-    /* New features */
-    body {
-      width: 100%;
-      height: 100%;
+  gtag('config', 'UA-85689451-2');
+</script>
+<meta name="google-site-verification" content="xSCoNEvMbZAmq4Kg8aalqJyQV1AY4Hc91jaCVV1VVgs" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>{% block title %}{% endblock %} | Damzinium</title>
+<link rel="icon" href="{% static 'damzi/img/favicon.ico' %}">
+    
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"><!-- Page styles -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/css/mdb.min.css" rel="stylesheet"><!-- Material Design Bootstrap -->
+<link rel="stylesheet" href="{% static 'account/css/styles.css' %}"><!-- Material Design Custom CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}"><!-- Styles for Utilities -->
+<style type="text/css">
+    html, body {
+        overflow-x: hidden;
+        background: #fff;
+        text-align: center;
+        min-height: 60px;
     }
     .loader {
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 99;
-      width: 100%;
-      height: 100%;
-      background: white;
-      /*middle of page*/
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-    }
+        position: fixed;left: 0;top: 0;z-index: 99;width: 100%;height: 100%;background: white;display: flex;justify-content: center;align-items: center;box-sizing: border-box;}
 
-    .loader-text {
-      font-size: 30px;
-    }
+    .loader-text {font-size: 30px;}
 
-    .loader-img {
-      width: 80px;
-    }
-  </style>
+    .loader-img {width: 80px;} 
+</style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
-  <div class="loader">
-    <img class="loader-img" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
-  </div>
-  <header class="navbar navbar-dark bg-dark">
-    <div class="navbar-brand">
-      <a href="{% block back_href %}{% url 'accounts:profile' %}{% endblock %}" class="btn-floating"><i class="fa fa-arrow-left"></i></a>
-      <span class="" style="font-size: 35px">Damzinium</span>
+
+<body class="container-fluid">
+<!-- loader image --><div class="loader"><img class="loader-img" src="{% static 'images/loading.gif' %}" alt="loading"/></div>
+
+<div class="">
+    <h3>{% block page_title %}{% endblock %}</h3>
+    <div class="mdl-layout__content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
     </div>
-  </header>
-  <ul id="messages" class="list-group"></ul>
-  <main class="mt-2">
-    <span class="text-center d-block" style="font-size: 30px;">{% block page_title %}{% endblock %}</span>
-    <hr class="my-4"/>
-    {% block main %}{% endblock %}
-  </main>
-  <footer>
+</div>
 
-  </footer>
-  <div class="network-status alert-info">
-      <div>
-          <img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>
-          No internet connection
-      </div>
-  </div>
+<div class="network-status alert-info"><!-- No Internet alert -->
+    <div><img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>No internet connection</div>
+</div>
 
-  <!-- SCRIPTS -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- Material Design Lite -->
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
-<!-- Swiper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
-  <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
-  <script type="text/javascript">
-    // hide page loader
+<script type="text/javascript">    // hide page loader
     window.addEventListener("load", function () {
-      var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
-        .insertBefore('#messages').fadeOut("fast", function () {
-          getAndRenderMessages();
+        var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
+          .insertBefore('#messages').fadeOut("fast", function () {
+            getAndRenderMessages();
+          });
+        const loader = $('.loader');
+        loader.fadeOut("slow", function () {
+          loader.remove();
         });
-      const loader = $('.loader');
-      loader.fadeOut("slow", function () {
-        loader.remove();
-      });
     });
-  </script>
+</script>
+<script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
+<!-- Material Design Lite --><script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
+<!-- Bootstrap tooltips --><script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<!-- Bootstrap core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<!-- MDB core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
 </body>
 </html>

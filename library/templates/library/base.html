@@ -1,11 +1,9 @@
-<!--loads the path to our static files -->
 {% load static %}
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85689451-2"></script>
+<head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85689451-2"></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -13,121 +11,61 @@
 
   gtag('config', 'UA-85689451-2');
 </script>
-
-    <meta name="google-site-verification" content="xSCoNEvMbZAmq4Kg8aalqJyQV1AY4Hc91jaCVV1VVgs" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>{% block title %}{% endblock %} | Damzinium</title>
-  <link rel="icon" href="{% static 'library/images/favicon.ico' %}">
-
-    <!-- Page styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--EMOJI font-->
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-    <!--Material Design Font-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!-- Material Design Bootstrap All CSS -->
-    <link href="{% static 'library/css/compiled.min.css' %}" rel="stylesheet">
-    <!-- Material Design Lite -->
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
-    <!-- Material Design Custom CSS -->
-    <link rel="stylesheet" href="{% static 'library/css/styles.css' %}">
-    <!-- Damzinium Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'library/css/default.css' %}">
-
-    <!-- Styles for Utilities -->
-    <link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}">
-    <!-- Styles for Utilities -->
-
-    <!--Page specific CSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'library/css/courses.css' %}">
+<meta name="google-site-verification" content="xSCoNEvMbZAmq4Kg8aalqJyQV1AY4Hc91jaCVV1VVgs" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>{% block title %}{% endblock %} | Damzinium</title>
+<link rel="icon" href="{% static 'library/images/favicon.ico' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"><!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--EMOJI font-->
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"><!--Material Design Font-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><!-- Material Design Bootstrap All CSS -->
+<link href="{% static 'library/css/compiled.min.css' %}" rel="stylesheet"><!-- Material Design Lite -->
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css"><!-- Swiper CSS -->
+<link rel="stylesheet" href="{% static 'library/css/styles.css' %}"><!-- Material Design Custom CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'library/css/default.css' %}"><!-- Damzinium Custom CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}"><!-- Styles for Utilities -->
+<link rel="stylesheet" type="text/css" href="{% static 'library/css/courses.css' %}">
     <style type="text/css">
-        .loader {
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 99;
-            width: 100%;
-            height: 100%;
-            background: white;
-            /*middle of page*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-        }
-
-        .loader-text {
-            font-size: 30px;
-        }
-
-        .loader-img {
-            width: 80px;
-        }
+        html, body {background: #fff;}
+        .loader {position: fixed; left: 0; top: 0; z-index: 99; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center; box-sizing: border-box;}
+        .loader-text {font-size: 30px;}
+        .loader-img {width: 80px;}
     </style>
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <!-- New features -->
-    <div class="loader">
-        <img class="loader-img" src="{% static 'images/loading.gif' %}" alt="Loading..."/>
-    </div>
-    <!-- New features -->
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- loader image --><div class="loader"><img class="loader-img" src="{% static 'images/loading.gif' %}" alt="Loading..."/></div>
 
   {% block modal %}
   {% endblock %}
-
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
-      {% include 'accounts/header.html' %}
-
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    {% include 'accounts/header.html' %}
       <ul id="messages" class="list-group"></ul>
         <main class="mdl-layout__content">
-
-            <!--WORK HERE-->
-                {% block content %}
-                {% endblock %}
-              <!-- /WORK HERE -->
-
-
-
-        {% include 'accounts/footer.html' %}
-      </main>
-
-
+<!--WORK HERE-->
+            {% block content %}
+            {% endblock %} 
+<!--WORK HERE-->
+        
+    {% include 'accounts/footer.html' %}
+        </main>
     </div>
-    <!--/ Simple header with scrollable tabs. -->
-
     <div class="network-status alert-warning">
         <div>
             <img src="{% static 'damzi/img/offline.png' %}" alt="offline image"/>
             No internet connection
         </div>
     </div>
-
-
-
   <!-- SCRIPTS -->
-
-    <!-- Material Design Lite -->
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
-  <!-- Swiper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
-    <!-- Initialize Swiper -->
-      <script>
+<!-- Material Design Lite --><script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<!-- Bootstrap tooltips --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
+<!-- Swiper JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+    <script>//Initialize Swiper
       var swiper = new Swiper('.swiper-container', {
           navigation: {
         nextEl: '.swiper-button-next',
@@ -173,12 +111,6 @@
         });
       });
     </script>
-
-    <!-- Scripts for Utilities -->
-    <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
-    <!-- Scripts for Utilities -->
-    <script>
-
-    </script>
-  </body>
+<!-- Scripts for Utilities --><script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
+</body>
 </html>
