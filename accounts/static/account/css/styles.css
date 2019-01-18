@@ -1,43 +1,16 @@
-.damzi-button-group button {
-  border-radius: 0;
-  min-width: 5rem;
-  padding: 5px 10px;
-  margin: 10px;
-}
+.damzi-button-group button {border-radius: 0;min-width: 5rem;padding: 5px 10px;margin: 10px;}
+.fs-2 {font-size: 2.0rem;}
 
+.flex {display: flex;}
 
+.flex.align-center {align-items: center;}
 
-.fs-2 {
-  font-size: 2.0rem;
-}
+.flex.justify-content {justify-content: center;}
 
-.flex {
-  display: flex;
-}
+#settings .options {margin: 10px auto;box-shadow: 0 0 5px #808080;padding: 30px;background: rgba(0, 0, 0, 0.1);text-decoration: none;}
 
-.flex.align-center {
-  align-items: center;
-}
+#settings .options:hover {box-shadow: 0 0 10px #808080;}
 
-.flex.justify-content {
-  justify-content: center;
-}
+.my-4 {border: 1px solid rgba(0, 0, 0, 0.1);}
 
-#settings .options {
-  margin: 10px auto;
-  box-shadow: 0 0 5px #808080;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-}
-#settings .options:hover {
-  box-shadow: 0 0 10px #808080;
-}
-
-
-.my-4 {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-.errorlist {
-  color: #dc3545;
-}
+.errorlist {color: #dc3545;}

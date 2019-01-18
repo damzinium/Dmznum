@@ -1,30 +1,12 @@
-#id_comment {
-    width: calc(100% - 70px);
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    height: 40px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
+#id_comment {width: calc(100% - 70px);border: 1px solid black;border-radius: 5px;padding: 5px;height: 40px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 #id_comment:focus {
     outline: none;
 }
 
-#comment-list, #reply-list {
-    list-style-type: none;
-}
+#comment-list, #reply-list {list-style-type: none;}
 
-.profile-picture-small {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
+.profile-picture-small {width: 40px;height: 40px;display: inline-block;vertical-align: top;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+
 .light-font .breadcrumb-item + .breadcrumb-item::before {
         color: #fff;
     }
@@ -33,23 +15,17 @@
     }
 
 /*the supporting text(course desciprtion) of all cards in the swiper*/
-.swiper-slide > .mdl-card > .mdl-card__supporting-text{
-    font-size: 0.8em;
-    padding: 4px;
-    width: 100%;
-    text-align: left;
-}
+.swiper-slide > .mdl-card > .mdl-card__supporting-text{font-size: 0.8em;padding: 4px;width: 100%;text-align: left;}
 /*------------swipers---------------*/
 /*swiper one*/
 .swiper-container {
     width: 100%;
     height: 300px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 .swiper-slide {
     text-align: center;
     width: 60%;
-
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
