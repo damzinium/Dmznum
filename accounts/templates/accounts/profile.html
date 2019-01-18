@@ -4,94 +4,73 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<style type="text/css">
-  h5 {
-    letter-spacing: 3px;
-}
+<style type="text/css">h5 {letter-spacing: 2px; margin: 0px;}</style>
 
-</style>
-
-<!-- Intro Section -->
-
-<div class="container">
+<div class="container-fluid" style="padding: 0px !important;">
   <div class="row justify-content-center">
-
-    <!--WORK HERE-->
-    <div class="col-md-10">
-        <div class="container mt-5">
-            <h4 class="text-center">Welcome {{ user.username }}, to the best learning experience you've ever had!</h4>
-            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-              <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color-text--white" style="background-image: url({% static 'account/images/damzupgraded.png' %});">
-              </header>
-              <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                <div class="mdl-card__title">
-                  <h4>Damzinium has upgraded!!!</h4>
-                </div>
-                <div class="mdl-card__supporting-text">
-                        Bigger. Better. A learning experience you'll never forget.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                  <a href="{% url 'library:about' %}" class="mdl-button">What's new?</a>
-                </div>
-              </div>
-            </section>
-
-
-          <!--Department-->
-          <div class="white mdl-shadow--2dp container"><h4 class="mb-4 damzi-dark-green-text">Select a UGRC to study</h4></div>
-
-              <!-- UGRC PILLS -->
-        <!--FOR NOW THERE SHOULD BE ONLY ONE PILL. A LOOP CAN BE USED TO GENERATE THE SECOND PILL LATER. it would have to be a nested loop though, else the "active" will appear more than once-->
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="pills-L100-tab" data-toggle="pill" href="#pills-L100" role="tab" aria-controls="pills-L100" aria-selected="true">MY COURSES</a>
-  </li>
-</ul>
-<div class="tab-content pt-2 pl-1" id="pills-tabContent">
-  <!-- level 100 tab -->
-  <div class="tab-pane fade show active" id="pills-L100" role="tabpanel" aria-labelledby="pills-L100-tab">
-    <!-- Swiper -->
-                  <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                  <!--UGRC-->
-                  {% for course in selected_courses %}
-                      <div class="swiper-slide">
-                        <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}">
-                          <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%"
-                            alt="">
-                          </div>
-                          <div class="mdl-card__title">
-                            {{ course.code }}
-                          </div>
-                          <div class="mdl-card__supporting-text">
-                            {{ course.name }}
-                          </div>
-                          <div class="mdl-card__actions mdl-card--border">
-                            <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                              Study
-                            </a>
-                          </div>
-                          <a href="#" class="btn-floating btn-sm remove-course-selection-btn" style="position: absolute; top: 0; right: 0;" id="{{ course.id }}"><i class="fa fa-minus"></i></a>
-                        </div>
-                      </div>
-                      {% endfor %}
-
-                    </div><!--UGRC-->
-                  <!-- Add Arrows -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-                  </div><!--/Department-->
-  </div>
-
-</div><!-- /.UGRC PILLS -->
-
-              </div>
+    <div class="col-md-12">
+        <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);" style="border-radius: 0px !important;">
+          <div class="text-white text-center py-5 px-4 my-5">
+            <div>
+              <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Welcome to the new learning experience.</strong></h2>
+              <p class="mx-5 mb-5">Over the past 3 years we have been hard at work, doing what we can to deliver to students the best learning experience possible. We are getting ever closer to our goal of delivering personalised learning to every student.</p>
+              <a class="btn btn-outline-white btn-md">Read more</a>
+            </div>
           </div>
-          <!-- /WORK HERE -->
+        </div>
+    </div>
+  </div> <!-- /.row -->
+</div><!-- /.container-fluid -->
 
+<br>
+
+<!-- advertisement 1 --><div><p class="text-center txt-ad-1"><a href="#">Vote for IA for UGSRC President 2019.</a></p></div><!-- advertisement 1 -->
+<br>
+<section class="my-courses">
+  <div class="container"><!-- container -->
+    <div class="category"><h5>MY COURSES</h5></div>
+    <div class="swiper-container"> <!-- .swiper-container -->
+      <div class="swiper-wrapper">
+        {% for course in selected_courses %}
+          <div class="swiper-slide">
+            <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
+              <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
+              <div class="mdl-card__title">{{ course.code }}</div>
+              <div class="mdl-card__supporting-text">{{ course.name }}</div>
+              <div class="mdl-card__actions mdl-card--border"><a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a></div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-  </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div><!-- /.swiper-container --><hr>
+  </div> <!-- /.container -->
 
+</section>
+<br>
+<!-- advertisement 2 --><div><p class="text-center txt-ad-2"><a href="#">Vote for IA for UGSRC President 2019.</a></p></div><!-- advertisement 2 -->
+<section class="ugrc">
+  <div class="container"><!-- container -->
+    <div class="category"><h5>UGRC</h5></div>
+    <div class="swiper-container"> <!-- .swiper-container -->
+      <div class="swiper-wrapper">
+        {% for course in selected_courses %}
+          <div class="swiper-slide">
+            <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
+              <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
+              <div class="mdl-card__title">{{ course.code }}</div>
+              <div class="mdl-card__supporting-text">{{ course.name }}</div>
+              <div class="mdl-card__actions mdl-card--border"><a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study </a></div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div><!-- /.swiper-container -->
+  </div> <!-- /.container -->
+</section>
 <script>
   $('.remove-course-selection-btn').click(
     function (e) {
@@ -109,7 +88,6 @@
       });
     }
   );
-
 </script>
 
 {% endblock %}
