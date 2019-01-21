@@ -10,7 +10,7 @@ def ShowKitchen(request):
 
 class PostCreate(CreateView):
 	model = Topic
-	fields = ['course_name','title', 'content']
+	fields = ['course','title', 'content']
 	template_name = 'kitchen/add.html'
 
 class UgrcPostCreate(PostCreate):
