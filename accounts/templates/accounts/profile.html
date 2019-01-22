@@ -5,7 +5,35 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<style type="text/css">h5 {letter-spacing: 2px; margin: 0px;}</style>
+<style type="text/css">h5 {letter-spacing: 2px; margin: 0px;} .card.card-image{border-radius: 0px; height: 20rem!important;}
+@media (max-width: 768px) { 
+.text-topic{
+  width: 100%;
+  text-align: justify;
+  margin: auto;
+}
+.text-detail{
+  width: 100%;
+  text-align: justify;
+  margin: auto;
+}
+
+
+} /*768px*/ 
+
+@media (min-width: 992px) {
+.text-topic{
+  width: 30%;
+  float: left
+}
+.text-detail{
+  width: 70%;
+  float: right;
+  text-align: justify;
+}
+}
+
+</style>
 
 <div class="container-fluid" style="padding: 0px !important;">
   <div class="row justify-content-center">
@@ -16,6 +44,7 @@
               <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Welcome to the new learning experience.</strong></h2>
               <p class="mx-5 mb-5">Over the past 3 years we have been hard at work, doing what we can to deliver to students the best learning experience possible. We are getting ever closer to our goal of delivering personalised learning to every student.</p>
               {% render_ads_zone 'sidebar' %}
+
               <a class="btn btn-outline-white btn-md">Read more</a>
             </div>
           </div>

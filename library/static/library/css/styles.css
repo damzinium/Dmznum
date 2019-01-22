@@ -1,7 +1,10 @@
-#id_comment {width: calc(100% - 70px);border: 1px solid black;border-radius: 5px;padding: 5px;height: 40px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
-#id_comment:focus {
-    outline: none;
-}
+#id_comment {width: calc(100% - 70px);
+    border-radius: 5px;
+    padding: 5px;
+    height: 40px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;}
 
 #comment-list, #reply-list {list-style-type: none;}
 
