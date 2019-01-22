@@ -1,5 +1,6 @@
 {% extends 'library/base.html' %}
 {% load static %}
+{% load ads_tags %}
 
 {% block title %}Home{% endblock %}
 
@@ -14,6 +15,7 @@
             <div>
               <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Welcome to the new learning experience.</strong></h2>
               <p class="mx-5 mb-5">Over the past 3 years we have been hard at work, doing what we can to deliver to students the best learning experience possible. We are getting ever closer to our goal of delivering personalised learning to every student.</p>
+              {% render_ads_zone 'sidebar' %}
               <a class="btn btn-outline-white btn-md">Read more</a>
             </div>
           </div>

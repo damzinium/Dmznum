@@ -7,6 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # apps in project
 INSTALLED_APPS = [
+    'ads',
+    'sekizai',
     'reset_migrations',
     'ckeditor',
     'ckeditor_uploader',
@@ -82,3 +84,36 @@ CKEDITOR_CONFIGS = {
     },
 }
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+ADS_ZONES = {
+    'header': {
+        'name': ('Header'),
+        'ad_size': {
+            'xs': '720x1280',
+            'sm': '800x90',
+            'md': '800x90',
+            'lg': '800x90'
+        },
+    },
+
+    'content': {
+        'name': ('Content'),
+        'ad_size': {
+            'xs': '720x1280',
+            'sm': '800x90',
+            'md': '800x90',
+            'lg': '800x90'
+        },
+    },
+
+    'sidebar': {
+        'name': ('Sidebar'),
+        'ad_size': {
+            'xs': '720x1280',
+            'sm': '800x90',
+            'md': '800x90',
+            'lg': '800x90'
+        },
+    },
+}

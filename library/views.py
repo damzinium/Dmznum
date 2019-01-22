@@ -57,7 +57,7 @@ def course_contents(request, pk):
     department_courses = get_object_or_404(Course, id=pk)
     course_list = department_courses.topic_set.all()
 
-    paginator = Paginator(course_list, 10)
+    paginator = Paginator(course_list, 3)
 
     page = request.GET.get('page')
     topics = paginator.get_page(page)

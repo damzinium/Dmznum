@@ -33,6 +33,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('library/', include('library.urls')),
     path('kitchen/', include('kitchen.urls')),
+    path('ads/', include('ads.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
     # sitemap url
