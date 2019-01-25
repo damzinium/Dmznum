@@ -166,3 +166,14 @@ def remove_course_selection(request):
         }
     response_json = json.dumps(response_obj)
     return HttpResponse(response_json, content_type='text/json')
+
+
+@login_required
+def load_comment_app(request, topic_id):
+    if request.is_ajax() and request.method == 'GET':
+        comments = Comment.objects.filter(topic__id=topic_id)
+        context = {
+            'topic_id': topic_id,
+            'comments': comments,
+        }
+        return render(request, 'library/comment_app.html', context)
