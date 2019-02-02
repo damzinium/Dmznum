@@ -224,8 +224,9 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-        $('#comment-section').load('{% url "library:load_comment_app" topic.id %}');
-    });
+    // loads the comment app built with websockets
+    // $(document).ready(function () {
+    //     $('#comment-section').load('{% url "library:load_comment_app" topic.id %}');
+    // });
 </script>
 {% endblock %}
