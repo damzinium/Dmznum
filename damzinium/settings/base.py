@@ -10,6 +10,7 @@ INSTALLED_APPS = [
     'ads',
     'sekizai',
     'reset_migrations',
+    'channels',
     'ckeditor',
     'ckeditor_uploader',
     'damzi.apps.DamziConfig',
@@ -55,6 +56,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'damzinium.wsgi.application'
+ASGI_APPLICATION = 'damzinium.routing.application'
 
 AUTH_USER_MODEL = 'accounts.User'
 AUTH_PROFILE_MODULE = 'accounts.Profile'
@@ -85,6 +87,14 @@ CKEDITOR_CONFIGS = {
 }
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 ADS_ZONES = {
     'header': {

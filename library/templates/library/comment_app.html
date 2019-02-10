@@ -1,0 +1,75 @@
+
+<form action="" method="post">
+    <textarea name="comment" id="id_comment">
+    </textarea>
+    <button type="submit" id="comment-post-btn">Post</button>
+</form>
+<ul class="comments">
+    {% for comment in comments %}
+        <li>
+            {% if comment.commenter.profile.profile_picture %}
+                <img src="{{ comment.commenter.profile.profile_picture }}"/>
+            {% else %}
+                <img src="/static/account/images/user.jpg"/>
+            {% endif %}
+            {{ comment.commenter }}
+            {{ comment.comment }}
+            {{ comment.date_uploaded }}
+            <ul class="replies">
+                {% for reply in comment.reply_set.all %}
+                    <li>
+                        
+                        {{ reply.replier }}
+                        {{ reply.reply }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+<script>
+    const defaultProfilePictureURL = '/static/account/images/user.jpg';
+    let commentSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/library/comment/' + '{{ topic_id }}/'
+    );
+    commentSocket.onmessage = function (e) {
+        let commentData = JSON.parse(e.data);
+        console.log(commentData);
+        let newCommentDOMObject = '';
+        newCommentDOMObject += '<li>';
+        let profilePictureURL = commentData['profile_picture'];
+        if(profilePictureURL === '') {
+            profilePictureURL = defaultProfilePictureURL;
+        }
+        newCommentDOMObject += '<img src="' + profilePictureURL + '"/>';
+        newCommentDOMObject += commentData['username'];
+        newCommentDOMObject += commentData['comment'];
+        newCommentDOMObject += commentData['date_uploaded'];
+        newCommentDOMObject += '<ul class="replies"></ul>';
+        console.log(e.data);
+        console.log(newCommentDOMObject);
+        $('.comments').append(newCommentDOMObject);
+    };
+    commentSocket.onclose = function () {
+        console.error('comment socket closed');
+    };
+    $
+    $('#id_comment').keydown(function (e) {
+        if(e.keyCode === 13 && $('#id_comment').val() != '') {
+            e.preventDefault();
+            $('#comment-post-btn').click();
+        }
+    });
+    $('#comment-post-btn').click(function (e) {
+        e.preventDefault();
+        let commentBoxDOMObject = $('#id_comment');
+        let comment = commentBoxDOMObject.val();
+        commentBoxDOMObject.val('');
+        commentSocket.send(
+            JSON.stringify(
+                {
+                    'topic_id': parseInt('{{ topic_id }}'),
+                    'comment': comment,
+            }));
+    })
+</script>
