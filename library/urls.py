@@ -14,4 +14,7 @@ urlpatterns = [
     path('faq/', views.faq, name='faq'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+
+    # special urlpatterns
+    path('comment_app/load/<topic_id>/', views.load_comment_app, name='load_comment_app'),
 ]

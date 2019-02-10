@@ -35,16 +35,18 @@
 <body>
 <!-- loader image --><div class="loader"><img class="loader-img" src="{% static 'images/loading.gif' %}" alt="loading"/></div>
 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <div class="mdl-layout__header"><img src="{% static 'account/images/logoandtext.png' %}"></div><!-- Logo and text for sign-up and log-in forms -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
     <ul id="messages" class="list-group"></ul>
     <div class="mdl-layout__content">
-        <div class="container mt-5 mb-5">
-            <div class="row justify-content-center">
-                {% block content %}
-                {% endblock %}
-            </div>
+      <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+          <div class="col">
+          <div class="justify-content-center"><img src="{% static 'account/images/logoandtext.png' %}"></div><!-- Logo and text for sign-up and log-in forms --> <br>
+            {% block content %}
+            {% endblock %}
+          </div>
         </div>
+      </div>
     </div>
 </div>
 
