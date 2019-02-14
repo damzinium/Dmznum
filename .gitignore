@@ -117,3 +117,7 @@ dmypy.json
 
 # Redis DB
 *.rdb
+
+# editor stuff
+.vscode
+.idea
