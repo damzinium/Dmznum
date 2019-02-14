@@ -85,15 +85,6 @@ CKEDITOR_CONFIGS = {
 }
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)],
-        },
-    },
-}
-
 ADS_ZONES = {
     'header': {
         'name': ('Header'),
