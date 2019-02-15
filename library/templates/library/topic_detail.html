@@ -1,5 +1,6 @@
 {%  extends 'library/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block modal %}
 <!-- Modal -->
@@ -17,9 +18,9 @@
             <!--Body-->
             <div class="modal-body">
                 <ul class="list-group z-depth-0">
-                            {% for topic in course.topic_set.all %}
+                    {% for topic in topic.course.topic_set.all %}
                         <li class="list-group-item justify-content-between grey-text">
-                                    <a href="{% url 'library:topic_detail' topic.id %}">{{ topic.topic_title }}</a>
+                            <a href="{% url 'library:topic_detail' topic.id %}">{{ topic.title }} ...</a>
                         </li>
                             {% endfor %}
                         <!--<li class="list-group-item justify-content-between grey-text">
@@ -127,7 +128,8 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                {{ comment.date_uploaded|timesince }} ago                                                                          </td>
+                                                {{ comment.date_uploaded|naturaltime }}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
