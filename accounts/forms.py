@@ -2,9 +2,8 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 
-from library.models import Department
-from .utils import is_phone_number
 from .models import Profile, User
+from .utils import is_phone_number
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -185,3 +184,28 @@ class ProfilePictureUpdateForm(forms.ModelForm):
                 'class': 'form-control',
             })
         }
+
+
+class AccountSettingsForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+        )
+
+
+class ProfileSettingsForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            'profile_picture',
+            'institution',
+            'phone_number',
+        )
+
+
+class ChangePasswordform(forms.Form):
+    current_password = forms.CharField(widget=forms.PasswordInput)
+    new_password = forms.CharField(widget=forms.PasswordInput)
+    confirm_new_password = forms.CharField(widget=forms.PasswordInput)

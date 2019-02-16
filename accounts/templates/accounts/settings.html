@@ -1,5 +1,7 @@
 {% extends 'library/base.html' %}
 
+{% load static %}
+
 {% block title %}Settings{% endblock %}
 
 {% block page_title %}Settings{% endblock %}
@@ -7,143 +9,34 @@
 {% block content %}
 <br>
 <div class="container-fluid">
-	<div class="row d-flex justify-content-center">
-		<nav role="navigation" class="col-md-10">
-			<ul class="nav nav-tabs md-tabs light-green darken-1 lighten-1 white-text" id="myTabMD" role="tablist">
-			  <li class="nav-item">
-			    <a class="nav-link active" id="account-tab-md" data-toggle="tab" href="#account-md" role="tab" aria-controls="account-md" aria-selected="true">Account</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" id="courses-tab-md" data-toggle="tab" href="#courses-md" role="tab" aria-controls="courses-md" aria-selected="false">Courses</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" id="security-tab-md" data-toggle="tab" href="#security-md" role="tab" aria-controls="security-md" aria-selected="false">Security</a>
-			  </li>
-			</ul>
-			<div class="tab-content card pt-5" id="myTabContentMD">
-			  <div class="tab-pane fade show active" id="account-md" role="tabpanel" aria-labelledby="account-tab-md">
-			    <div class="profile-img">
-			    	<h2>Profile</h2>
-			    	<br>
-			    	
-					<form action="" method="post" role="form" class="" enctype="multipart/form-data">
-						<h3>Change profile picture</h3>
-				    	<div class="text-center">
-						  <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded mx-auto d-block" alt="profile-img">
-						</div>
-				          {% csrf_token %}
-				          {% for field in form %}
-				            <div class="form-group">
-				              {{ field.errors }}
-				              {{ field }}
-				            </div>
-				          {% endfor %}
-			        <hr>
-				        <h3>Change your names</h3>
-				          {% csrf_token %}
-				          {% for field in form %}
-				            <div class="form-group">
-				              {{ field.label_tag }}
-				              {{ field.errors }}
-				              {{ field }}
-				            </div>
-				          {% endfor %}
-			        <hr>
-				        <h3>Change your email</h3>
-				          {% csrf_token %}
-				          {% for field in form %}
-				            <div class="form-group">
-				              {{ field.errors }}
-				              {{ field }}
-				            </div>
-				          {% endfor %}
-				    <hr>
-				    	<h3>Change your institution</h3>
-				    	{% csrf_token %}
-				        {% for field in form %}
-				          <div class="form-group">
-				            {{ field.errors }}
-				            {{ field }}
-				          </div>
-				        {% endfor %}
-				    <hr>
-				    	<h3>Change your institution</h3>
-				    	{% csrf_token %}
-				        {% for field in form %}
-				          <div class="form-group">
-				            {{ field.errors }}
-				            {{ field }}
-				          </div>
-				        {% endfor %}
-					<hr>
-						<h3>Change your phone number</h3>
-						{% csrf_token %}
-			          	{% for field in form %}
-			            	<div class="form-group">
-			              	{{ field.errors }}
-			              	{{ field }}
-			            	</div>
-			          	{% endfor %}		    
-		        	<hr>
-		          	<div class="damzi-button-group flex align-items float-right">
-		            	<button type="reset" class="btn btn-outline-warning waves-effect">Reset</button>
-		            	<button type="submit" class="btn btn-outline-success waves-effect">Save</button>
-		          	</div>
-		        </form>
-				</div> 
-			</div><!-- /.profile tab -->
+    <div class="row d-flex justify-content-center">
+        <nav role="navigation" class="col-md-10">
+            <ul class="nav nav-tabs md-tabs light-green darken-1 lighten-1 white-text" id="myTabMD" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="account-tab-md" data-toggle="tab"
+                       data-tab-content-href="{% url 'accounts:account_settings' %}" href="#account-md" role="tab"
+                       aria-controls="account-md" aria-selected="true">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="security-tab-md" data-toggle="tab"
+                       data-tab-content-href="{% url 'accounts:security_settings' %}" href="#security-md" role="tab"
+                       aria-controls="security-md" aria-selected="false">Security</a>
+                </li>
+            </ul>
+            <div class="tab-content card pt-5" id="myTabContentMD">
+                <div class="tab-pane fade show active" id="account-md" role="tabpanel" aria-labelledby="account-tab-md">
 
-			  <!-- COURSES TAB -->
-			<div class="tab-pane fade" id="courses-md" role="tabpanel" aria-labelledby="courses-tab-md">
-				<h2>Courses</h2>
-			    	<br>
-					<form action="" method="post" role="form" class="" enctype="multipart/form-data">
-				        <h3>Choose your courses</h3>
-				          {% csrf_token %}
-				          {% for field in form %}
-				            <div class="form-group">
-				              {{ field.errors }}
-				              {{ field }}
-				            </div>
-				          {% endfor %}				    
-		        	<hr>
-		          	<div class="damzi-button-group flex align-items float-right">
-		            	<button type="reset" class="btn btn-outline-warning waves-effect">Reset</button>
-		            	<button type="submit" class="btn btn-outline-success waves-effect">Save</button>
-		          	</div>
-		        	</form>
-			</div>
+                </div><!-- /.profile tab -->
 
-			<!-- SECURITY TAB -->
-			<div class="tab-pane fade" id="security-md" role="tabpanel" aria-labelledby="security-tab-md">
-				<h2>Security</h2>
-			    	<br>
-					<form action="" method="post" role="form" class="" enctype="multipart/form-data">
-				        <h3>Keep your account safe and secured</h3>
-				          {% csrf_token %}
-				          {% for field in form %}
-				            <div class="form-group">
-				              {{ field.errors }}
-				              {{ field }}
-				            </div>
-				          {% endfor %}				    
-		        	<hr>
-		          	<div class="damzi-button-group flex align-items float-right">
-		            	<button type="reset" class="btn btn-outline-warning waves-effect">Reset</button>
-		            	<button type="submit" class="btn btn-outline-success waves-effect">Save</button>
-		          	</div>
-		        	</form>	    
+                <!-- SECURITY TAB -->
+                <div class="tab-pane fade" id="security-md" role="tabpanel" aria-labelledby="security-tab-md">
 
-			</div>
-			</div>
-		</nav>
-<!-- 		<br><br><br>
-		   <div class="row flex align-items" id="settings">
-		      <a href="{% url 'accounts:account_settings' %}" class="options bg-light">Account</a>
-		      <a href="" class="options bg-light">Courses</a>
-		      <a href="{% url 'accounts:security_settings' %}" class="options bg-light">Security</a>
-		      <a href="" class="options bg-light">Delete Account</a>
-		    </div> -->
-	</div> <!-- /.row -->
+                </div>
+            </div>
+        </nav>
+
+    </div> <!-- /.row -->
 </div> <!-- /.container -->
+
+<script src="{% static 'account/js/settings.js' %}"></script>
 {% endblock %}

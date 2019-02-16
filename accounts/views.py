@@ -1,20 +1,14 @@
-from django.contrib import auth, messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user
+from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-from django.http import HttpResponseServerError
-from django.shortcuts import render, redirect, render_to_response, HttpResponseRedirect, get_object_or_404
-from django.template.context_processors import csrf
-from django.urls import reverse
+from django.http import HttpResponseBadRequest
+from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.views import generic
-from django.views.generic import View, CreateView
+from django.views.generic import View
 
-from library.models import Course, CourseSelection, Ugrc, Ugrc_Topic
-
+from library.models import CourseSelection, Ugrc, Ugrc_Topic
 from . import forms
-from .utils import get_user, get_profile
-from .models import Profile, User
+from .models import User
 
 
 # sign up here
@@ -145,167 +139,31 @@ def error(request):
 
 @login_required
 def settings(request):
+    user = get_user(request)
     return render(request, 'accounts/settings.html')
 
 
-@login_required
 def account_settings(request):
-    return render(request, 'accounts/account_settings.html')
-
-
-@login_required
-def update_names(request):
-    form_class = forms.NamesUpdateForm
-    template_name = 'accounts/update_names.html'
-    user = get_user(request)
-
-    if not user:
-        return redirect('accounts:logout')
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your names were successfully updated.')
-            return redirect('accounts:account_settings')
+    if request.is_ajax():
+        user = get_user(request)
+        if user.is_authenticated:
+            context = {
+                'account_settings_form': forms.AccountSettingsForm(instance=user),
+                'profile_settings_form': forms.ProfileSettingsForm(instance=user.profile),
+            }
+            return render(request, 'accounts/account_settings.html', context)
         else:
-            messages.error(request, 'Some entries were incorrect. Please try again.')
-            return render(request, template_name, {'form': form})
+            return HttpResponseBadRequest('Bad Request')
     else:
-        form = form_class(instance=user)
-        return render(request, template_name, {'form': form})
+        return HttpResponseBadRequest('Bad Request')
 
 
-@login_required
-def update_email(request):
-    form_class = forms.EmailUpdateForm
-    template_name = 'accounts/update_email.html'
-    user = get_user(request)
-
-    if not user:
-        return redirect('accounts:logout')
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your email was successfully updated.')
-            return redirect('accounts:account_settings')
-        else:
-            messages.error(request, 'Some entries were incorrect. Please try again.')
-            return render(request, template_name, {'form': form})
-    else:
-        form = form_class(instance=user)
-        return render(request, template_name, {'form': form})
-
-
-@login_required
-def update_institution(request):
-    form_class = forms.InstitutionUpdateForm
-    template_name = 'accounts/update_institution.html'
-    profile = get_profile(request)
-
-    if not profile:
-        return redirect('accounts:logout')
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your institution was successfully updated.')
-            return redirect('accounts:account_settings')
-        else:
-            messages.error(request, 'Some entries were incorrect. Please try again.')
-            return render(request, template_name, {'form': form})
-    else:
-        form = form_class(instance=profile)
-        return render(request, template_name, {'form': form})
-
-
-@login_required
-def update_department(request):
-    form_class = forms.DepartmentUpdateForm
-    template_name = 'accounts/update_department.html'
-    profile = get_profile(request)
-
-    if not profile:
-        return redirect('accounts:logout')
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your department was successfully updated.')
-            return redirect('accounts:account_settings')
-        else:
-            messages.error(request, 'Some entries were incorrect. Please try again.')
-            return render(request, template_name, {'form': form})
-    else:
-        form = form_class(instance=profile)
-        return render(request, template_name, {'form': form})
-
-
-@login_required
-def update_phone_number(request):
-    form_class = forms.PhoneNumberUpdateForm
-    template_name = 'accounts/update_phone_number.html'
-    profile = get_profile(request)
-
-    if not profile:
-        return redirect('accounts:logout')
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your phone number was successfully updated.')
-            return redirect('accounts:account_settings')
-        else:
-            messages.error(request, 'Some entries were incorrect. Please try again.')
-            return render(request, template_name, {'form': form})
-    else:
-        form = form_class(instance=profile)
-        return render(request, template_name, {'form': form})
-
-
-@login_required
-def update_profile_picture(request):
-    form_class = forms.ProfilePictureUpdateForm
-    template_name = 'accounts/update_profile_picture.html'
-    profile = get_profile(request)
-
-    if not profile:
-        return redirect('accounts:logout')
-
-    if request.method == 'POST':
-        form = form_class(files=request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile picture was successfully updated.')
-            return redirect('accounts:account_settings')
-        else:
-            messages.error(request, 'Some entries were incorrect. Please try again.')
-            return render(request, template_name, {'form': form})
-    else:
-        form = form_class(instance=profile)
-        return render(request, template_name, {'form': form})
-
-
-@login_required
 def security_settings(request):
-    return render(request, 'accounts/security_settings.html')
-
-
-@login_required
-def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            return redirect('accounts:change_password')
+    if request.is_ajax():
+        user = get_user(request)
+        if user.is_authenticated:
+            return render(request, 'accounts/security_settings.html')
+        else:
+            return HttpResponseBadRequest('Bad Request')
     else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', {
-        'form': form
-        })
+        return HttpResponseBadRequest('Bad Request')
