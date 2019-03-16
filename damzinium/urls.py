@@ -39,9 +39,9 @@ urlpatterns = [
     # sitemap url
     path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
 #     static(settings.DEV_MEDIA_URL, document_root=settings.DEV_MEDIA_ROOT)
 # else:
-#     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+#     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

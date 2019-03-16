@@ -24,6 +24,66 @@
     animation-fill-mode: forwards;
 }
 
+#kofi{
+	align-items: center;
+	justify-content: space-evenly;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+#form{
+	padding: 0px;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.inputBar{
+	width: 300px;
+	margin-bottom: 15px;
+	height: 35px;
+}
+
+.sick{
+	align-items: center;
+	justify-content: space-evenly;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.inputButton{
+	width: 100px;
+	height: 35px;
+	border: 2px solid green;
+	border-radius: 10px;
+	background-color: maroon;
+	text-align: center;
+}
+
+.flexy{
+	align-items: center;
+	justify-content: center;
+}
+
+.test{border: 2px solid green}
+
+.testy{border: 2px solid orangered}
+
+.label{
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+hr{
+	border-width: 0px;
+	margin-bottom: 50px;
+}
+
+.sharp{
+	border: 2px solid brown;
+}
+
 #messages .alert {
   border-radius: 0;
 }

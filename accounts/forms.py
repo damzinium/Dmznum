@@ -67,7 +67,7 @@ class UserLoginForm(forms.Form):
     username_or_email = forms.CharField(max_length=255, widget=forms.TextInput(
         attrs={
             'placeholder': 'Email or Username',
-            'class': 'form-control',
+            'class': 'form-control inputBar',
             'autocomplete': 'off',
             'onkeyup': 'loginBtnStateHandler()',
             'onchange': 'loginBtnStateHandler()'
@@ -76,7 +76,7 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(max_length=255, widget=forms.PasswordInput(
         attrs={
             'placeholder': 'Password',
-            'class': 'form-control',
+            'class': 'form-control inputBar',
             'onkeyup': 'loginBtnStateHandler()',
             'onchange': 'loginBtnStateHandler()'
         }
@@ -169,7 +169,7 @@ class PhoneNumberUpdateForm(forms.ModelForm):
         fields = ('phone_number', )
         widgets = {
             'phone_number': forms.TextInput(attrs={
-                'class': 'form-control',
+                'class': 'form-control sharp',
                 'autocomplete': 'off',
             })
         }
