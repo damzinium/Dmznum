@@ -18,9 +18,8 @@
 <title>{% block title %}{% endblock %} | Damzinium</title>
 <link rel="icon" href="{% static 'damzi/img/favicon.ico' %}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"><!-- Page styles -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/css/mdb.min.css" rel="stylesheet"><!-- Material Design Bootstrap -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"><!-- Font Awesome -->
+<link href="{% static 'library/css/compiled-4.7.4.min.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'account/css/styles.css' %}"><!-- Material Design Custom CSS -->
 <link rel="stylesheet" type="text/css" href="{% static 'damzi/css/utils.css' %}"><!-- Styles for Utilities -->
 <style type="text/css">
@@ -41,7 +40,7 @@
       <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
           <div class="col">
-          <div class="justify-content-center"><img src="{% static 'account/images/logoandtext.png' %}"></div><!-- Logo and text for sign-up and log-in forms --> <br>
+          <div class="justify-content-center align-items-center"><img src="{% static 'account/images/d-logo.png' %}"></div><!-- Logo and text for sign-up and log-in forms --> <br>
             {% block content %}
             {% endblock %}
           </div>
@@ -68,8 +67,8 @@
 </script>
 <!-- Material Design Lite --><script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>
 <!-- Bootstrap tooltips --><script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-<!-- Bootstrap core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-<!-- MDB core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
+<!-- Bootstrap core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- MDB core JavaScript --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.4/js/mdb.min.js"></script>
 </body>
 </html>
