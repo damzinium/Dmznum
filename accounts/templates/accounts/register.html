@@ -1,0 +1,104 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<div class="col-md-7">
+    <div id="register_form" class="">
+        <div class="" id="form">
+            <form method="post" class="text-center">
+
+            {% csrf_token %}
+                <div class="card text-center"> <br>
+                    {{ form.non_field_errors }}
+                    <p class="h3">Create account</p>
+
+                    <div class="card-body px-lg-5 pt-0">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="md-form" style="min-width:100%">
+                                    <div class="">
+                                        {{ form.first_name.errors }}
+                                        <input class="form-control" type="text" id="first_name" name="first_name" placeholder="Your first name">
+                                        <label for="{{ form.first_name.first_name }}" class=""></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="md-form" style="min-width:100%">
+                                    <div class="">
+                                        {{ form.last_name.errors }}
+                                        <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Your last name">
+                                        <label for="{{ form.last_name.last_name }}" class=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="md-form" style="min-width:100%">
+                                    <div class="">
+                                        {{ form.username.errors }}
+                                        <input class="form-control" type="text" id="username" name="username" placeholder="Your unique username">
+                                        <label for="{{ form.username.username }}" class=""></label>
+                                        <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                                            For additional account security
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="md-form" style="min-width:100%">
+                                    <div class="">
+                                        {{ form.email.errors }}
+                                        <input class="form-control" type="email" id="email" name="email" placeholder="Your email">
+                                        <label for="{{ form.email.email }}" class=""></label>
+                                        <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                                            Use a valid email
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="md-form" style="min-width:100%">
+                                    <div class="">
+                                        {{ form.password.errors }}
+                                        <input class="form-control" type="password" id="password" name="password" placeholder="Your password">
+                                        <label for="{{ form.password.password }}" class=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="md-form" style="min-width:100%">
+                                    <div class="">
+                                        {{ form.confirm_password.errors }}
+                                        <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password">
+                                        <label for="{{ form.confirm_password.confirm_password }}" class=""></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-around">
+                            <div class="text-center mb-4">
+                                <input type="submit" class="btn btn-outline-success waves-effect" value="Register">
+                            </div>
+                        </div>
+                        <!-- Register -->
+                        <p>Have an account?
+                            <a href="../login" class="dark-grey-text font-bold ml-1" id="signin">Sign In</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+{% block content %}
+    <div class="col-md-7">
+        <div id="" class="">
+            <div class="" id="form">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="card">
+                        <div class="text-center" style="margin-top: 10px;">
+                            <h2><b>Almost done!</b></h2>
+                            <p>Help us personalise your learning experience</p>
+                        </div>
+
+                        <div class="card-body mx-4">
+                            {% include 'kitchen/form-template.html' %}
+
+                            <div class="text-center mb-4">
+                                <input type="submit" class="btn btn-outline-success waves-effect" value="Submit">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

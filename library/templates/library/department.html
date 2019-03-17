@@ -1,0 +1,116 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+
+<!-- advertisement 1 --><div><p class="text-center txt-ad-1"><a href="#">Vote for IA for UGSRC President 2019.</a></p></div><!-- advertisement 1 --> <br>
+<!--Department Dynamic Generation-->
+<div class="container">
+<div class="row d-flex justify-content-center">
+  <div class="col-md-10 col-xl-10 py-3"><!-- Grid column --> 
+    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true"><!--Accordion wrapper-->
+      <div class="card"><!-- Accordion card -->
+        <div class="card-header" role="tab" id="heading{{ department.id }}">
+          <a data-toggle="collapse" data-parent="#accordionEx" href="#collapse{{ department.id }}" aria-expanded="true" aria-controls="collapse{{ department.id }}">
+          <h5 class="mb-0"> REQUIRED COURSES <i class="fa fa-angle-down rotate-icon"></i></h5></a>
+        </div>
+        <!-- Card body -->
+        <div id="collapse{{ department.id }}" class="collapse show" role="tabpanel" aria-labelledby="heading{{ department.id }}" data-parent="#accordionEx">
+        <div class="card-body">
+          <div class="mdl-grid">
+            {% for course in required_courses %}
+              {% if not course in selected_courses %}
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" id="course-{{ course.id }}">
+            <div class="mdl-card__media"><img src="{% static 'library/images/placeholder.jpg' %}" width="100%"></div>
+            <div class="mdl-card__title"> {{ course.code }} </div>
+            <div class="mdl-card__supporting-text"> {{ course.name }} </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study </a>
+                <a href="#" class="btn-floating btn-sm add-course-selection-btn" style="position: absolute; top: 0; right: 0;" id="{{ course.id }}"><i class="fa fa-plus"></i></a>
+              </div>
+            </div><!--/.Card-->
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        </div>
+      </div><!-- /.Accordion card -->
+    </div><!-- /.Accordion wrapper -->
+  </div><!-- /.Grid column --> 
+  </div>
+<!-- advertisement 2 --><div><p class="text-center txt-ad-2"><a href="#">Vote for IA for UGSRC President 2019.</a></p></div><!-- advertisement 2 --> <br>
+
+
+    {% for department in departments %}
+    <div class="row d-flex justify-content-center"><!-- Grid row -->        
+      <div class="col-md-10 col-xl-10 py-3"><!-- Grid column -->  
+        <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true"><!--Accordion wrapper-->
+          <div class="card"><!-- Accordion card -->
+            <div class="card-header" role="tab" id="heading{{ department.id }}">
+              <a data-toggle="collapse" data-parent="#accordionEx" href="#collapse{{ department.id }}" aria-expanded="true" aria-controls="collapse{{ department.id }}">
+                <h5 class="mb-0"> {{ department.name }} <i class="fa fa-angle-down rotate-icon"></i></h5></a>
+            </div>
+            <div id="collapse{{ department.id }}" class="collapse show" role="tabpanel" aria-labelledby="heading{{ department.id }}" data-parent="#accordionEx">
+              <div class="card-body">
+                <div class="mdl-grid">
+                  {% for course in department.course_set.all %}
+                    {% if not course in selected_courses %}
+                      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" id="course-{{ course.id }}">
+                        <div class="mdl-card__media"><img src="{% static 'library/images/placeholder.jpg' %}" width="100%"></div>
+                        <div class="mdl-card__title">{{ course.code }}</div>
+                        <div class="mdl-card__supporting-text">{{ course.name }} </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                        <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a>
+                        <a href="#" class="btn-floating btn-sm add-course-selection-btn" style="position: absolute; top: 0; right: 0;" id="{{ course.id }}"><i class="fa fa-plus"></i></a>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- Accordion card -->
+      </div><!-- Accordion wrapper -->
+    </div>
+    {% endfor %}<!--/Department Dynamic Generation-->
+<hr>
+  <nav aria-label="Page navigation">
+    <ul class="pagination pg-blue justify-content-center">
+      {% if topics.has_previous %}
+      <li class="page-item "><a href="?page=1" class="page-link">First</a></li>
+      <li class="page-item "><a href="?page={{ topics.previous_page_number }}" class="page-link">Previous&laquo;</a></li>
+      {% endif %}
+
+      <li class="page-iteme"><a class="page-link"> Page {{ topics.number }} of {{ topics.paginator.num_pages }} </a> </li>
+
+      {% if topics.has_next %}
+      <li class="page-item "><a href="?page={{ topics.next_page_number }}" class="page-link">Next&raquo;</a></li>
+      <li class="page-item "><a href="?page={{ topics.paginator.num_pages }}"class="page-link">Last</a></li>
+      {% endif %}
+    </ul>
+  </nav> <hr>
+</div> <!-- /.container -->      
+
+
+<script>
+  $('.add-course-selection-btn').click(
+    function (e) {
+      e.preventDefault();
+      const csrf = $('{% csrf_token %}');
+      $.post("{% url 'library:add_course_selection' %}", {
+        course_id: this.id,
+        csrfmiddlewaretoken: csrf.val(),
+      }, function (data) {
+        const courseCard = $('#course-' + data.course_id)
+        courseCard.fadeOut("slow", function () {
+          courseCard.remove();
+        });
+        getAndRenderMessages();
+      })
+    }
+  );
+</script>
+{% endblock %}

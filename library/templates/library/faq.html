@@ -1,0 +1,168 @@
+{% extends 'library/base.html' %}
+{% load static %}
+
+{% block modal %}
+    <!-- ask question modal -->
+            <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p class="heading lead">Ask Question</p>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+
+                        <form action="https://formspree.io/damzinium@gmail.com" method="post">
+                        <!--https://formspree.io/-->
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <div class="md-form">
+                                        <input type="text" name="name" id="form3" class="form-control">
+                                        <label for="form3">Your name</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <!--This value is used for the email's Reply-To field. This way you can directly "Reply" to the email to respond to the person who originally submitted the form-->
+                                        <input type="text" name="email" id="form2" class="form-control">
+                                        <label for="form2">Your email</label>
+                                    </div>
+
+                                    <div class="md-form">
+                                        <textarea type="text" name="question" id="form8" class="md-textarea" style="height: 100px"></textarea>
+                                        <label for="form8">How may we help you?</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer justify-content-center">
+                                <input type="submit" class="btn btn-primary-modal">
+                                <a type="button" class="btn btn-outline-secondary-modal waves-effect" data-dismiss="modal">Cancel</a>
+                                <!--By default, after submitting a form the user is shown the Formspree "Thank You" page. You can provide an alternative URL for that page.-->
+                                <input type="hidden" name="_next" value="{% url 'library:faq' %}" />
+                            </div>
+
+                        </form>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <!-- ask question modal-->
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+            <div class="flex-center flex-column">
+                <h1 class="animated fadeIn mb-4">Questions others have asked</h1>
+
+                <!-- FAQ IDEAS -->
+                <!--
+                1 How can I find my course?
+                2 Who provides the lecture notes
+                3 How can I join Damzinium
+                4 Why can't I find my course listed
+                5 Does Damzinium charges for it's services?
+                -->
+
+            <!--Accordion wrapper-->
+<div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+    <!-- Accordion card -->
+    <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne">
+            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h5 class="mb-0">
+                    Collapsible Group Item #1 <i class="fa fa-angle-down rotate-icon"></i>
+                </h5>
+            </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <!-- Accordion card -->
+
+    <!-- Accordion card -->
+    <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingTwo">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h5 class="mb-0">
+                    Collapsible Group Item #2 <i class="fa fa-angle-down rotate-icon"></i>
+                </h5>
+            </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <!-- Accordion card -->
+
+    <!-- Accordion card -->
+    <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingThree">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <h5 class="mb-0">
+                    Collapsible Group Item #3 <i class="fa fa-angle-down rotate-icon"></i>
+                </h5>
+            </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <!-- Accordion card -->
+</div>
+<!--/.Accordion wrapper-->
+            </div>
+
+            <div style="height:50px;"></div>
+            
+            <p>Couldn't find an answer for your question? <a href="#" data-toggle="modal" data-target="#fullHeightModalRight" class="cyan-text">Ask Question</a></p>
+
+</div>
+
+
+{% endblock %}
+

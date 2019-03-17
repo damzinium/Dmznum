@@ -1,0 +1,52 @@
+<div class="profile-img">
+    <h2>Profile</h2>
+    <br>
+
+    <form action="" class="" enctype="multipart/form-data" id="account-settings-form" method="post" role="form">
+        {% csrf_token %}
+        <h3>Change profile picture</h3>
+        <div class="text-center">
+            <img alt="profile-img" class="rounded mx-auto d-block"
+                 src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg">
+        </div>
+        <div>
+            {{ profile_settings_form.profile_picture.errors }}
+            {{ profile_settings_form.profile_picture }}
+        </div>
+        <hr>
+        <h3>Change your names</h3>
+        <div>
+            <label>First Name</label>
+            {{ account_settings_form.first_name.errors }}
+            {{ account_settings_form.first_name }}
+        </div>
+        <div>
+            <label>Last Name</label>
+            {{ account_settings_form.last_name.errors }}
+            {{ account_settings_form.last_name }}
+        </div>
+        <hr>
+        <h3>Change your institution</h3>
+        <div>
+            {{ profile_settings_form.institution.errors }}
+            {{ profile_settings_form.institution }}
+        </div>
+        <hr>
+        <h3>Change your phone number</h3>
+        <div>
+            {{ profile_settings_form.phone_number.errors }}
+            {{ profile_settings_form.phone_number }}
+        </div>
+        <hr>
+        <div class="damzi-button-group flex align-items float-right">
+            <button class="btn btn-outline-warning waves-effect" type="reset">Reset</button>
+            <button class="btn btn-outline-success waves-effect" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+<script>
+        $('#account-settings-form').submit(function (event) {
+            event.preventDefault();
+        };
+
+</script>

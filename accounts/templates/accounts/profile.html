@@ -1,0 +1,152 @@
+{% extends 'library/base.html' %} {% load static %} {% load ads_tags %} {% block title %}Home{% endblock %} 
+
+{% block content %}
+<style type="text/css">
+  h5 {
+    letter-spacing: 2px;
+    margin: 0px;
+  }
+  
+  @media (max-width: 768px) {
+    .text-topic {
+      width: 100%;
+      text-align: justify;
+      margin: auto;
+    }
+    .text-detail {
+      width: 100%;
+      text-align: justify;
+      margin: auto;
+    }
+  }
+  /*768px*/
+  
+  @media (min-width: 992px) {
+    .text-topic {
+      width: 30%;
+      float: left
+    }
+    .text-detail {
+      width: 70%;
+      float: right;
+      text-align: justify;
+    }
+  }
+</style>
+
+<section>
+  <!-- Jumbotron -->
+  <div class="card card-image gradient-nav">
+    <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+      <div class="py-5">
+
+        <!-- Content -->
+        <i class="fas fa-graduation-cap fa-5x"></i>
+        <h2 class="card-title h2 my-4 py-2"><strong>Welcome to the new learning experience.</strong></h2>
+        <p class="mb-4 pb-2 px-md-5 mx-md-5">Over the past 3 years we have been hard at work, doing what we can to deliver to students the best learning experience
+          possible. We are getting ever closer to our goal of delivering personalised learning to every student.</p>
+        <a href="{% url 'library:about' %}" class="btn gradient-nav"><i class="fas fa-clone left"></i>Read more</a>
+
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+
+<br>
+<div class="container-fluid">
+  <!-- advertisement 1 -->
+  <div>
+    <p class="text-center txt-ad-1"><a href="#">Vote for IA for UGSRC President 2019.</a></p>
+    {% render_ads_zone 'sidebar' %}
+  </div>
+  <!-- advertisement 1 -->
+  <br>
+  <section class="my-courses">
+    <div class="container">
+      <!-- container -->
+      <div class="category">
+        <h5>MY COURSES</h5>
+      </div>
+      <div class="swiper-container">
+        <!-- .swiper-container -->
+        <div class="swiper-wrapper mt-2 mb-2">
+
+          {% for course in selected_courses %}
+          <div class="swiper-slide">
+            <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
+              <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
+              <div class="mdl-card__title">{{ course.code }}</div>
+              <div class="mdl-card__supporting-text">{{ course.name }}</div>
+              <div class="mdl-card__actions mdl-card--border"><a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a></div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <!-- /.swiper-container -->
+    </div>
+    <!-- /.container -->
+
+  </section>
+  <br>
+  <!-- advertisement 2 -->
+  <div>
+    <p class="text-center txt-ad-2"><a href="#">Vote for IA for UGSRC President 2019.</a></p>
+  </div>
+  <!-- advertisement 2 -->
+  <section class="ugrc">
+    <div class="container">
+      <!-- container -->
+      <div class="category">
+        <h5>UGRC</h5>
+      </div>
+      <div class="swiper-container">
+        <!-- .swiper-container -->
+        <div class="swiper-wrapper mt-2 mb-2">
+          {% for course in selected_courses %}
+          <div class="swiper-slide">
+            <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
+              <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
+              <div class="mdl-card__title">{{ course.code }}</div>
+              <div class="mdl-card__supporting-text">{{ course.name }}</div>
+              <div class="mdl-card__actions mdl-card--border"><a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study </a></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <!-- /.swiper-container -->
+    </div>
+    <!-- /.container -->
+  </section>
+</div>
+<!-- /.container-fluid -->
+
+
+<script>
+  $('.remove-course-selection-btn').click(
+    function (e) {
+      e.preventDefault();
+      const csrf = $('{% csrf_token %}');
+      $.post("{% url 'library:remove_course_selection' %}", {
+        course_id: this.id,
+        csrfmiddlewaretoken: csrf.val(),
+      }, function (data) {
+        const courseCard = $('#course-' + data.course_id)
+        courseCard.fadeOut("slow", function () {
+          courseCard.remove();
+        });
+        getAndRenderMessages();
+      });
+    }
+  );
+
+</script>
+
+{% endblock %}
