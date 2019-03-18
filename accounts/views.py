@@ -52,19 +52,53 @@ class UserRegistrationView(View):
 
 
 def ac_login(request):
-    # redirect user to the dashboard if they are already logged in
+    # redirect user to the homepage if they are already logged in
     if request.user.is_authenticated:
         return redirect('accounts:profile')
 
+    # get the next page's URL from the current URL
     to_url = request.GET.get('next')
 
+    # if the request is a POST request
     if request.method == 'POST':
         form = forms.UserLoginForm(data=request.POST)
         if form.is_valid():
-            user = form.user
-            login(request, user)
+            # get the value of the `username_or_email` field
+            username_or_email = form.cleaned_data.get('username_or_email')
+
+            # get the value of the `password` field
+            password = form.cleaned_data.get('password')
+
+            # authenticate the user with `username_or_email` or `password`
+            # if the user entered a correct username, the authentication is successful
+            # else authentication fails
+            user = authenticate(username=username_or_email, password=password)
+
+            # if authentication fails, then its likely the user entered an email address
+            # so try to get the username corresponding to the email if it is correct
+            # and try authentication with that username and the password
+            if user is None:
+                try:
+                    username = User.objects.get(email=username_or_email).username
+                    user = authenticate(username=username, password=password)
+                except User.DoesNotExist:
+                    user = None
+            # if authentication is successful, log the user in
+            # otherwise go back to the login page
+            if user is not None:
+                login(request, user)
+            else:
+                return render(request, 'accounts/login.html', {'form': form})
+
+            # if the user is a staff, sessions expire when he/she close his/her browser
+            if user.is_staff:
+                request.session.set_expiry(0)
+
+            # if there's a URL to the next page, then go there
             if to_url:
                 return redirect(to_url)
+            
+            # otherwise go to the homepage
             return redirect('accounts:profile')
         else:
             return render(request, 'accounts/login.html', {'form': form})
@@ -111,7 +145,7 @@ def ots(request):
 #     def get_queryset(self):
 #         return Ugrc.objects.all()
 
-
+@login_required
 def home(request):
     course_selections = CourseSelection.objects.filter(user=get_user(request))
     selected_courses = {course_selection.course for course_selection in course_selections}

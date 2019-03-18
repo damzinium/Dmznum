@@ -82,24 +82,6 @@ class UserLoginForm(forms.Form):
         }
     ))
 
-    def clean(self):
-        cleaned_data = super().clean()
-
-        username_or_email = cleaned_data.get('username_or_email')
-        password = cleaned_data.get('password')
-
-        user = authenticate(username=username_or_email, password=password)
-        if user is None:
-            try:
-                username = User.objects.get(email=username_or_email).username
-                user = authenticate(username=username, password=password)
-            except User.DoesNotExist:
-                user = None
-                raise ValidationError('Incorrect username or email or password.')
-        if user is not None:
-            self.user = user
-            return self
-
 
 class NamesUpdateForm(forms.ModelForm):
     class Meta:
