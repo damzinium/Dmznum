@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.views.generic.base import TemplateView
-from library.models import Ugrc_Topic, Topic
+from library.models import Topic
 
 # Create your views here.
 def ShowKitchen(request):
@@ -13,8 +13,8 @@ class PostCreate(CreateView):
 	fields = ['course','title', 'content']
 	template_name = 'kitchen/add.html'
 
-class UgrcPostCreate(PostCreate):
-	model = Ugrc_Topic
-	fields = ['ugrc', 'title', 'content']
+# class UgrcPostCreate(PostCreate):
+# 	model = Ugrc_Topic
+# 	fields = ['ugrc', 'title', 'content']
 
 # Kitchen app here

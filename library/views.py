@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from accounts.models import User
 from accounts.utils import get_user
-from .models import Topic, Course, Department, Ugrc, Ugrc_Topic, Comment, Reply, CourseSelection
+from .models import Topic, Course, Department, Comment, Reply, CourseSelection
 from .forms import CommentForm
 
 

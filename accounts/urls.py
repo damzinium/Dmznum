@@ -17,9 +17,9 @@ urlpatterns = [
     path('logout/', views.ac_logout, name='logout'),
     # path('auth/', views.auth_view, name='auth_view'),
 
-    # ugrc
-    path('topic/<int:pk>/', (views.UgrcTopicView.as_view()), name='ugrc_detail'),
-    path('content/<int:pk>/', (views.UgContent.as_view()), name='content'),
+    # # ugrc
+    # path('topic/<int:pk>/', (views.UgrcTopicView.as_view()), name='ugrc_detail'),
+    # path('content/<int:pk>/', (views.UgContent.as_view()), name='content'),
 
     # password reset
     path('reset_password/', auth_views.PasswordResetView.as_view(success_url='password_reset_done'), name='password_reset'),

@@ -1,41 +1,41 @@
-from django.contrib import admin
+# from django.contrib import admin
 
-from .models import Profile, User
-from .forms import ProfileForm
+# from .models import Profile, User
+# from .forms import ProfileForm
 
-admin.site.site_title = 'Damzinium Administration'
-admin.site.site_header = 'Damzinium Administration'
-
-
-class ProfileInline(admin.StackedInline):
-    model = Profile
-    can_delete = False
-    verbose_name_plural = 'Profile'
-    fk_name = 'user'
+# admin.site.site_title = 'Damzinium Administration'
+# admin.site.site_header = 'Damzinium Administration'
 
 
-class CustomUserAdmin(admin.ModelAdmin):
-    # form = ProfileForm
-    # inlines = (ProfileInline,)
-    exclude = ('profile',)
-    readonly_fields = ('username', 'email', 'first_name', 'last_name', 'is_verified', 'password', 'last_login', 'date_joined')
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active')
-    list_editable = ('is_active',)
-    search_fields = ('username', 'first_name', 'last_name', 'email')
+# class ProfileInline(admin.StackedInline):
+#     model = Profile
+#     can_delete = False
+#     verbose_name_plural = 'Profile'
+#     fk_name = 'user'
 
-    # def phone_number(self, instance):
-    #     return instance.profile.phone_number
 
-    # phone_number.short_description = ('phone')
+# class CustomUserAdmin(admin.ModelAdmin):
+#     # form = ProfileForm
+#     # inlines = (ProfileInline,)
+#     exclude = ('profile',)
+#     readonly_fields = ('username', 'email', 'first_name', 'last_name', 'is_verified', 'password', 'last_login', 'date_joined')
+#     list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active')
+#     list_editable = ('is_active',)
+#     search_fields = ('username', 'first_name', 'last_name', 'email')
 
-    # def department_name(self, instance):
-    #     return instance.profile.department_name
+#     # def phone_number(self, instance):
+#     #     return instance.profile.phone_number
 
-    # department_name.short_description = ('department')
+#     # phone_number.short_description = ('phone')
 
-    # def get_inline_instances(self, request, obj=None):
-    #     if not obj:
-    #         return list()
-    #     return super(CustomUserAdmin, self).get_inline_instances(request, obj)
+#     # def department_name(self, instance):
+#     #     return instance.profile.department_name
 
-admin.site.register(User, CustomUserAdmin)
+#     # department_name.short_description = ('department')
+
+#     # def get_inline_instances(self, request, obj=None):
+#     #     if not obj:
+#     #         return list()
+#     #     return super(CustomUserAdmin, self).get_inline_instances(request, obj)
+
+# admin.site.register(User, CustomUserAdmin)
