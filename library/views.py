@@ -21,7 +21,6 @@ def department_list(request):
     return render(request, 'library/department.html', context)
 
 
-@login_required
 def view_courses(request):
     required_courses = Course.objects.filter(is_required=True)
     department_list = Department.objects.all()

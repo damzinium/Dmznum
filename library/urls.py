@@ -5,7 +5,7 @@ from .import views
 app_name = 'library'
 
 urlpatterns = [
-    path('department/', login_required(views.view_courses), name='department'),
+    path('department/', views.view_courses, name='department'),
     path('department/<int:pk>/', login_required(views.department_courses), name='course'),
     path('course/<int:pk>/', login_required(views.course_contents), name='detail'),
     path('topic/<int:pk>/', login_required(views.topic_detail), name='topic_detail'),
