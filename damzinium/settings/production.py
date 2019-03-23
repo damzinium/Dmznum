@@ -9,7 +9,7 @@ DEBUG = False
 ALLOWED_HOSTS = []
 
 MIDDLEWARE += [
-	'whitenoise.middleware.WhiteNoiseMiddleware',
+	
 ]
 
 STATIC_URL = '/static/'
