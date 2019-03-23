@@ -13,7 +13,6 @@ from .models import Topic, Course, Department, Ugrc, Ugrc_Topic, Comment, Reply,
 from .forms import CommentForm
 
 
-@login_required
 def department_list(request):
     departments = Department.objects.all()
     context = {
