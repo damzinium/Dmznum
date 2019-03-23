@@ -4,7 +4,7 @@ from .base import *
 
 SECRET_KEY = os.environ.get('SEC_PASS')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
