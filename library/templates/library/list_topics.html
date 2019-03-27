@@ -27,6 +27,7 @@
             </center>
             <!--course generator-->
 
+            {% if first_topic %}
             <div class="card">
                 <div class="card-header light-green darken-1 lighten-1 white-text">
                     {{ first_topic.course }}
@@ -50,21 +51,9 @@
             </div>
             <br/>
             {% endwith %}
-            
-
-            {% for topic in topics %}
-            <div class="card">
-                <div class="card-header light-green darken-1 lighten-1 white-text">
-                    {{ topic.course }}
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">{{ topic.title }}</h4>
-                    <a href="" class="btn damzinium-green-head">READ</a>
-                </div>
-            </div>
-            <!--/course generator--><br />
-            {% endfor %}
-
+            {% else %}
+            No topics
+            {% endif %}
             <!-- advertisement 1 -->
             <div>
                 <p class="text-center txt-ad-1"><a href="#">Vote for IA for UGSRC President 2019.</a></p>

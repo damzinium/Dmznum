@@ -53,8 +53,10 @@ def department_courses(request, pk):
 @login_required
 def list_topics(request, pk):
     course = get_object_or_404(Course, id=pk)
-    first_topic = get_object_or_404(Topic, course=course, previous=None)
-
+    try:
+        first_topic = Topic.objects.get(course=course, prev=None)
+    except Topic.DoesNotExist:
+        first_topic = None
     # paginator = Paginator(course_list, 3)
 
     # page = request.GET.get('page')
@@ -69,9 +71,12 @@ def list_topics(request, pk):
 @login_required
 def list_subtopics(request, pk):
     topic = get_object_or_404(Topic, id=pk)
-    first_subtopic = get_object_or_404(SubTopic, topic=topic, previous=None)
-
+    try:
+        first_subtopic = SubTopic.objects.get(topic=topic, prev=None)
+    except SubTopic.DoesNotExist:
+        first_subtopic = None
     context = {
+        'topic': topic,
         'first_subtopic': first_subtopic
     }
     return render(request, 'library/list_subtopics.html', context)
