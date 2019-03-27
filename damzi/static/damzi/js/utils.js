@@ -17,7 +17,7 @@ $(document).ajaxStart(function () {
   $('.ajax-loader').fadeOut();
 });
 
-// get and display messages in request obj
-function getAndRenderMessages() {
-  $('#messages').load('/messages/get/');
-}
+// // get and display messages in request obj
+// function getAndRenderMessages() {
+//   $('#messages').append($.get('/messages/get/'));
+// }

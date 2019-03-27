@@ -58,7 +58,7 @@
         <div class="light-font">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a class="white-text" href="{% url 'library:department' %}">Courses</a>
+                    <a class="white-text" href="{% url 'library:list_courses' %}">Courses</a>
                 </li>
                 <!--add department name-->
                 <!--<li class="breadcrumb-item"><a class="white-text" href="#">{ { department.department_name }}</a>-->
@@ -69,10 +69,18 @@
         <!--configure NEXT and PREVIOUS functionality. Using Django Pagination-->
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link">Previous</a>
+                {% if subtopic.prev %}
+                <a href="{% url 'library:list_subtopic_content' subtopic.prev.pk %}" class="nav-link">Previous</a>
+                {% else %}
+                <a href="" class="nav-link disabled">Previous</a>
+                {% endif %}
             </li>
             <li class="nav-item">
-                <a class="nav-link">Next</a>
+                {% if subtopic.next %}
+                <a href="{% url 'library:list_subtopic_content' subtopic.next.pk %}" class="nav-link">Next</a>
+                {% else %}
+                <a href="" class="nav-link disabled">Next</a>
+                {% endif %}
             </li>
         </ul>
     </nav>
@@ -81,10 +89,10 @@
             <!--topic content-->
             <div class="card mb-4">
                 <div class="card-header deep-orange lighten-1 white-text">
-                    {{ topic.title }}
+                    {{ subtopic.title }}
                 </div>
                 <div class="card-body">
-                    <div class="card-text">{{ topic.active_content|safe }}</div>
+                    <div class="card-text">{{ subtopic.content|safe }}</div>
                 </div>
             </div>
             <!--/topic content-->
@@ -225,10 +233,4 @@
         </div>
     </div>
 </div>
-<script>
-    // loads the comment app built with websockets
-    // $(document).ready(function () {
-    //     $('#comment-section').load('{% url "library:load_comment_app" topic.id %}');
-    // });
-</script>
 {% endblock %}

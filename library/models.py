@@ -11,7 +11,7 @@ from django.utils import timezone
 
 class Institution(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100, default="Legon")
+    name = models.CharField(max_length=100)
 
     class Meta:
         ordering = ('name',)
@@ -46,16 +46,16 @@ class Department(models.Model):
 
 class Course(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    institution = models.ForeignKey(Institution, null=True, on_delete=models.CASCADE)
+    institution = models.ForeignKey(Institution, null=True, on_delete=models.CASCADE, editable=False)
     department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=100)
+    is_required = models.BooleanField(default=False, editable=False)
 
-    @property
-    def is_required(self):
-        if self.department is not None:
-            return False
-        return True
+    def save(self, *args, **kwargs):
+        if self.department is None:
+            self.is_required = True
+        super().save(*args, **kwargs)
         
     class Meta:
         ordering = ('name',)
@@ -68,15 +68,22 @@ class Topic(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    active_content = RichTextUploadingField(editable=False, null=True)
-    content = RichTextUploadingField('content')
+    
+    prev = models.OneToOneField('self', null=True, blank=True, on_delete=models.DO_NOTHING, related_name='next')
+    
+    def __str__(self):
+        return self.title
+
+
+class SubTopic(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    content = RichTextUploadingField(editable=False, null=True)
+    temp_content = RichTextUploadingField(verbose_name='content')
     push_updates = models.BooleanField(default=False)
 
-    class Meta:
-        ordering = ('-title',)
-
-    def get_absolute_url(self):
-        return reverse('accounts:profile')
+    prev = models.OneToOneField('self', null=True, blank=True, on_delete=models.DO_NOTHING, related_name='next')
 
     def __str__(self):
         return self.title
@@ -93,10 +100,7 @@ class Comment(models.Model):
     is_approved = models.BooleanField(verbose_name='check to approve', default=False)
 
     def __str__(self):
-        if self.is_approved:
-            return '{} commented on {}. (Approved.)'.format(self.commenter, self.topic)
-        else:
-            return '{} commented on {}. (Pending Approval.)'.format(self.commenter, self.topic)
+        self.commenter.username
 
 
 class Reply(models.Model):
@@ -123,9 +127,9 @@ class CourseSelection(models.Model):
     selection_date = models.DateTimeField(auto_now_add=True)
 
 
-@receiver(models.signals.post_save, sender=Topic)
+@receiver(models.signals.post_save, sender=SubTopic)
 def push_updates(sender, instance, **kwargs):
     if instance.push_updates:
-        instance.active_content = instance.content
+        instance.content = instance.temp_content
         instance.push_updates = False
         instance.save()

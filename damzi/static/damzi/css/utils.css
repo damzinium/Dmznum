@@ -24,16 +24,6 @@
     animation-fill-mode: forwards;
 }
 
-#messages .alert {
-  border-radius: 0;
-}
-#messages .close-btn {
-  position: absolute;
-  margin-top: -7px;
-  right: 0;
-  background-color: #ff3547;
-   color: white;
-}
 
 .ajax-loader {
   width: 100px;

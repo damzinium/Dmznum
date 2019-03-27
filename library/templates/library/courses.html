@@ -27,7 +27,7 @@
             <div class="mdl-card__title"> {{ course.code }} </div>
             <div class="mdl-card__supporting-text"> {{ course.name }} </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study </a>
+                <a href="{% url 'library:list_topics' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study </a>
                 <a href="#" class="btn-floating btn-sm add-course-selection-btn" style="position: absolute; top: 0; right: 0;" id="{{ course.id }}"><i class="fa fa-plus"></i></a>
               </div>
             </div><!--/.Card-->
@@ -62,7 +62,7 @@
                         <div class="mdl-card__title">{{ course.code }}</div>
                         <div class="mdl-card__supporting-text">{{ course.name }} </div>
                         <div class="mdl-card__actions mdl-card--border">
-                        <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a>
+                        <a href="{% url 'library:list_topics' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a>
                         <a href="#" class="btn-floating btn-sm add-course-selection-btn" style="position: absolute; top: 0; right: 0;" id="{{ course.id }}"><i class="fa fa-plus"></i></a>
                         </div>
                       </div>

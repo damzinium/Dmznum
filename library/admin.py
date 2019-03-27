@@ -23,3 +23,14 @@
 #     list_display = ('commenter', 'comment', 'is_approved', 'date_uploaded',)
 #     list_editable = ('is_approved',)
 #     readonly_fields = ('commenter', 'comment',)
+
+from django.contrib import admin
+
+from .models import Institution, School, Course, Topic, Department, SubTopic
+
+admin.site.register(Institution)
+admin.site.register(School)
+admin.site.register(Department)
+admin.site.register(Course)
+admin.site.register(Topic)
+admin.site.register(SubTopic)

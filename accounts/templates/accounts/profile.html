@@ -69,7 +69,10 @@
               <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
               <div class="mdl-card__title">{{ course.code }}</div>
               <div class="mdl-card__supporting-text">{{ course.name }}</div>
-              <div class="mdl-card__actions mdl-card--border"><a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a></div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="{% url 'library:detail' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a>
+                <button class="remove-course-selection-btn" id="{{ course.id }}">Remove</button>
+              </div>
             </div>
           </div>
         {% endfor %}
