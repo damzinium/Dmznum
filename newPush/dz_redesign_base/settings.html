@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Damzinium</title>
+  <!-- Add favicon -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Roboto font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--EMOJI font-->
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<!--Material Design Font-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- All Bootstrap -->
+  <link href="css/compiled-4.7.4.min.css" rel="stylesheet">
+  <!-- Material Design Lite -->
+<link rel="stylesheet" href="css/material.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+  <!-- Material Design Bootstrap -->
+  <link href="css/default.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm bg-dark">
+  		<ul class="navbar-nav">
+    		<li class="nav-item">
+      			<a class="nav-link" href="#">Link 1</a>
+    		</li>
+    		<li class="nav-item">
+      			<a class="nav-link" href="#">Link 2</a>
+    		</li>
+    		<li class="nav-item">
+      			<a class="nav-link" href="#">Link 3</a>
+    		</li>
+  		</ul>
+	</nav>
+
+	<div class="container test body">
+		hello world
+	</div>
+
+  <!-- SCRIPTS -->
+  <!-- Material Design Lite -->
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.js"></script>
+  <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+
+    <script type="text/javascript">
+      // hide page loader
+      window.addEventListener("load", function () {
+        var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
+          .insertBefore('#messages').fadeOut("fast", function () {
+            getAndRenderMessages();
+          });
+        const loader = $('.loader');
+        loader.fadeOut("slow", function () {
+          loader.remove();
+        });
+      });
+    </script>
+<!-- Scripts for Utilities <script type="text/javascript" src="{% static 'damzi/js/utils.js' %}"></script>-->
+</body>
+
+</html>
