@@ -2,20 +2,11 @@
 {% load static %}
 
 {% block body %}
-	<h2>
-<div class="col-md-10 col-md-offset-2">
-	<a href="{% url 'kitchen:add' %}">Add Departmental Course</a>
-	<br>
-	<br>
-	<a href="{% url 'kitchen:ugrc_add' %}">Add Ugrc</a>
-	</h2>
+<div>
+	<a href="{% url 'kitchen:list_departments' %}">Departments</a>
 </div>
-	<div class="container-fluid">
-		<h3>
-			Page is still under construction, Please bear with us!!!
-			Thanks 
+<div>
+	<a href="{% url 'kitchen:list_required_courses' %}">Required Courses</a>
+</div>
 
-			Technical Team
-		</h3>
-	</div>
 {% endblock %}

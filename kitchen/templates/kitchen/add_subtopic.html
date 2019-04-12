@@ -1,0 +1,13 @@
+{% block body %}
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }}
+    </div>
+    {% endfor %}
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

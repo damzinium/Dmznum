@@ -1,0 +1,12 @@
+{% block body %}
+
+<small>
+    <a href="{% url 'kitchen:add_required_course' %}">add</a>
+</small>
+
+{% for course in courses %}
+<div>
+    <a href="{% url 'kitchen:list_topics' course.id %}">{{ course.name }}</a>
+</div>
+{% endfor %}
+{% endblock %}

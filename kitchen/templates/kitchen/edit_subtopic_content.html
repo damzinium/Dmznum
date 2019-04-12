@@ -1,0 +1,16 @@
+{% block body %}
+{{ form.media }}
+
+<h1>{{ subtopic.topic.title }}</h1>
+<h2>{{ subtopic.title }}</h2>
+<a href="{% url 'kitchen:edit_subtopic_info' subtopic.id %}">Edit Info</a>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.temp_content.errors }}
+            {{ form.temp_content.label_tag }}
+            {{ form.temp_content }}
+        </div>
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

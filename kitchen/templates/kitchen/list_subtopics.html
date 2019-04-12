@@ -1,0 +1,11 @@
+{% block body %}
+
+<small>
+    <a href="{% url 'kitchen:add_subtopic' topic.id %}">add</a>
+</small>
+{% for subtopic in subtopics %}
+<div>
+    <a href="{% url 'kitchen:edit_subtopic_content' subtopic.id %}">{{ subtopic.title }}</a>
+</div>
+{% endfor %}
+{% endblock %}
