@@ -1,35 +1,35 @@
 {% for message in messages %}
   {% if message.level == 20 %}
-    <li class="alert alert-info">
+    <li class="alert alert-info alert-dismissible">
       <i class="fa fa-info"></i>
       {{ message }}
-      <a href="#" class="close-btn btn-sm btn-floating mdl-js-ripple-effect" >
-        <i class="fa fa-close"></i>
-      </a>
+      <button  type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
     </li>
   {% elif message.level == 25 %}
-    <li class="alert alert-success">
+    <li class="alert alert-success alert-dismissible">
       <i class="fa fa-check"></i>
       {{ message }}
-      <a href="#" class="close-btn btn-sm btn-floating mdl-js-ripple-effect" >
-        <i class="fa fa-close"></i>
-      </a>
+      <button  type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
     </li>
   {% elif message.level == 30 %}
-    <li class="alert alert-warning">
+    <li class="alert alert-warning alert-dismissible">
       <i class="fa fa-warning"></i>
       {{ message }}
-      <a href="#" class="close-btn btn-sm btn-floating mdl-js-ripple-effect" >
-        <i class="fa fa-close"></i>
-      </a>
+      <button  type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
     </li>
   {% else %}
-    <li class="alert alert-danger">
+    <li class="alert alert-danger alert-dismissible">
       <i class="fa fa-close"></i>
       {{ message }}
-      <a href="#" class="close-btn btn-sm btn-floating mdl-js-ripple-effect" >
-        <i class="fa fa-close"></i>
-      </a>
+      <button  type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
     </li>
     {% endif %}
 {% endfor %}

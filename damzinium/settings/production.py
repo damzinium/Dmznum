@@ -6,21 +6,19 @@ SECRET_KEY = os.environ.get('SEC_PASS')
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
 
-# MIDDLEWARE += [
-# 	'whitenoise.middleware.WhiteNoiseMiddleware',
-# ]
-
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 DEFAULT_FROM_EMAIL = 'noreply@damzinium.com'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
@@ -28,7 +26,7 @@ SENDGRID_API = os.environ.get('SENDGRID_API', '')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD' , '')
 EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = False
 
 LOGGING = {
     'version': 1,

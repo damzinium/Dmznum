@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.db.models.signals import post_save
@@ -16,6 +18,7 @@ class Profile(models.Model):
 
     from library.models import Institution, Department
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     profile_picture = models.ImageField(null=True, blank=True)
     institution = models.ForeignKey(
         Institution, null=True, on_delete=models.CASCADE)
@@ -56,6 +59,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
     username = models.CharField(max_length=60, unique=True)
     first_name = models.CharField(max_length=25)

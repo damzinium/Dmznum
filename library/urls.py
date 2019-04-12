@@ -5,10 +5,12 @@ from .import views
 app_name = 'library'
 
 urlpatterns = [
-    path('department/', login_required(views.view_courses), name='department'),
-    path('department/<int:pk>/', login_required(views.department_courses), name='course'),
-    path('course/<int:pk>/', login_required(views.course_contents), name='detail'),
-    path('topic/<int:pk>/', login_required(views.topic_detail), name='topic_detail'),
+    path('courses/', views.list_courses, name='list_courses'),
+    path('department/<uuid:pk>/', login_required(views.department_courses), name='course'),
+    path('course/<uuid:pk>/topics/', login_required(views.list_topics), name='list_topics'),
+    path('course/topic/<uuid:pk>/sub-topics/', views.list_subtopics, name='list_subtopics'),
+    path('course/topic/sub-topic/<uuid:pk>/content/', views.list_subtopic_content, name='list_subtopic_content'),
+    path('topic/<uuid:pk>/', login_required(views.topic_detail), name='topic_detail'),
     path('course/selection/add/', views.add_course_selection, name='add_course_selection'),
     path('course/selection/remove/', views.remove_course_selection, name='remove_course_selection'),
     path('faq/', views.faq, name='faq'),

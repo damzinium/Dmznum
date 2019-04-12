@@ -9,11 +9,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from accounts.models import User
 from accounts.utils import get_user
-from .models import Topic, Course, Department, Ugrc, Ugrc_Topic, Comment, Reply, CourseSelection
+from .models import Topic, Course, Department, Comment, Reply, CourseSelection, SubTopic
 from .forms import CommentForm
 
 
-@login_required
 def department_list(request):
     departments = Department.objects.all()
     context = {
@@ -22,8 +21,7 @@ def department_list(request):
     return render(request, 'library/department.html', context)
 
 
-@login_required
-def view_courses(request):
+def list_courses(request):
     required_courses = Course.objects.filter(is_required=True)
     department_list = Department.objects.all()
     course_selections = CourseSelection.objects.filter(user=get_user(request))
@@ -39,7 +37,7 @@ def view_courses(request):
         'departments': departments,
         'selected_courses': selected_courses,
     }
-    return render(request, 'library/department.html', context)
+    return render(request, 'library/courses.html', context)
 
 
 @login_required
@@ -53,20 +51,45 @@ def department_courses(request, pk):
 
 
 @login_required
-def course_contents(request, pk):
-    department_courses = get_object_or_404(Course, id=pk)
-    course_list = department_courses.topic_set.all()
+def list_topics(request, pk):
+    course = get_object_or_404(Course, id=pk)
+    try:
+        first_topic = Topic.objects.get(course=course, prev=None)
+    except Topic.DoesNotExist:
+        first_topic = None
+    # paginator = Paginator(course_list, 3)
 
-    paginator = Paginator(course_list, 3)
-
-    page = request.GET.get('page')
-    topics = paginator.get_page(page)
+    # page = request.GET.get('page')
+    # topics = paginator.get_page(page)
 
     context = {
-        'topics': topics
+        'first_topic': first_topic
     }
-    return render(request, 'library/detail.html', context)
+    return render(request, 'library/list_topics.html', context)
 
+
+@login_required
+def list_subtopics(request, pk):
+    topic = get_object_or_404(Topic, id=pk)
+    try:
+        first_subtopic = SubTopic.objects.get(topic=topic, prev=None)
+    except SubTopic.DoesNotExist:
+        first_subtopic = None
+    context = {
+        'topic': topic,
+        'first_subtopic': first_subtopic
+    }
+    return render(request, 'library/list_subtopics.html', context)
+
+
+@login_required
+def list_subtopic_content(request, pk):
+    subtopic = get_object_or_404(SubTopic, id=pk)
+
+    context = {
+        'subtopic': subtopic
+    }
+    return render(request, 'library/list_subtopic_content.html', context)
 
 
 @login_required

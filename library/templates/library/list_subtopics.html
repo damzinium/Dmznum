@@ -1,0 +1,21 @@
+<html>
+    <body>
+        {% if topic.prev %}
+        <a href="{% url 'library:list_subtopics' topic.prev.pk %}">Previous</a>
+        {% else %}
+        <a href="">Previous</a>
+        {% endif %}
+
+        {% if topic.next %}
+        <a href="{% url 'library:list_subtopics' topic.next.pk %}">Next</a>
+        {% else %}
+        <a href="">Next</a>
+        {% endif %}
+
+        {% if first_subtopic %}
+        <a href="{% url 'library:list_subtopic_content' first_subtopic.pk %}">{{ first_subtopic.title }}</a>
+        {% else %}
+        No sub-topics
+        {% endif %}
+    </body>
+</html>

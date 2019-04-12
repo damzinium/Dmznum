@@ -56,9 +56,7 @@
 <script type="text/javascript">    // hide page loader
     window.addEventListener("load", function () {
         var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
-          .insertBefore('#messages').fadeOut("fast", function () {
-            getAndRenderMessages();
-          });
+          .insertBefore('#messages').fadeOut("fast");
         const loader = $('.loader');
         loader.fadeOut("slow", function () {
           loader.remove();

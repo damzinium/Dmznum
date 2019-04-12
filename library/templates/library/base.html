@@ -48,9 +48,11 @@
     {% endblock %}
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     {% include 'accounts/header.html' %}
+
     <ul id="messages" class="list-group"></ul>
         <main class="mdl-layout__content">
             <!--WORK HERE-->
+
             {% block content %}
             {% endblock %} 
             <!--WORK HERE-->
@@ -112,9 +114,7 @@
       // hide page loader
       window.addEventListener("load", function () {
         var ajaxLoader = $('<span class="ajax-loader alert alert-warning">Loading...</span>')
-          .insertBefore('#messages').fadeOut("fast", function () {
-            getAndRenderMessages();
-          });
+          .insertBefore('#messages').fadeOut("fast");
         const loader = $('.loader');
         loader.fadeOut("slow", function () {
           loader.remove();

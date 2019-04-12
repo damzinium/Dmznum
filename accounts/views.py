@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, render_to_response, get_object_or
 from django.views import generic
 from django.views.generic import View
 
-from library.models import CourseSelection, Ugrc, Ugrc_Topic
+from library.models import CourseSelection
 from . import forms
 from .models import User
 
@@ -123,14 +123,14 @@ def name_profile(request):
     return render_to_response('accounts/name.html', {'full_name': request.user.username})
 
 
-class UgrcTopicView(generic.DetailView):
-    model = Ugrc
-    template_name = 'accounts/ugrc_topics.html'
+# class UgrcTopicView(generic.DetailView):
+#     model = Ugrc
+#     template_name = 'accounts/ugrc_topics.html'
 
 
-class UgContent(generic.DetailView):
-    model = Ugrc_Topic
-    template_name = 'accounts/ugrc_content.html'
+# class UgContent(generic.DetailView):
+#     model = Ugrc_Topic
+#     template_name = 'accounts/ugrc_content.html'
 
 
 def error(request):

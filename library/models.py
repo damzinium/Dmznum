@@ -1,4 +1,6 @@
-from os import environ
+import os
+import uuid
+
 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
@@ -8,7 +10,8 @@ from django.utils import timezone
 
 
 class Institution(models.Model):
-    name = models.CharField(max_length=100, default="Legon")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=100)
 
     class Meta:
         ordering = ('name',)
@@ -18,6 +21,7 @@ class Institution(models.Model):
 
 
 class School(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
@@ -29,6 +33,7 @@ class School(models.Model):
 
 
 class Department(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
@@ -40,11 +45,18 @@ class Department(models.Model):
 
 
 class Course(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    institution = models.ForeignKey(Institution, null=True, on_delete=models.CASCADE, editable=False)
     department = models.ForeignKey(Department, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=100)
-    is_required = models.BooleanField(default=False)
+    is_required = models.BooleanField(default=False, editable=False)
 
+    def save(self, *args, **kwargs):
+        if self.department is None:
+            self.is_required = True
+        super().save(*args, **kwargs)
+        
     class Meta:
         ordering = ('name',)
 
@@ -53,17 +65,25 @@ class Course(models.Model):
 
 
 class Topic(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    active_content = RichTextUploadingField(editable=False, null=True)
-    content = RichTextUploadingField('content')
+    
+    prev = models.OneToOneField('self', null=True, blank=True, on_delete=models.DO_NOTHING, related_name='next')
+    
+    def __str__(self):
+        return self.title
+
+
+class SubTopic(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    content = RichTextUploadingField(editable=False, null=True)
+    temp_content = RichTextUploadingField(verbose_name='content')
     push_updates = models.BooleanField(default=False)
 
-    class Meta:
-        ordering = ('-title',)
-
-    def get_absolute_url(self):
-        return reverse('accounts:profile')
+    prev = models.OneToOneField('self', null=True, blank=True, on_delete=models.DO_NOTHING, related_name='next')
 
     def __str__(self):
         return self.title
@@ -72,6 +92,7 @@ class Topic(models.Model):
 class Comment(models.Model):
     from accounts.models import User
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, editable=False)
     commenter = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
@@ -79,16 +100,13 @@ class Comment(models.Model):
     is_approved = models.BooleanField(verbose_name='check to approve', default=False)
 
     def __str__(self):
-        if self.is_approved:
-            return '{} commented on {}. (Approved.)'.format(self.commenter, self.topic)
-        else:
-            return '{} commented on {}. (Pending Approval.)'.format(self.commenter, self.topic)
+        self.commenter.username
 
 
 class Reply(models.Model):
-
     from accounts.models import User
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     comment = models.ForeignKey(
         Comment,
         on_delete=models.CASCADE,
@@ -99,50 +117,19 @@ class Reply(models.Model):
     date_uploaded = models.DateTimeField(editable=False, default=timezone.now)
 
 
-class Ugrc(models.Model):
-    # from accounts.models import Profile
-
-    ugrc = models.CharField(max_length=200)
-    ugrc_code = models.CharField(max_length=20)
-    # level = models.ForeignKey(Profile, on_delete=models.CASCADE, to_field="level")
-
-    class Meta:
-        ordering = ('ugrc',)
-
-    def __str__(self):
-        return self.ugrc_code + ":" + self.ugrc
-
-    def get_absolute_url(self):
-        return reverse('accounts:ugrc_detail', args=[str(self.id)])
-
-
-class Ugrc_Topic(models.Model):
-    ugrc = models.ForeignKey(Ugrc, on_delete=models.CASCADE)
-    title = models.CharField(max_length=300)
-    content = RichTextUploadingField()
-
-    class Meta:
-        ordering = ('ugrc',)
-
-    def get_absolute_url(self):
-        return reverse('accounts:profile')
-
-    def __str__(self):
-        return self.title
-
-
 class CourseSelection(models.Model):
     from accounts.models import User
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    semester = models.IntegerField(choices=((1, 2, ), ), default=environ.get('SEMESTER', 1))
+    semester = models.IntegerField(choices=((1, 2, ), ), default=os.environ.get('SEMESTER', 2))
     selection_date = models.DateTimeField(auto_now_add=True)
 
 
-@receiver(models.signals.post_save, sender=Topic)
+@receiver(models.signals.post_save, sender=SubTopic)
 def push_updates(sender, instance, **kwargs):
     if instance.push_updates:
-        instance.active_content = instance.content
+        instance.content = instance.temp_content
         instance.push_updates = False
         instance.save()
