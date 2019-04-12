@@ -38,9 +38,9 @@
     <ul id="messages" class="list-group"></ul>
     <div class="mdl-layout__content">
       <div class="container mt-5 mb-5">
-        <div class="row justify-content-center">
-          <div class="col">
-          <div class="justify-content-center align-items-center"><img src="{% static 'account/images/d-logo.png' %}"></div><!-- Logo and text for sign-up and log-in forms --> <br>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7 text-center">
+            <img src="{% static 'account/images/d-logo.png' %}"><!-- Logo and text for sign-up and log-in forms --> <br>
             {% block content %}
             {% endblock %}
           </div>
