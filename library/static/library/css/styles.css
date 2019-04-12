@@ -23,12 +23,15 @@
 /*swiper one*/
 .swiper-container {
     width: 100%;
-    height: 300px;
-    margin: 10px auto;
+    height: 100%;
+    padding-left: 35px;
+    padding-right: 35px;
 }
 .swiper-slide {
     text-align: center;
-    width: 60%;
+    font-size: 18px;
+    background: #fff;
+
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -42,10 +45,4 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-}
-.swiper-slide:nth-child(2n) {
-    width: 40%;
-}
-.swiper-slide:nth-child(3n) {
-    width: 20%;
 }
