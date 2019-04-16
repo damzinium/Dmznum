@@ -99,6 +99,8 @@ class UserLoginForm(forms.Form):
         if user is not None:
             self.user = user
             return self
+        else:
+            raise ValidationError('Incorrect username or email or password.')
 
 
 class NamesUpdateForm(forms.ModelForm):

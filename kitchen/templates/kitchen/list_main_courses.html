@@ -1,0 +1,14 @@
+{% extends 'kitchen/base.html' %}
+
+{% block body %}
+
+<small>
+    <a href="{% url 'kitchen:add_main_course' department.id %}">add</a>
+</small>
+
+{% for course in courses %}
+<div>
+    <a href="{% url 'kitchen:list_topics' course.id %}">{{ course.name }}</a>
+</div>
+{% endfor %}
+{% endblock %}

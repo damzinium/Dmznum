@@ -66,7 +66,7 @@
         }
 
         .loader-img {
-            width: 80px;
+            width: 40px;
         }
         /* New features */
     </style>
@@ -99,7 +99,7 @@
             <img class="android-logo-image" src="{% static 'account/images/logoandtext.png' %}" style="height:100%;">
           </span>
             <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'accounts:profile' %}" style="color: #fff !important;">Home</a>
-            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:department' %}" style="color: #fff !important;">Courses</a>
+            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'library:list_courses' %}" style="color: #fff !important;">Courses</a>
             <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'damzi:index' %}" style="color: #fff !important;">Sign Out</a>
         </div>
       </div>
