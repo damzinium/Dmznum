@@ -3,7 +3,7 @@
 {% block body %}
 
 <small>
-    <a href="{% url 'kitchen:add_main_course' department.id %}">add</a>
+    <a href="{% url 'kitchen:add_main_course' department.id %}" class="">add</a>
 </small>
 
 {% for course in courses %}

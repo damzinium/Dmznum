@@ -107,33 +107,6 @@
   </div>
   <!-- advertisement 2 -->
   {% endcomment %}
-  <section class="ugrc">
-    <div class="container">
-      <!-- container -->
-      <div class="category">
-        <h5>UGRC</h5>
-      </div>
-      <div class="swiper-container">
-        <!-- .swiper-container -->
-        <div class="swiper-wrapper mt-2 mb-2">
-          {% for course in selected_courses %}
-          <div class="swiper-slide">
-            <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
-              <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
-              <div class="mdl-card__title">{{ course.code }}</div>
-              <div class="mdl-card__supporting-text">{{ course.name }}</div>
-              <div class="mdl-card__actions mdl-card--border"><a href="{% url 'library:list_topics' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study </a></div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-      <!-- /.swiper-container -->
-    </div>
-    <!-- /.container -->
-  </section>
 </div>
 <!-- /.container-fluid -->
 
