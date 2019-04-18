@@ -66,32 +66,43 @@
   {% endcomment %}
   <br>
   <section class="my-courses">
-    <div class="container">
       <!-- container -->
-      <div class="category">
-        <h5>MY COURSES</h5>
-      </div>
+    <div class="container">
+        <h5 class="my-4">MY COURSES ({{ selected_courses|length}})</h5>
       <div class="swiper-container">
         <!-- .swiper-container -->
-        <div class="swiper-wrapper mt-2 mb-2">
+        <div class="swiper-wrapper my-2">
 
-          {% for course in selected_courses %}
-          <div class="swiper-slide">
-            <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
-              <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
-              <div class="mdl-card__title">{{ course.code }}</div>
-              <div class="mdl-card__supporting-text">{{ course.name }}</div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="{% url 'library:list_topics' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a>
-                <button class="remove-course-selection-btn" id="{{ course.id }}">Remove</button>
+          <!-- if count > 0, show selected courses. else ask them to add a new course-->
+
+          {% if selected_courses|length > 0 %}
+            {% for course in selected_courses %}
+            <div class="swiper-slide">
+              <div class="mdl-card mdl-shadow--4dp" id="course-{{ course.id }}" style="width: 240px !important;">
+                <div class="mdl-card__media"><img src="{% static 'account/images/placeholder.jpg' %}" width="100%" alt=""></div>
+                <div class="mdl-card__title">{{ course.code }}</div>
+                <div class="mdl-card__supporting-text">{{ course.name }}</div>
+                <div class="mdl-card__actions mdl-card--border">
+                  <a href="{% url 'library:list_topics' course.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Study</a>
+                  <a href="#" class="btn-floating btn-sm remove-course-selection-btn" style="position: absolute; top: 0; right: 0;"
+                    id="{{ course.id }}"><i class="fa fa-trash"></i>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          {% endfor %}
+            {% endfor %} 
+          {% else %}
+            <h5>You haven't selected any courses yet. <a href="{% url 'library:list_courses' %}">Add one.</a></h5>
+          {% endif %}
 
         </div>
+
+        <!-- If the number of selected courses is less than 4, then no need for the arrows-->
+        {% if selected_courses|length > 4 %}
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
+        {% else %}
+        {% endif %}
       </div>
       <!-- /.swiper-container -->
     </div>
