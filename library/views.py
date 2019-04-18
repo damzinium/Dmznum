@@ -57,6 +57,7 @@ def list_topics(request, pk):
         first_topic = Topic.objects.get(course=course, prev=None)
     except Topic.DoesNotExist:
         first_topic = None
+        
     # paginator = Paginator(course_list, 3)
 
     # page = request.GET.get('page')
