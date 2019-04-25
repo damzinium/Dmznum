@@ -104,8 +104,7 @@
               <div class="mdl-grid">
                 {% for course in department.course_set.all %}
                 {% if not course in selected_courses %}
-                <div
-                  class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone"
+                <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--2-col-phone"
                   id="course-{{ course.id }}">
                   <div class="mdl-card__media"><img src="{% static 'library/images/placeholder.jpg' %}" width="100%">
                   </div>
@@ -133,15 +132,13 @@
   </div>
   {% endfor %}
   <!--/Department Dynamic Generation-->
-
-  <hr>
-  
+  <br>  
   <!-- pagination-->
-  <nav aria-label="Page navigation">
+  <nav aria-label="Page navigation" style="overflow: hidden; position: relative;">
     <ul class="pagination pg-blue justify-content-center">
       {% if departments.has_previous %}
-      <li class="page-item "><a href="?page=1" class="page-link">First&laquo;</a></li>
-      <li class="page-item "><a href="?page={{ departments.previous_page_number }}" class="page-link">Previous&lsaquo;</a></li>
+      <li class="page-item "><a href="?page=1" class="page-link">&laquo;First</a></li>
+      <li class="page-item "><a href="?page={{ departments.previous_page_number }}" class="page-link">&lsaquo;Previous</a></li>
       {% endif %}
 
       <li class="page-item"><a class="page-link"> Page {{ departments.number }} of {{ departments.paginator.num_pages }} </a> </li>
