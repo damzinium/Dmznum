@@ -16,18 +16,26 @@ class AddTopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = (
+            'course',
             'title',
             'prev',
         )
+        widgets = {
+            'course': forms.HiddenInput()
+        }
 
 
 class AddSubTopicForm(forms.ModelForm):
     class Meta:
         model = SubTopic
         fields = (
+            'topic',
             'title',
             'prev',
         )
+        widgets = {
+            'topic': forms.HiddenInput()
+        }
 
 
 class EditSubTopicInfoForm(AddSubTopicForm):

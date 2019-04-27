@@ -6,6 +6,7 @@ from library.models import Course, Department, SubTopic, Topic
 
 from .forms import AddCourseForm, AddTopicForm, AddSubTopicForm, EditSubTopicContentForm, EditSubTopicInfoForm
 
+
 @user_passes_test(lambda  u: u.is_staff)
 @login_required
 def index(request):
@@ -167,9 +168,8 @@ def add_required_course(request):
 def add_topic(request, course_id):
     template_name = 'kitchen/add_topic.html'
     course = get_object_or_404(Course, id=course_id)
-    form = AddTopicForm
     if request.method == 'POST':
-        form = form(data=request.POST)
+        form = AddTopicForm(data=request.POST, initial={'course': course})
         if form.is_valid():
             new_topic = form.save(commit=False)
             new_topic.course = course
@@ -182,7 +182,7 @@ def add_topic(request, course_id):
             return render(request, template_name, context)
     else:
         context = {
-            'form': form
+            'form': AddTopicForm(initial={'course': course})
         }
         return render(request, template_name, context)
 
@@ -190,9 +190,8 @@ def add_topic(request, course_id):
 def add_subtopic(request, topic_id):
     template_name = 'kitchen/add_subtopic.html'
     topic = get_object_or_404(Topic, id=topic_id)
-    form = AddSubTopicForm
     if request.method == 'POST':
-        form = form(data=request.POST)
+        form = AddSubTopicForm(data=request.POST, initial={'topic': topic})
         if form.is_valid():
             new_subtopic = form.save(commit=False)
             new_subtopic.topic = topic
@@ -200,6 +199,6 @@ def add_subtopic(request, topic_id):
             return redirect('kitchen:list_subtopics', topic_id=topic_id)
     else:
         context = {
-            'form': form,
+            'form': AddSubTopicForm(initial={'topic': topic}),
         }
         return render(request, template_name, context)
