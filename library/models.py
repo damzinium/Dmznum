@@ -71,14 +71,7 @@ class Topic(models.Model):
     prev = models.OneToOneField('self', null=True, blank=True, verbose_name='previous topic',
                                 on_delete=models.DO_NOTHING, related_name='next')
 
-    def clean(self):
-        if self.prev is None:
-            print(self.title)
-            try:
-                self.__class__.objects.get(course=self.course, prev__isnull=True)
-                raise ValidationError({'prev': 'A first topic already exists.'})
-            except self.__class__.DoesNotExist:
-                pass
+
 
     @classmethod
     def get_topics_as_list(cls, course):
@@ -107,14 +100,6 @@ class SubTopic(models.Model):
 
     prev = models.OneToOneField('self', null=True, blank=True, verbose_name='previous subtopic',
                                 on_delete=models.DO_NOTHING, related_name='next')
-
-    def clean(self):
-        if self.prev is None:
-            try:
-                self.__class__.objects.get(topic=self.topic, prev__isnull=True)
-                raise ValidationError({'prev': 'A first sub-topic already exists'})
-            except self.__class__.DoesNotExist:
-                pass
 
     @classmethod
     def get_subtopics_as_list(cls, topic):
