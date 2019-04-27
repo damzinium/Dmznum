@@ -3,6 +3,7 @@ import uuid
 
 
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.dispatch import receiver
 from django.urls import reverse
@@ -69,10 +70,19 @@ class Topic(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     
-    prev = models.OneToOneField('self', null=True, blank=True, on_delete=models.DO_NOTHING, related_name='next')
-    
+    prev = models.OneToOneField('self', null=True, blank=True, verbose_name='previous topic', on_delete=models.DO_NOTHING, related_name='next')
+
+    def clean(self):
+        if self.prev is None:
+            try:
+                super(Topic, self).objects.get(course=self.course, prev__isnull=True)
+            except:
+                raise ValidationError({'prev':'A first topic already exists.'})
+
     def __str__(self):
         return self.title
+
+
 
 
 class SubTopic(models.Model):
@@ -83,7 +93,14 @@ class SubTopic(models.Model):
     temp_content = RichTextUploadingField(verbose_name='content')
     push_updates = models.BooleanField(default=False)
 
-    prev = models.OneToOneField('self', null=True, blank=True, on_delete=models.DO_NOTHING, related_name='next')
+    prev = models.OneToOneField('self', null=True, blank=True, verbose_name='previous subtopic', on_delete=models.DO_NOTHING, related_name='next')
+
+    def clean(self):
+        if self.prev is None:
+            try:
+                super().objects.get(topic=self.topic, prev__isnull=True)
+            except:
+                raise ValidationError({'prev': 'A first sub-topic already exists'})
 
     def __str__(self):
         return self.title
