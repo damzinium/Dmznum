@@ -7,13 +7,15 @@ from library.models import Course, Department, SubTopic, Topic
 from .forms import AddCourseForm, AddTopicForm, AddSubTopicForm, EditSubTopicContentForm, EditSubTopicInfoForm
 
 
-@user_passes_test(lambda  u: u.is_staff)
+@user_passes_test(lambda u: u.is_staff)
 @login_required
 def index(request):
     template_name = 'kitchen/index.html'
     return render(request, template_name)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def list_departments(request):
     template_name = 'kitchen/list_departments.html'
     departments = Department.objects.all()
@@ -23,6 +25,8 @@ def list_departments(request):
     return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def list_required_courses(request):
     template_name = 'kitchen/list_required_courses.html'
     courses = Course.objects.filter(is_required=True)
@@ -32,6 +36,8 @@ def list_required_courses(request):
     return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def list_main_courses(request, department_id):
     template_name = 'kitchen/list_main_courses.html'
     department = get_object_or_404(Department, id=department_id)
@@ -43,6 +49,8 @@ def list_main_courses(request, department_id):
     return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def list_topics(request, course_id):
     template_name = 'kitchen/list_topics.html'
     course = get_object_or_404(Course, id=course_id)
@@ -54,23 +62,12 @@ def list_topics(request, course_id):
     return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def list_subtopics(request, topic_id):
     template_name = 'kitchen/list_subtopics.html'
     topic = get_object_or_404(Topic, id=topic_id)
-    try:
-        first_subtopic = SubTopic.objects.get(topic=topic, prev__isnull=True)
-    except SubTopic.DoesNotExist:
-        first_subtopic = None
-    subtopics = list()
-    if first_subtopic is not None:
-        subtopics.append(first_subtopic)
-        subtopic = first_subtopic
-        try:
-            while subtopic.next:
-                subtopic = subtopic.next
-                subtopics.append(subtopic)
-        except SubTopic.next.RelatedObjectDoesNotExist:
-            pass
+    subtopics = SubTopic.get_subtopics_as_list(topic)
     context = {
         'topic': topic,
         'subtopics': subtopics,
@@ -78,6 +75,8 @@ def list_subtopics(request, topic_id):
     return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def edit_subtopic_content(request, subtopic_id):
     template_name = 'kitchen/edit_subtopic_content.html'
     form = EditSubTopicContentForm
@@ -102,6 +101,8 @@ def edit_subtopic_content(request, subtopic_id):
         return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def edit_subtopic_info(request, subtopic_id):
     template_name = 'kitchen/edit_subtopic_info.html'
     form = EditSubTopicInfoForm
@@ -118,6 +119,9 @@ def edit_subtopic_info(request, subtopic_id):
         }
         return render(request, template_name, context)
 
+
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def add_main_course(request, department_id):
     template_name = 'kitchen/add_main_course.html'
     form = AddCourseForm
@@ -135,6 +139,9 @@ def add_main_course(request, department_id):
         }
         return render(request, template_name, context)
 
+
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def add_required_course(request):
     template_name = 'kitchen/add_required_course.html'
     form = AddCourseForm
@@ -152,15 +159,15 @@ def add_required_course(request):
         return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def add_topic(request, course_id):
     template_name = 'kitchen/add_topic.html'
     course = get_object_or_404(Course, id=course_id)
     if request.method == 'POST':
         form = AddTopicForm(data=request.POST, initial={'course': course})
         if form.is_valid():
-            new_topic = form.save(commit=False)
-            new_topic.course = course
-            new_topic.save()
+            form.save()
             return redirect('kitchen:list_topics', course_id=course_id)
         else:
             return render(request, template_name, {'form': form})
@@ -171,15 +178,15 @@ def add_topic(request, course_id):
         return render(request, template_name, context)
 
 
+@user_passes_test(lambda u: u.is_staff)
+@login_required
 def add_subtopic(request, topic_id):
     template_name = 'kitchen/add_subtopic.html'
     topic = get_object_or_404(Topic, id=topic_id)
     if request.method == 'POST':
         form = AddSubTopicForm(data=request.POST, initial={'topic': topic})
         if form.is_valid():
-            new_subtopic = form.save(commit=False)
-            new_subtopic.topic = topic
-            new_subtopic.save()
+            form.save()
             return redirect('kitchen:list_subtopics', topic_id=topic_id)
         else:
             return render(request, template_name, {'form': form})
