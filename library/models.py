@@ -81,17 +81,17 @@ class Topic(models.Model):
                 pass
 
     @classmethod
-    def get_topics_in_list(cls, course):
+    def get_topics_as_list(cls, course):
         try:
             first_topic = cls.objects.get(course=course, prev__isnull=True)
         except cls.DoesNotExist:
             return []
         topics = [first_topic]
-        current_topic = first_topic
-        while current_topic.next:
-            current_topic = current_topic.next
-            topics.append(current_topic)
-        return topics
+        try:
+            while topics[-1].next:
+                topics.append(topics[-1].next)
+        except Topic.next.RelatedObjectDoesNotExist:
+            return topics
 
     def __str__(self):
         return self.title
@@ -115,6 +115,19 @@ class SubTopic(models.Model):
                 raise ValidationError({'prev': 'A first sub-topic already exists'})
             except self.__class__.DoesNotExist:
                 pass
+
+    @classmethod
+    def get_subtopics_as_list(cls, topic):
+        try:
+            first_subtopic = cls.objects.get(topic=topic, prev__isnull=True)
+        except cls.DoesNotExist:
+            return []
+        subtopics = [first_subtopic]
+        try:
+            while subtopics[-1].next:
+                subtopics.append(subtopics[-1].next)
+        except cls.next.RelatedObjectDoesNotExist:
+            return subtopics
 
     def __str__(self):
         return self.title

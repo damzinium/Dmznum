@@ -46,20 +46,7 @@ def list_main_courses(request, department_id):
 def list_topics(request, course_id):
     template_name = 'kitchen/list_topics.html'
     course = get_object_or_404(Course, id=course_id)
-    try:
-        first_topic = Topic.objects.get(course=course, prev__isnull=True)
-    except Topic.DoesNotExist:
-        first_topic = None
-    topics = list()
-    if first_topic is not None:
-        topics.append(first_topic)
-        topic = first_topic
-        try:
-            while topic.next:
-                topic = topic.next
-                topics.append(topic)
-        except Topic.next.RelatedObjectDoesNotExist:
-            pass
+    topics = Topic.get_topics_as_list(course)
     context = {
         'course': course,
         'topics': topics,
