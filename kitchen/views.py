@@ -176,10 +176,7 @@ def add_topic(request, course_id):
             new_topic.save()
             return redirect('kitchen:list_topics', course_id=course_id)
         else:
-            context = {
-                'form': form,
-            }
-            return render(request, template_name, context)
+            return render(request, template_name, {'form': form})
     else:
         context = {
             'form': AddTopicForm(initial={'course': course})
@@ -197,6 +194,8 @@ def add_subtopic(request, topic_id):
             new_subtopic.topic = topic
             new_subtopic.save()
             return redirect('kitchen:list_subtopics', topic_id=topic_id)
+        else:
+            return render(request, template_name, {'form': form})
     else:
         context = {
             'form': AddSubTopicForm(initial={'topic': topic}),
