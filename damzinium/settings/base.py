@@ -9,7 +9,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 INSTALLED_APPS = [
     'ads',
     'sekizai',
-    'reset_migrations',
     'ckeditor',
     'ckeditor_uploader',
     'damzi.apps.DamziConfig',
