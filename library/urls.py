@@ -6,7 +6,6 @@ app_name = 'library'
 
 urlpatterns = [
     path('courses/', views.list_courses, name='list_courses'),
-    path('department/<uuid:pk>/', login_required(views.department_courses), name='course'),
     path('course/<uuid:pk>/topics/', login_required(views.list_topics), name='list_topics'),
     path('course/topic/<uuid:pk>/sub-topics/', views.list_subtopics, name='list_subtopics'),
     path('course/topic/sub-topic/<uuid:pk>/content/', views.list_subtopic_content, name='list_subtopic_content'),
