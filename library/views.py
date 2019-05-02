@@ -23,11 +23,11 @@ def department_list(request):
 
 def list_courses(request):
     required_courses = Course.objects.filter(is_required=True)
-    department_list = Department.objects.all()
+    departments = Department.objects.all()
     course_selections = CourseSelection.objects.filter(user=get_user(request))
     selected_courses = {course_selection.course for course_selection in course_selections}
 
-    paginator = Paginator(department_list, 8)
+    paginator = Paginator(departments, 8)
 
     page = request.GET.get('page')
     departments = paginator.get_page(page)
@@ -49,22 +49,13 @@ def department_courses(request, pk):
     return render(request, 'library/course.html', context)
 
 
-
 @login_required
 def list_topics(request, pk):
     course = get_object_or_404(Course, id=pk)
-    try:
-        first_topic = Topic.objects.get(course=course, prev=None)
-    except Topic.DoesNotExist:
-        first_topic = None
-        
-    # paginator = Paginator(course_list, 3)
-
-    # page = request.GET.get('page')
-    # topics = paginator.get_page(page)
+    topics = Topic.get_topics_as_list(course)
 
     context = {
-        'first_topic': first_topic
+        'topics': topics,
     }
     return render(request, 'library/list_topics.html', context)
 
@@ -72,13 +63,10 @@ def list_topics(request, pk):
 @login_required
 def list_subtopics(request, pk):
     topic = get_object_or_404(Topic, id=pk)
-    try:
-        first_subtopic = SubTopic.objects.get(topic=topic, prev=None)
-    except SubTopic.DoesNotExist:
-        first_subtopic = None
+    subtopics = SubTopic.get_subtopics_as_list(topic)
     context = {
         'topic': topic,
-        'first_subtopic': first_subtopic
+        'subtopics': subtopics,
     }
     return render(request, 'library/list_subtopics.html', context)
 

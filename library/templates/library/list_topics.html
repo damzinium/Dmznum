@@ -28,30 +28,19 @@
             </center>
             <!--course generator-->
 
-            {% if first_topic %}
-            <div class="card">
-                <div class="card-header light-green darken-1 lighten-1 white-text">
-                    {{ first_topic.course }}
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">{{ first_topic.title }}</h4>
-                    <a href="{% url 'library:list_subtopics' first_topic.pk %}" class="btn damzinium-green-head">SUB-TOPICS</a>
-                </div>
-            </div>
-            <br/>
-
-            {% with topic.next as topic %}
+            {% if topics %}
+            {% for topic in topics %}
             <div class="card">
                 <div class="card-header light-green darken-1 lighten-1 white-text">
                     {{ topic.course }}
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">{{ topic.title }}</h4>
-                    <a href="" class="btn damzinium-green-head">READ</a>
+                    <a href="{% url 'library:list_subtopics' topic.pk %}" class="btn damzinium-green-head">SUB-TOPICS</a>
                 </div>
             </div>
             <br/>
-            {% endwith %}
+            {% endfor %}
             {% else %}
             No topics
             {% endif %}
