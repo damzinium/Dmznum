@@ -2,23 +2,22 @@ import json
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseGone, HttpResponseBadRequest, HttpResponse, Http404
+from django.core.paginator import Paginator
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, render, redirect
-from django.views import generic
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from accounts.models import User
 from accounts.utils import get_user
-from .models import Topic, Course, Department, Comment, Reply, CourseSelection, SubTopic
 from .forms import CommentForm
+from .models import Topic, Course, Department, Comment, CourseSelection, SubTopic
 
 
-def department_list(request):
-    departments = Department.objects.all()
-    context = {
-        'departments': departments
-    }
-    return render(request, 'library/department.html', context)
+# def department_list(request):
+#     departments = Department.objects.all()
+#     context = {
+#         'departments': departments
+#     }
+#     return render(request, 'library/department.html', context)
 
 
 def list_courses(request):
@@ -40,13 +39,13 @@ def list_courses(request):
     return render(request, 'library/courses.html', context)
 
 
-@login_required
-def department_courses(request, pk):
-    department = get_object_or_404(Department,id=pk)
-    context = {
-        'courses': department.course_set.all()
-    }
-    return render(request, 'library/course.html', context)
+# @login_required
+# def department_courses(request, pk):
+#     department = get_object_or_404(Department,id=pk)
+#     context = {
+#         'courses': department.course_set.all()
+#     }
+#     return render(request, 'library/course.html', context)
 
 
 @login_required
