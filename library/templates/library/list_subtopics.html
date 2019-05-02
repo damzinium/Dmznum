@@ -12,9 +12,9 @@
         <a href="">Next</a>
     {% endif %}
 
-    {% if topics %}
+    {% if subtopics %}
         {% for subtopic in subtopics %}
-            <a href="{% url 'library:list_subtopic_content' first_subtopic.pk %}">{{ topic.title }}</a>
+            <a href="{% url 'library:list_subtopic_content' subtopic.pk %}">{{ subtopic.title }}</a>
         {% endfor %}
     {% else %}
         No sub-topics
