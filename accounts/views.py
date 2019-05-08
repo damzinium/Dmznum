@@ -46,7 +46,7 @@ class UserRegistrationView(View):
                 if user.is_active:
                     login(request, user)
                     # messages.success('Successfully logged in.')
-                    return redirect('accounts:ots')
+                    return redirect('accounts:profile')
 
         return render(request, self.template_name, context)
 
