@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <style type="text/css">
+            /* //to correct errors design headaches created by UIKit  */
+            .gradient-nav{
+                background: linear-gradient(40deg, #45a247, #38ef7d, #11998e);
+            }
+            .l-smart{
+                padding-left: 25px;
+            }
+            .left-aligned{
+                margin-right: -30px !important;
+                margin-bottom: -30px !important;
+            }
+            .col-gap{
+                column-gap: normal;
+            }
+            .french {
+                quotes: "«" "»" "‹" "›";
+            }
+            blockquote:before {
+                content: open-quote;
+            }
+            blockquote:after {
+                content: close-quote;
+            }
+            blockquote {
+                margin-left: 0;
+                padding-left: 1em;
+                border-left: 5px solid deepPink;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main ">
+            <div class="uk-hidden@m">
+                <nav class="uk-navbar-container uk-margin-remove gradient-nav" uk-navbar>
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+                        <ul class="uk-navbar-nav">
+                            <li>
+                                <a href="#">
+                                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
+                                        Features
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="uk-navbar-item">
+                            <div>Some <a href="#">Link</a></div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="uk-inline uk-light">
+                    <img src="img/Home-slider-01.png" alt="">
+                    <div class="uk-overlay-primary uk-position-cover">
+                        <div class="uk-position-center">
+                            <h3 class="l-smart"><i>Learn Smart!</i> </h3>
+                            <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom uk-text-success" uk-toggle="target: #modal-close-outside">Signup for free!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- //This navbar is a transparent navbar that only displays on tablets and desktops -->
+            <div class="uk-position-relative uk-visible@m">
+                <div class="uk-inline uk-light">
+                    <img src="img/Home-slider-01.png" alt="">
+                    <div class="uk-overlay-primary uk-position-cover">
+                        <div class="uk-position-center">
+                            <h2><i>Learn Smart!</i> </h2>
+                            <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom uk-text-success" uk-toggle="target: #modal-close-outside">Signup for free!</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-position-top">
+                    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+                        <div class="uk-navbar-left">
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- //How It Works -->
+            <div class="uk-container uk-section">
+                <div class="uk-text-capitalize uk-text-large uk-text-lead uk-text-center">
+                    How it works
+                </div>
+                <table class="uk-table uk-table-middle uk-table-justify uk-margin-remove">
+                    <thead>
+                        <tr>
+                            <th class="uk-width-small"></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img class="uk-align-center uk-align-left@m uk-margin-remove-adjacent" src="img/logo_one.jpg" width="80" height="80"></td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                        </tr>
+                        <tr>
+                            <td><img class="uk-align-center uk-align-left@m uk-margin-remove-adjacent" src="img/logo_one.jpg" width="80" height="80"></td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                        </tr>
+                        <tr>
+                            <td><img class="uk-align-center uk-align-left@m uk-margin-remove-adjacent" src="img/logo_one.jpg" width="80" height="80"></td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="">
+                    <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom uk-text-success" uk-toggle="target: #modal-close-outside">Signup for free!</button>
+                </div>
+            </div><!-- /.How it works  -->
+            
+            <!-- //Testimonials -->
+            <div class="uk-container-expand" style="background-color: hsla(0, 0%, 93%, 0.6)">
+                <hr>
+                <div class="uk-text-capitalize uk-text-large uk-text-lead uk-text-center">
+                    Testimonials
+                </div><br>
+                <div class="testimonials ">
+                    <div class="uk-width-large uk-box-shadow-medium uk-card-hover uk-align-center">
+                        <div class="uk-column-1-2 col-gap">
+                            <img class="uk-align-left left-aligned"  src="img/light.jpg" alt="Example image">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                    <div class="uk-width-large uk-box-shadow-medium uk-card-hover uk-align-center">
+                        <div class="uk-column-1-2 col-gap">
+                            <img class="uk-align-left left-aligned"  src="img/light.jpg" alt="Example image">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                    <div class="uk-width-large uk-box-shadow-medium uk-card-hover uk-align-center">
+                        <div class="uk-column-1-2 col-gap">
+                            <img class="uk-align-left left-aligned"  src="img/light.jpg" alt="Example image">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin-remove" style="padding:30px !important;">
+                     <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom uk-text-success"  uk-toggle="target: #modal-close-outside">Signup for free!</button>
+                </div>
+            </div><!--/.testimonials -->
+            
+
+            <hr>
+
+            <div class="uk-container">
+                <div class="uk-text-capitalize uk-text-large uk-text-lead uk-text-center">
+                    Join the movement
+                </div>
+                <div>
+                    <img  class="uk-align-center" data-src="img/logo_trans.png" width="150px" height="150px" alt="" style="margin-bottom: 0px !important;" uk-img>
+                </div>
+                <div>
+                    <p> 
+                        Damzinium.com is a student-led movement with the goal of making learning easier for every student. 
+                        We are constantly on the lookout for proactive students with a passion for challenging the status quo and leaving an indelible mark on the lives of others.                        
+                    </p>
+                    <div class="uk-text-center">
+                        <blockquote class=" french">
+                        The people who are crazy enough to think they can change the world are the ones who do. <br>
+                        </blockquote>
+                        <span> - Steve Jobs</span>
+                    </div>
+                </div>
+                <hr class="uk-divider-small uk-text-center">
+
+                <div class="uk-grid-large uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div class="uk-width-1-2">
+                        <span>
+                            <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="whatsapp"> </a>+233 260 000 000
+                        </span>
+                    </div> 
+                    <div class="uk-width-1-2">
+                        <span>
+                            <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>@damzinium_inc 
+                        </span>
+                    </div>  
+                    <div class="uk-width-1-2">
+                        <span>
+                            <a href="#" class="uk-icon-button  uk-margin-small-right" uk-icon="twitter"></a>@damzinium_inc
+                        </span>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <span>
+                            <a href="#" class="uk-icon-button" uk-icon="google"></a>@damzinium_inc
+                        </span>
+                    </div>
+                </div>
+                <hr>
+                <div>
+
+                </div>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, praesentium tempore? At error placeat eius voluptatem esse. Adipisci voluptatibus est autem corporis sunt aliquid facilis reprehenderit, animi vero cumque illo. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, praesentium tempore? At error placeat eius voluptatem esse. Adipisci voluptatibus est autem corporis sunt aliquid facilis reprehenderit, animi vero cumque illo. </p>
+            </div>
+            
+        </div><!--/.main --> <!--/. --><!--/. --><!--/. -->
+                    <!-- This is the modal with the outside close button -->
+                    <div id="modal-close-outside" uk-modal>
+                            <div><img  class="uk-align-center" data-src="img/logo_trans.png" width="100px" height="100px" alt="" style="margin-bottom: 0px !important;" uk-img></div>
+                            <div class="uk-modal-dialog uk-modal-body">
+                                <button class="uk-modal-close-outside" type="button" uk-close></button>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-stacked-text" type="text" placeholder="Signup with Google">
+                                </div>
+                                <hr class="uk-divider-icon">
+                                <form class="uk-grid-small" uk-grid>
+                                    <!-- names field -->
+                                    <div class="uk-width-1-2@s">
+                                        <label class="uk-form-label" for="firsName">Firstname</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="firstName" type="text" placeholder="Your firsName">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-2@s">
+                                        <label class="uk-form-label" for="firstName">Lastname</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="firstName" type="text" placeholder="Your lastname">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-1">
+                                        <label class="uk-form-label" for="email">Email</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="email" type="text" placeholder="Your email">
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-1">
+                                        <label class="uk-form-label" for="password">Password</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="password" type="text" placeholder="Your password">
+                                        </div>
+                                    </div>
+                                    <button class="uk-button uk-button-primary uk-button-small uk-align-center" style="margin-bottom: -20px!important">Sign Up</button>
+                                </form>
+                            </div>
+                        </div>
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </body>
+</html>
